@@ -1,0 +1,124 @@
+package com.example.regym.manual_gimnasia;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.regym.Pantalla_Inicio_Atletas;
+import com.example.regym.R;
+import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N2_Mg;
+import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N3_Mg;
+import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N4_Mg;
+import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N5_Mg;
+
+
+/*
+import com.example.regym.movimientos_barra_mg.Movimientos_Barra_N2_MG;
+import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N1_MG;
+import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N2_MG;
+import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N3_MG;
+import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N4_MG;
+import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N5_MG;
+*/
+public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.mostrar_niveles_piso_mg);
+
+//botones
+        Button Nivel1_btn = findViewById(R.id.Nivel1_btn);
+        Button Nivel2_btn = findViewById(R.id.Nivel2_btn);
+        Button Nivel3_btn = findViewById(R.id.Nivel3_btn);
+        Button Nivel4_btn = findViewById(R.id.Nivel4_btn);
+        Button Nivel5_btn = findViewById(R.id.Nivel5_btn);
+        Button Regresar_btn = findViewById(R.id.Regresar_btn);
+
+// Recuperar el tipo de usuario del Intent
+        String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
+
+
+//boton Nivel1
+        Nivel1_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg.class);
+                startActivity(intent);
+            }
+        });
+//boton Nivel2
+        Nivel2_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+               Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N2_Mg.class);
+                startActivity(intent);
+            }
+        });
+//boton Nivel3
+        Nivel3_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N3_Mg.class);
+                startActivity(intent);
+            }
+        });
+//boton Nivel4
+        Nivel4_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N4_Mg.class);
+                startActivity(intent);
+            }
+        });
+//boton Nivel5
+        Nivel5_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N5_Mg.class);
+                startActivity(intent);
+            }
+        });
+//boton Regresar
+        Regresar_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                if (tipoUsuario != "Atletas") {
+                    Log.d("TipoUsuario", "El usuario es un: " + tipoUsuario);
+                    Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Pantalla_Inicio_Atletas.class);
+                    startActivity(intent);
+                } else {
+                    Log.d("TipoUsuario", "Tipo de usuario no recibido");
+                    Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Manual_Gimnasia.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+}

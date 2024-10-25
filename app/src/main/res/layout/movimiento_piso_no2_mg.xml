@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F0F0"
+    tools:context=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No1_Mg">
+
+    <ImageView
+        android:id="@+id/Fondo_ginda2"
+        android:layout_width="634dp"
+        android:layout_height="119dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <TextView
+        android:id="@+id/Mensaje_bienvenida"
+        android:layout_width="274dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="12dp"
+        android:background="#781005"
+        android:gravity="center"
+        android:text="POSE(*). VUELTA DE CARRO"
+        android:textColor="#F8F6F6"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="116dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/logo_incufidez_fondo_vino" />
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="76dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#781005"
+        android:drawableTop="@drawable/flechamedia_regreso"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
+        app:layout_constraintVertical_bias="0.2" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="687dp"
+        android:layout_marginTop="-10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_help_imagen"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="323dp"
+            android:layout_height="174dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/Movimiento_piso_1_1"
+                android:layout_width="291dp"
+                android:layout_height="182dp"
+                android:layout_marginTop="-25dp"
+                app:srcCompat="@drawable/m1_n1_piso" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-Primera parte: POSE(*)"
+            android:textStyle="bold" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="91dp"
+            android:layout_gravity="center_horizontal"
+            android:fillViewport="true">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hacer demi-plié con ambas piernas. Contraer ligeramente los abdominales e inclinar el torso ligeramente hacia adelante.
+\n&lt;Brazos&gt;: Mover ambos brazos hacia adelante y arriba para terminar con ambos brazos
+flexionados hacia adelante y en medio con las palmas hacia afuera.
+&lt;Enfoque&gt;: Abajo.
+Extender el torso y las piernas.
+\n&lt;Brazos&gt;: Abrir ambos brazos a los lados-en medio.
+&lt;Enfoque&gt;: Al frente.
+&lt;Si se invierte la (*) INVERSIÓN LATERAL, apuntar el pie izquierdo adelante.&gt; " />
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-Segunda parte: VUELTA DE CARRO"
+            android:textStyle="bold" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:layout_gravity="center_horizontal"
+            android:fillViewport="true">
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apuntar el pie derecho adelante en el suelo.\n
+&lt;Brazos&gt;: Permanecen arriba en todo momento y cuando se hace el descenso.t;: Levantar ambos brazos hacia los lados-arriba hasta completamente arriba.
+Transferir el peso al pie derecho para realizar un desplante derecho (figura 2) O “entrada de
+tipo escalador” (figura 3) con la pierna derecha.\n Levantar la pierna izquierda hacia atrás y hacia arriba por encima de la cabeza y mantener las
+orejas cubiertas por los brazos mientras se llega abajo para colocar la mano derecha de lado
+sobre el suelo mientras el cuerpo gira 90° a la izquierda. Continuar para levantar la pierna
+izquierda hacia atrás y hacia arriba a medida que el torso desciende.\n Colocar la mano izquierda en el suelo de lado o ligeramente hacia adentro (las manos
+separadas al ancho de los hombros) mientras la pierna derecha empuja fuera del suelo para
+realizar una &lt;INVERSIÓN LATERAL&gt; a la derecha.\n La cabeza permanece alineada, con el ángulo de los hombros y el de la cadera abiertos, y el
+enfoque por debajo del brazo izquierdo para ver el suelo en el descenso.
+Girar 90° hacia adentro para descender con la izquierda mientras mantiene los brazos
+cubriendo las orejas para terminar con la pierna izquierda extendida (o ligeramente flexionada)
+y cerrar inmediatamente el pie derecho al lado del pie izquierdo para terminar recta de pie (en
+planta o en relevé).\n &lt;Brazos&gt;: Permanecen arriba en todo momento y cuando se hace el descenso.\n
+&lt;Si se invirtió la (*) INVERSIÓN LATERAL, simplemente regresar al texto.&gt;" />
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="401dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.679"
+            app:layout_constraintStart_toEndOf="@+id/Mensaje_bienvenida"
+            app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2"
+            app:srcCompat="@drawable/tabla_piso_n1" />
+
+
+        <Button
+            android:id="@+id/comentarios_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#781005"
+            android:text="Mostrar comentarios" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/comment_section"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#5D5D5D"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="#B8B8B8"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/textViewComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alejandro:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewCommentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Este es un comentario de ejemplo." />
+
+                    <TextView
+                        android:id="@+id/textViewLikeCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:background="#737373"
+                        android:text="Likes: 0"
+                        android:textStyle="bold" />
+
+                    <!-- Botones para el comentario principal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/buttonLike"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:backgroundTint="#B8B8B8"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/like" />
+
+                        <ImageButton
+                            android:id="@+id/buttonEdit"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="5dp"
+                            android:backgroundTint="#B8B8B8"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/editar" />
+
+                        <ImageButton
+                            android:id="@+id/buttonDelete"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="4dp"
+                            android:backgroundTint="#B8B8B8"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/borrar" />
+
+                        <ImageButton
+                            android:id="@+id/buttonResponder"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="4dp"
+                            android:backgroundTint="#B8B8B8"
+                            android:scaleType="centerCrop" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Respuesta al comentario -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#e0e0e0"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/textViewReply"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Juan:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewReplyText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Esta es una respuesta de ejemplo." />
+
+                    <!-- Botones para la respuesta -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/buttonEdit2"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="5dp"
+                            android:backgroundTint="#e0e0e0"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/editar" />
+
+                        <ImageButton
+                            android:id="@+id/buttonDelete2"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="4dp"
+                            android:backgroundTint="#e0e0e0"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/borrar" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Añadir un nuevo comentario -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f0f0f0"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <EditText
+                        android:id="@+id/editTextNewComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Agregar coment..." />
+
+                    <Button
+                        android:id="@+id/buttonAddComment"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="4dp"
+                        android:backgroundTint="#781005"
+                        android:text="Agregar" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/boton_help_imagen"
+        android:layout_width="52dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:background="#F4F0F0"
+        android:backgroundTint="#F4F0F0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toEndOf="@+id/Mensaje_bienvenida"
+        app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2"
+        app:srcCompat="@drawable/ayuda_btn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

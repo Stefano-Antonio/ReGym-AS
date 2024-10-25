@@ -1,0 +1,64 @@
+package com.example.regym;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.regym.manual_gimnasia.Manual_Gimnasia;
+import com.google.firebase.FirebaseApp;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+        setContentView(R.layout.activity_main);
+//botones
+        Button Iniciar_sesion_btn = findViewById(R.id.Iniciar_sesion_btn);
+        Button Registrarse_btn = findViewById(R.id.Registrarse_btn);
+        Button Creditos = findViewById(R.id.creditos_btn);
+
+//boton iniciar sesion
+        Iniciar_sesion_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Manual_Gimnasia.class);
+                startActivity(intent);
+            }
+        });
+//boton registrar
+        Registrarse_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Pantalla_Registrar.class);
+                startActivity(intent);
+            }
+        });
+
+//boton creditos
+        Creditos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //View v;
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Creditos.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+    }
+}

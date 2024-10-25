@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Pantalla_Inicio_Entrenador">
+
+    <TextView
+        android:id="@+id/Mensaje_bienvenida"
+        android:layout_width="269dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="32dp"
+        android:background="#781005"
+        android:gravity="center"
+        android:text="Selecciona una opción"
+        android:textColor="#F8F6F6"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2" />
+
+    <ImageView
+        android:id="@+id/Fondo_ginda2"
+        android:layout_width="634dp"
+        android:layout_height="119dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fondo_vino" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="116dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/logo_incufidez_fondo_vino" />
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="76dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#781005"
+        android:drawableTop="@drawable/flechamedia_regreso"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="350dp"
+        android:layout_height="548dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/agregar_usuario_btn"
+                android:layout_width="341dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#781005"
+                android:text="Agregar a un usuario nuevo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida" />
+
+            <Button
+                android:id="@+id/eliminar_usuario_btn"
+                android:layout_width="341dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="#781005"
+                android:text="Eliminar a un usuario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Gen_rut_btn" />
+
+            <Button
+                android:id="@+id/editar_usuario_btn"
+                android:layout_width="341dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="#781005"
+                android:text="Editar la informacion de un usuario" />
+
+            <Button
+                android:id="@+id/administrar_comentarios_btn"
+                android:layout_width="341dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="#781005"
+                android:text="Administrar y/o eliminar comentarios" />
+
+            <Button
+                android:id="@+id/administrar_matriculas_btn"
+                android:layout_width="341dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="#781005"
+                android:text="Administrar, eliminar y agregar matriculas" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

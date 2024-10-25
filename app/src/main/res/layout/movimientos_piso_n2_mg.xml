@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".movimientos_piso_mg.Movimientos_Piso_N2_Mg">
+
+
+    <ImageView
+        android:id="@+id/Fondo_ginda2"
+        android:layout_width="634dp"
+        android:layout_height="119dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <TextView
+        android:id="@+id/Mensaje_bienvenida"
+        android:layout_width="269dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="32dp"
+        android:background="#781005"
+        android:gravity="center"
+        android:text="Movimientos de piso nivel 2"
+        android:textColor="#F8F6F6"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="116dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/logo_incufidez_fondo_vino" />
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="76dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#781005"
+        android:drawableTop="@drawable/flechamedia_regreso"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="307dp"
+        android:layout_height="401dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida"
+        app:layout_constraintVertical_bias="0.0">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/movimiento_1_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 1" />
+            <Button
+                android:id="@+id/movimiento_2_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 2" />
+            <Button
+                android:id="@+id/movimiento_3_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 3" />
+            <Button
+                android:id="@+id/movimiento_4_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 4" />
+            <Button
+                android:id="@+id/movimiento_5_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 5" />
+            <Button
+                android:id="@+id/movimiento_6_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 6" />
+
+            <Button
+                android:id="@+id/movimiento_7_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 7" />
+
+            <Button
+                android:id="@+id/movimiento_8_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 8" />
+
+            <Button
+                android:id="@+id/movimiento_9_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 9" />
+            <Button
+                android:id="@+id/movimiento_10_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="Movimiento 10" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

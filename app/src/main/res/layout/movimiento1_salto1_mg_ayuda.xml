@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="manual_gimnasia.movimientos_salto_mg.movimientos_individuales.movimientos_salto_n1_mg.Movimiento_Salto_N1_No1_Mg">
+
+    <TextView
+        android:id="@+id/Mensaje_bienvenida"
+        android:layout_width="182dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:background="#781005"
+        android:gravity="center"
+        android:text="Ayuda"
+        android:textColor="#F8F6F6"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="59dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#F4F0F0"
+        android:drawableTop="@drawable/tachita"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/advertencia_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/advertencia_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="#781005"
+        android:text="Advertencia"
+        android:textColor="#F8F6F6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida" />
+
+    <TextView
+        android:id="@+id/link_ejemplo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#781005"
+        android:text="Link de ejemplo"
+        android:textColor="#F8F6F6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+
+    <TextView
+        android:id="@+id/hipervinculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Video de ejemplo con la rutina completa"
+        android:textColor="#0000FF"
+        android:textColorLink="#0000FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/link_ejemplo" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="281dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/advertencia_txt">
+
+        <TextView
+            android:id="@+id/advertencia_texto_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente \n" />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
