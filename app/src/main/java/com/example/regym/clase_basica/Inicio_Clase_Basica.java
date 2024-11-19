@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.regym.Pantalla_Inicio_Entrenador;
 import com.example.regym.R;
 
-public class Clase_Basica extends AppCompatActivity {
+public class Inicio_Clase_Basica extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.clase_basica);
+        setContentView(R.layout.inicio_clase_basica);
 
 //botones
         Button Salto_btn = findViewById(R.id.Salto_btn);
@@ -33,7 +33,7 @@ public class Clase_Basica extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Clase_Basica.this, Clase_Basica.class);
+                Intent intent = new Intent(Inicio_Clase_Basica.this, Clase_Basica_Salto.class);
                 startActivity(intent);
             }
         });
@@ -43,7 +43,7 @@ public class Clase_Basica extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Clase_Basica.this, Clase_Basica.class);
+                Intent intent = new Intent(Inicio_Clase_Basica.this, Clase_Basica_Piso.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +53,7 @@ public class Clase_Basica extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Clase_Basica.this, Clase_Basica.class);
+                Intent intent = new Intent(Inicio_Clase_Basica.this, Clase_Basica_Barra.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +63,7 @@ public class Clase_Basica extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Clase_Basica.this, Clase_Basica.class);
+                Intent intent = new Intent(Inicio_Clase_Basica.this, Calse_Basica_Viga.class);
                 startActivity(intent);
             }
         });
@@ -73,7 +73,7 @@ public class Clase_Basica extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Clase_Basica.this, Pantalla_Inicio_Entrenador.class);
+                Intent intent = new Intent(Inicio_Clase_Basica.this, Pantalla_Inicio_Entrenador.class);
                 startActivity(intent);
             }
         });

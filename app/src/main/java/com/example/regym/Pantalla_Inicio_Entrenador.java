@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.regym.clase_basica.Clase_Basica;
+import com.example.regym.clase_basica.Inicio_Clase_Basica;
 import com.example.regym.generacion_rutina.Generar_Rutina;
 import com.example.regym.manual_gimnasia.Manual_Gimnasia;
 
@@ -55,6 +55,8 @@ public class Pantalla_Inicio_Entrenador extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Manual_Gimnasia.class);
+                String userId = getIntent().getStringExtra("userId");
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -64,7 +66,7 @@ public class Pantalla_Inicio_Entrenador extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Clase_Basica.class);
+                Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Inicio_Clase_Basica.class);
                 startActivity(intent);
             }
         });

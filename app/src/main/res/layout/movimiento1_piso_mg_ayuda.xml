@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No1_Mg">
+    tools:context=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_N1_Mg">
 
     <TextView
         android:id="@+id/Mensaje_bienvenida"

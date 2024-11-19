@@ -1,4 +1,4 @@
-package com.example.regym.manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg;
+package com.example.regym.generacion_rutina.movimientos_salto_gr;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.regym.R;
 
-public class Movimiento_Piso_No5_Mg extends AppCompatActivity {
+public class Movimientos_Salto_N2_Gr extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.movimiento_piso_no5_mg);
+        setContentView(R.layout.movimientos_salto_n2_gr);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

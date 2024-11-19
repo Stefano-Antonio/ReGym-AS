@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="#f2f2f2"
+    android:layout_marginBottom="8dp">
+
+    <!-- TextView para el nombre del usuario (opcional) -->
+    <TextView
+        android:id="@+id/tvNombreUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Usuario"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        android:paddingBottom="4dp" />
+
+    <!-- TextView para el contenido del comentario -->
+    <TextView
+        android:id="@+id/tvComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Este es un comentario de ejemplo."
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:padding="4dp" />
+
+    <!-- TextView para la fecha del comentario (opcional) -->
+    <TextView
+        android:id="@+id/tvFechaComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hace 2 horas"
+        android:textSize="12sp"
+        android:textColor="#777777"
+        android:paddingTop="4dp" />
+</LinearLayout>

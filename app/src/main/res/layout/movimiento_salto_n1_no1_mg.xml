@@ -138,7 +138,7 @@ Extender el torso y las piernas.
             app:layout_constraintHorizontal_bias="0.679"
             app:layout_constraintStart_toEndOf="@+id/Mensaje_bienvenida"
             app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2"
-            app:srcCompat="@drawable/tabla_piso_n1" />
+            app:srcCompat="@drawable/tabla_piso_n1_m1" />
 
         <TextView
             android:id="@+id/textView10"

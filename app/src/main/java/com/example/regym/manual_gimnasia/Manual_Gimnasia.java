@@ -34,6 +34,8 @@ public class Manual_Gimnasia extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Mostrar_Niveles_Salto_Mg.class);
+                String userId = getIntent().getStringExtra("userId");
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });
@@ -44,6 +46,8 @@ public class Manual_Gimnasia extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Mostrar_Niveles_Piso_Mg.class);
+                String userId = getIntent().getStringExtra("userId");
+                intent.putExtra("userId",userId);
                 startActivity(intent);
             }
         });

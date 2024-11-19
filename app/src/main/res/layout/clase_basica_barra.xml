@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Clase_basica">
+
+
+    <ImageView
+        android:id="@+id/Fondo_ginda2"
+        android:layout_width="634dp"
+        android:layout_height="119dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <TextView
+        android:id="@+id/Mensaje_bienvenida"
+        android:layout_width="266dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="12dp"
+        android:background="#781005"
+        android:gravity="center"
+        android:text="Clase Básica de Barra"
+        android:textColor="#F8F6F6"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="116dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/logo_incufidez_fondo_vino" />
+
+
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="76dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#781005"
+        android:drawableTop="@drawable/flechamedia_regreso"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
+        app:layout_constraintVertical_bias="0.2" />
+
+
+
+
+    <ScrollView
+        android:layout_width="346dp"
+        android:layout_height="459dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        android:background="#e0e0e0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida"
+        app:layout_constraintVertical_bias="0.223">
+
+
+        <TextView
+            android:id="@+id/Calentamiento_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calentamiento (15 min)\n\n
+-Trote suave, 10 vueltas al podio\n
+-Rotacion de cuello 5 veces a la izquierda \n
+-Rotacion de cuello 5 veces a la derecha\n
+-Rotacion de canillas 10 segundos a cada lado\n
+-Rotacion de brazos estirados, 10 veces a cada lado\n
+-Rotacion de torzo a la izquierda y derecha 10 veces\n
+-Circulos canillas y cadera, 5 veces a cada lado\n
+-Toque de puntas a los pies sin doblar rodillas (10 veces)\n
+-Mantener tocando punta de los pies sin doblar rodillas (10 segundos)\n
+-Extencion de rodilla sin despegar manos del suelo (10 veces)\n
+-Calentamiento pre squad(10 segundos a cada lado)
+-Estiramiento, postura squad (20 segundos)
+-Calemntamiento split, rodilla de enfrente a 90° (10 segundos a cada lado)\n
+-Estiramiento, postura split (20 segundos a cada pierna)\n
+-Postura sentada estirando pies, manos arriba, toque de puntas(10 veces)\n
+-Mantener tocando puntas (10 segundos)
+-Acostada boca arriba, marcando puntas, patada con extencion llegar a 90° cada pie de frente (10 veces)\n
+-Acostada de lado, marcando puntas, patada con extencion llegar a 90° cada pie de lado (10 veces)\n
+-Incada boca abajo, estirando pie derecho atras, marcando punta, patada extendida hacia arriba (10 veces cada pie)\n
+-Postura de casita, estirando rodillas y brazos, patada atras estirando punta y pie extendido(10 veces cada pie)\n
+-Boca abajo, pies juntos y estirados, estiro arco hacia atras empujando brazos (10 segundos, 3 veces)\n
+-Boca abajo, Sujetamos tobillos, sin soltar estiramos pies a postura de cunita(10 veces)\n
+-Mantener postura de cunita (10 segundos)\n
+-Bica arriba, estirar pies y brazos a postura de arco, despegando la cabeza del suelo(10 segundos, 3 veces)\n
+\n
+Fortalecimiento (5/10 min)\n\n
+-Postura de cuchara rodillas a 90°, estirando puntas, espalda alta elevada(30 segundos, 3 veces)\n
+&lt;Entre cada series de 5 a 10 abdomilaes agrupados&gt;\n
+-Postura de cuchara, estirando puntas y rodillas, espalda alta elevada (30 segundo.3 veces)\n
+&lt;Entre cada series de 5 a 10 abdomilaes extendidos a tocar puntas de los pies&gt;\n
+-Postura de plancha, hombros a la altura de los codos, espalda recta y pies juntos (30 segundos, 3 veces)
+&lt;Entre cada series de 5 a 10 patadas laterales en postura de plancha&gt;\n
+-postura a parado de manos en pared o en superficie elevada a 90°, espalda recta, marcando puntas de los pies(35 segundos, 3 veces)\n\n
+Trabajo en aparato (20/25 min)\n\n
+-Paso patada, Palanca de nivel 1(apollando manos en una superficie(10 veces a mantener 5 segundos la postura))\n
+-Paso patada, Palanca de nivel 2(apollando manos en el suelo(10 veces a mantener 5 segundos la postura))\n
+-Paso patada, Palanca nivel 3/ Escorpion, a elevar el pie de abajo(10 veces))\n
+-salto vertical ida y vuelta en una linea de podio\n
+-Rodada alfrente en una linea de podio\n
+-Rodada atras en una linea de podio ida y vuelta en una linea de podio(si no sale el ejercicio se puede hacer en una superficie inclinada)\n
+-Paso patada, Vuelta de carro a pies juntos ida y vuelta en una linea de podio\n
+-Estiramiento de arco a bajar a postura y regresar apollado de una pared(10 veces)\n
+-Postura de arco, pies en superficie elevada, estirar pierna dominante a hacer pasada atras pateando (10 veces)\n
+\n\nAcondicionamiento (10 min)\n\n
+-30 sentadillas (rodillas a 90)\n
+-30 abdominales simples a tocar puntas\n
+-30 sentadillas, con salto a juntar pies\n
+-30 abdominales agrupados\n
+-30 saltos de rana\n
+-30 abdominales a postura de velita(apollando las manos en alguna superficie)\n
+-30 supermanes, postura boca abajo a subir pies y manos\n
+-Estiramiento de espalda(30 segundos)"
+
+            />
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

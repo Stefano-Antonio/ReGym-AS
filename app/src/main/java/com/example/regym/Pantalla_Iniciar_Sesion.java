@@ -2,6 +2,7 @@ package com.example.regym;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -108,22 +110,36 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
         });
     }
     // inicio de sesión
-        private void iniciarSesion(String correo, String password) {
-            HashMap<String, String> datosUsuario = new HashMap<>();
-            datosUsuario.put("correo", correo);
-            datosUsuario.put("password", password);
-            Throwable e = new Throwable();
-            Log.e("Error", "Error al leer la respuesta: " + e.getMessage());
-            ApiClient.getApiService().iniciarSesion(datosUsuario).enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        try {
-                            // Parsear respuesta para obtener tipo de usuario
-                            JSONObject jsonResponse = new JSONObject(response.body().string());
-                            String tipoUsuario = jsonResponse.getString("tipoUsuario");
+    private void iniciarSesion(String correo, String password) {
+        HashMap<String, String> datosUsuario = new HashMap<>();
+        datosUsuario.put("correo", correo);
+        datosUsuario.put("password", password);
 
-                            // Redirigir según el tipo de usuario
+        ApiClient.getApiService().iniciarSesion(datosUsuario).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String responseBodyString = null;
+                    try {
+                        responseBodyString = response.body().string();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Log.d("RESPUESTA", "Cuerpo de la respuesta: " + responseBodyString);
+                    try {
+                        JSONObject jsonResponse = new JSONObject(responseBodyString);
+                        Log.d("DEBUG_JSON_RESPONSE", responseBodyString);  // Revisa la estructura exacta
+
+                        // Asegúrate de que los nombres de claves coincidan con el JSON de la respuesta
+                        String tipoUsuario = jsonResponse.optString("tipoUsuario", "desconocido");
+                        JSONObject usuarioObj = jsonResponse.optJSONObject("usuario");
+
+                        if (usuarioObj != null) {
+                            String userId = usuarioObj.optString("_id", "");  // Revisa que la clave sea "_id" o "userId"
+                            String nombre = usuarioObj.optString("nombre", "");
+                            Log.d("DEBUG", "userId: " + userId);
+                            Log.d("DEBUG", "nombre: " + nombre);
+
                             Intent intent;
                             switch (tipoUsuario) {
                                 case "atleta":
@@ -136,29 +152,47 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                                     intent = new Intent(Pantalla_Iniciar_Sesion.this, Pantalla_Inicio_Administrador.class);
                                     break;
                                 default:
-                                    Toast.makeText(Pantalla_Iniciar_Sesion.this, "No se encontro ningun usuario con ese correo", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Pantalla_Iniciar_Sesion.this, "No se encontró ningún usuario con ese correo", Toast.LENGTH_SHORT).show();
                                     return;
                             }
 
-                            //Identificar el tipo de usuario
                             intent.putExtra("tipoUsuario", tipoUsuario);
+                            intent.putExtra("userId", userId);
+                            intent.putExtra("nombre", nombre);
 
+                            // Guardar los datos en SharedPreferences
+                            SharedPreferences usuarioDatos = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = usuarioDatos.edit();
+                            editor.putString("userId", userId);
+                            intent.putExtra("userId",userId);
+                            editor.putString("nombre", nombre);
+                            editor.apply();
                             startActivity(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Toast.makeText(Pantalla_Iniciar_Sesion.this, "Error al procesar respuesta", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(Pantalla_Iniciar_Sesion.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
-                    }
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(Pantalla_Iniciar_Sesion.this, "Error en la conexión", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Pantalla_Iniciar_Sesion.this, "Formato de respuesta incorrecto", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (JSONException e) {
+                        Log.e("JSON_PARSE_ERROR", "Error al procesar el JSON: " + e.getMessage());
+                        Toast.makeText(Pantalla_Iniciar_Sesion.this, "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(Pantalla_Iniciar_Sesion.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(Pantalla_Iniciar_Sesion.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
     //metodo recuperar contraseña
     private void recuperarContrasena(String correo) {
         HashMap<String, String> datosCorreo = new HashMap<>();

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "541406827526",
+    "project_id": "regym-73d4e",
+    "storage_bucket": "regym-73d4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541406827526:android:a515633437aa79561edf87",
+        "android_client_info": {
+          "package_name": "com.example.regym"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDScutVfhnUVdAv6AhAf6F4hs0iOI8CYLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

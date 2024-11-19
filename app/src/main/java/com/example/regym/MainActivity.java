@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.regym.manual_gimnasia.Manual_Gimnasia;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, Manual_Gimnasia.class);
+                Intent intent = new Intent(MainActivity.this, Pantalla_Inicio_Entrenador.class);
                 startActivity(intent);
             }
         });

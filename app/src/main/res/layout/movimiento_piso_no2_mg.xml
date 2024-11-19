@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F0F0"
-    tools:context=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No1_Mg">
+    tools:context=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_N1_Mg">
 
     <ImageView
         android:id="@+id/Fondo_ginda2"
@@ -173,7 +173,7 @@ planta o en relevé).\n &lt;Brazos&gt;: Permanecen arriba en todo momento y cuan
             app:layout_constraintHorizontal_bias="0.679"
             app:layout_constraintStart_toEndOf="@+id/Mensaje_bienvenida"
             app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2"
-            app:srcCompat="@drawable/tabla_piso_n1" />
+            app:srcCompat="@drawable/tabla_piso_n1_m1" />
 
 
         <Button
