@@ -28,13 +28,69 @@
         android:textColor="#333333"
         android:padding="4dp" />
 
-    <!-- TextView para la fecha del comentario (opcional) -->
-    <TextView
-        android:id="@+id/tvFechaComentario"
+
+    <!-- Sección para el ícono de like y el contador -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hace 2 horas"
-        android:textSize="12sp"
-        android:textColor="#777777"
-        android:paddingTop="4dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp"
+        >
+
+        <!-- Botón de "like" -->
+        <ImageButton
+            android:id="@+id/btn_Like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/like"
+            android:layout_marginEnd="-4dp" /> <!-- Add marginEnd -->
+             />
+        <!-- Contador de likes -->
+        <TextView
+            android:id="@+id/tvLikesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="20sp"
+            android:textColor="#555555"
+            android:layout_marginEnd="150dp" /> <!-- Add marginEnd -->/>
+
+        <!-- Botón de "responer" -->
+        <ImageButton
+            android:id="@+id/btn_Responder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/responder"
+            android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
+            />
+        <!-- Botón de "eliminar" -->
+        <ImageButton
+            android:id="@+id/btn_Eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/borrar"
+            android:padding="0dp"
+            android:layout_marginEnd="14dp" /> <!-- Add marginEnd -->
+            />
+        <!-- Botón de "editar" -->
+        <ImageButton
+            android:id="@+id/btn_Editar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/editar"
+            android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
+            />
+
+
+    </LinearLayout>
+
+
+    <!-- TextView para la fecha del comentario (opcional) -->
+
 </LinearLayout>

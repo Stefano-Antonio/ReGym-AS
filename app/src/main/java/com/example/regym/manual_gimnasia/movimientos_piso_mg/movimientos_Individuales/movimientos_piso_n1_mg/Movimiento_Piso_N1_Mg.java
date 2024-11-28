@@ -29,7 +29,15 @@ import com.example.regym.ApiClient;
 import com.example.regym.R;
 import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.net.NetworkInterface;
+import java.nio.ByteBuffer;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -39,6 +47,9 @@ import retrofit2.Response;
 
 public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
 
+    private List<ApiClient.Comentario> listaComentariosEnMemoria = new ArrayList<>();
+    private ComentarioAdapter comentarioAdapter;
+    private boolean comentariosVisible = false; // Variable para controlar la visibilidad de los comentarios
 
     //@SuppressLint("ClickableViewAccessibility")
     @SuppressLint("ClickableViewAccessibility")
@@ -63,7 +74,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         ImageButton btn_comentarios = findViewById(R.id.comentarios_btn);
         EditText inputComentario = findViewById(R.id.nuevo_comentario_edit_text);
         Button enviarComentarioBtn = findViewById(R.id.agregar_comentario_btn);
-
+        TextView nuevo_comentario_edit_text = findViewById(R.id.nuevo_comentario_edit_text);
 //GIFS
 
         ImageView imageViewGif = findViewById(R.id.Movimiento_gift);
@@ -144,65 +155,136 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         });
 
 //boton comentarios
+        //Guardar lista de likes:
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
+        recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Piso_N1_Mg.this));
+
+        // Inicializa el adaptador con una lista vacía
+        SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
+        String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
+        comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, this, userId);
+
+        // Asigna el adaptador al RecyclerView
+        recyclerView.setAdapter(comentarioAdapter);
+
         btn_comentarios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Comentarios_seccion.getVisibility() == View.GONE) {
-                    Comentarios_seccion.setVisibility(View.VISIBLE);  // Muestra la sección de comentarios
-                    btn_comentarios.setImageResource(R.drawable.ocultar_comentarios_btn);  // Cambia la imagen del botón
-                    mostrarComentarios(getIntent().getStringExtra("mov"));
+                if (!comentariosVisible) {
+                    // Muestra la sección de comentarios
+                    Comentarios_seccion.setVisibility(View.VISIBLE);
+                    btn_comentarios.setImageResource(R.drawable.ocultar_comentarios_btn); // Cambia la imagen del botón
+                    comentariosVisible = true; // Actualiza el estado a visible
+
+                    // Llama al método para mostrar los comentarios
+                    Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorMovimiento(getIntent().getStringExtra("mov"));
+
+                    call.enqueue(new Callback<List<ApiClient.Comentario>>() {
+                        @Override
+                        public void onResponse(Call<List<ApiClient.Comentario>> call, Response<List<ApiClient.Comentario>> response) {
+                            if (response.isSuccessful()) {
+                                List<ApiClient.Comentario> comentariosDelBackend = response.body();
+
+                                if (comentariosDelBackend == null || comentariosDelBackend.isEmpty()) {
+                                    Log.e("API_RESPONSE", "No hay comentarios disponibles.");
+                                    Toast.makeText(getApplicationContext(), "No hay comentarios disponibles.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                // Reemplaza el contenido de la lista en memoria con los comentarios nuevos
+                                listaComentariosEnMemoria.clear(); // Elimina todos los comentarios previos
+                                listaComentariosEnMemoria.addAll(comentariosDelBackend); // Agrega los nuevos comentarios
+
+                                // Notifica al adaptador que los datos han cambiado
+                                comentarioAdapter.notifyDataSetChanged();
+
+                                Log.d("COMENTARIOS", "Comentarios cargados correctamente: " + comentariosDelBackend.size());
+                            } else {
+                                Log.e("API_RESPONSE", "Error al obtener comentarios: " + response.message());
+                                Toast.makeText(getApplicationContext(), "No hay comentarios aun.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<ApiClient.Comentario>> call, Throwable t) {
+                            Log.e("API_ERROR", "Fallo en la llamada de API: " + t.getMessage());
+                            Toast.makeText(getApplicationContext(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
-                    Comentarios_seccion.setVisibility(View.GONE);  // Oculta la sección de comentarios
-                    btn_comentarios.setImageResource(R.drawable.mostrar_comentarios_btn);  // Cambia la imagen del botón
+                    // Oculta la sección de comentarios
+                    Comentarios_seccion.setVisibility(View.GONE);
+                    btn_comentarios.setImageResource(R.drawable.mostrar_comentarios_btn); // Cambia la imagen del botón
+                    comentariosVisible = false; // Actualiza el estado a no visible
                 }
             }
         });
 
+
+
 //Comentarios:
 
 // Botón agregar comentario
+        // Botón agregar comentario
         enviarComentarioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obtén los datos de SharedPreferences, la actividad anterio y comentarios
+                // Obtén los datos de SharedPreferences, la actividad anterior y comentarios
                 SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                 String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
+                String nombre = preferences.getString("nombre", null); // Debe ser el ObjectId del usuario
                 String comentarioTexto = inputComentario.getText().toString().trim();
                 String movimiento = getIntent().getStringExtra("mov");
+                Log.d("DEBUG", "userId: " + userId);
+                Log.d("DEBUG", "comentarioTexto: " + comentarioTexto);
+                Log.d("DEBUG", "movimiento: " + movimiento);
 
-                // Imprimir los valores en el logcat
-                  Log.d("DEBUG", "userId: " + userId);
-                  Log.d("DEBUG", "comentarioTexto: " + comentarioTexto);
-                  Log.d("DEBUG", "movimiento: " + movimiento);
-
-                // Mostrar valores en un TextView
-               if (userId != null && !comentarioTexto.isEmpty() && movimiento != null) {
+                if (userId != null && !comentarioTexto.isEmpty() && movimiento != null) {
                     // Crea el comentario con el ID del usuario, el texto del comentario y el movimiento
-                    ApiClient.Comentario nuevoComentario = new ApiClient.Comentario(userId, comentarioTexto, movimiento);
+                int like = 0;
+
+                String customObjectId = ObjectIdGenerator.generateCustomObjectId();
+                    Log.d("DEBUG", "objectId: " + customObjectId);
+
+                    ApiClient.Comentario nuevoComentario = new ApiClient.Comentario(userId, nombre,comentarioTexto,  movimiento, like, customObjectId);
+
                     // Llama a la API
                     Call<ResponseBody> call = ApiClient.getApiService().crearComentario(nuevoComentario);
                     call.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             if (response.isSuccessful()) {
-                                Log.d("API_RESPONSE", "Comentario guardado exitosamente");
-                                Toast.makeText(getApplicationContext(), "Comentario guardado exitosamente", Toast.LENGTH_SHORT).show();
-                                // Puedes manejar la respuesta aquí, si es necesario
+                                try {
+                                    // Obtener el comentarioId de la respuesta
+                                    JSONObject responseObject = new JSONObject(response.body().string());
+                                    String comentarioId = responseObject.getString("comentarioId");
+                                    Log.d("DEBUG", "comentarioId recibido: " + comentarioId);
+
+                                    // Suponiendo que el número de likes también está presente en la respuesta, lo actualizas:
+                                    int likes = responseObject.getInt("num_likes");
+                                    nuevoComentario.setNum_likes(likes); // Actualiza los likes
+                                    printComentarioDetails(nuevoComentario);
+                                    mostrarComentarios(getIntent().getStringExtra("mov"));
+                                    nuevo_comentario_edit_text.setText("");
+
+                                } catch (JSONException | IOException e) {
+                                    e.printStackTrace();
+                                }
+
+
                             } else {
                                 try {
+
                                     // Obtener el cuerpo de error
                                     String errorBody = response.errorBody() != null ? response.errorBody().string() : "Error desconocido";
-                                    Log.d("API_RESPONSE", "Código de estado: " + response.code());
-                                    Log.d("API_RESPONSE", "Mensaje: " + response.message());
                                     Log.e("API_ERROR", "Error: " + errorBody);
                                     Toast.makeText(getApplicationContext(), "Error al guardar comentario", Toast.LENGTH_SHORT).show();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
                             }
-                            //cargarComentarios();
-                        }
 
+                        }
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
@@ -215,6 +297,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                 }
             }
         });
+
 
 
 //boton ayuda
@@ -248,7 +331,6 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                 return false;
             }
         });
-
 
 
     }
@@ -310,32 +392,41 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         dialogo.setContentView(pantalla_emergente);
         dialogo.show();
     }
+
     private void mostrarComentarios(String movimientoId) {
         Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorMovimiento(movimientoId);
 
         call.enqueue(new Callback<List<ApiClient.Comentario>>() {
             @Override
             public void onResponse(Call<List<ApiClient.Comentario>> call, Response<List<ApiClient.Comentario>> response) {
-                List<ApiClient.Comentario> listaComentarios = response.body();
+                if (response.isSuccessful()) {
+                    List<ApiClient.Comentario> comentariosDelBackend = response.body();
 
-                for (ApiClient.Comentario comentario : listaComentarios) {
-                    Log.d("COMENTARIOS", "Comentario recibido: " + comentario.getComentario());
-                }
-                if (response.isSuccessful() && response.body() != null) {
-
-
-                    // Verifica si la lista de comentarios no está vacía
-                    if (!listaComentarios.isEmpty()) {
-                        // Configura el RecyclerView y su LayoutManager
-                        RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        // Configura el adaptador de RecyclerView con los comentarios
-                        ComentarioAdapter adapter = new ComentarioAdapter(listaComentarios);
-                        recyclerView.setAdapter(adapter);
-                    } else {
-                        Log.e("API_RESPONSE", "No hay comentarios disponibles");
-                        // Mostrar un mensaje de que no hay comentarios
+                    if (comentariosDelBackend == null || comentariosDelBackend.isEmpty()) {
+                        Log.e("API_RESPONSE", "No hay comentarios disponibles.");
+                        Toast.makeText(getApplicationContext(), "No hay comentarios disponibles.", Toast.LENGTH_SHORT).show();
+                        return;
                     }
+//Guardar lista de likes:
+                    RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
+                    recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Piso_N1_Mg.this));
+
+                    // Inicializa el adaptador con una lista vacía
+                    SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
+                    String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
+               //     comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, this, userId);
+
+                    // Asigna el adaptador al RecyclerView
+                    recyclerView.setAdapter(comentarioAdapter);
+
+                    // Limpia y actualiza la lista en memoria
+                    listaComentariosEnMemoria.clear();
+                    listaComentariosEnMemoria.addAll(comentariosDelBackend);
+
+                    // Notifica al adaptador que los datos han cambiado
+                    comentarioAdapter.notifyDataSetChanged();
+
+                    Log.d("COMENTARIOS", "Comentarios cargados correctamente: " + comentariosDelBackend.size());
                 } else {
                     Log.e("API_RESPONSE", "Error al obtener comentarios: " + response.message());
                     Toast.makeText(getApplicationContext(), "No se pudieron cargar los comentarios.", Toast.LENGTH_SHORT).show();
@@ -349,6 +440,105 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
             }
         });
     }
+
+
+    // Función para imprimir los detalles del objeto Comentario
+    private void printComentarioDetails(ApiClient.Comentario comentario) {
+        Log.d("Comentario Details", "ID Usuario: " + comentario.getUsuario_id());
+        Log.d("Comentario Details", "Nombre Usuario: " + comentario.getNombre());
+        Log.d("Comentario Details", "Comentario Texto: " + comentario.getComentario());
+        Log.d("Comentario Details", "Movimiento: " + comentario.getMovimiento());
+        Log.d("Comentario Details", "Número de Likes: " + comentario.getNum_likes());
+        Log.d("Comentario Details", "Comentario ID: " + comentario.getComentario_id());
+        Log.d("Comentario Details", "Respuestas: " + comentario.getRespuestas());
+    }
+
+
+
+    public class ObjectIdGenerator {
+        /**
+         * Genera un ObjectId personalizado siguiendo el formato estándar:
+         * 4 bytes: Marca de tiempo (segundos desde el epoch, 1 de enero de 1970).
+         * 5 bytes: ID único de máquina (basado en la dirección MAC).
+         * 3 bytes: Incremento aleatorio.
+         *
+         * @return Un ObjectId válido.
+         */
+        public static String generateCustomObjectId() {
+            try {
+                long timestamp = System.currentTimeMillis() / 1000; // Marca de tiempo en segundos desde 1970
+                byte[] machineId = getMachineIdentifier(); // ID único de máquina (5 bytes)
+                int randomIncrement = new SecureRandom().nextInt(0xFFFFFF); // Incremento aleatorio (3 bytes)
+
+                ByteBuffer buffer = ByteBuffer.allocate(12);
+                buffer.putInt((int) timestamp); // 4 bytes
+                buffer.put(machineId);          // 5 bytes
+                buffer.put((byte) (randomIncrement >> 16)); // 1er byte del incremento
+                buffer.put((byte) (randomIncrement >> 8));  // 2do byte del incremento
+                buffer.put((byte) randomIncrement);         // 3er byte del incremento
+
+                byte[] objectIdBytes = buffer.array();
+                StringBuilder objectId = new StringBuilder();
+                for (byte b : objectIdBytes) {
+                    objectId.append(String.format("%02x", b)); // Convierte cada byte a hexadecimal
+                }
+
+                return objectId.toString(); // Retorna un String de 24 caracteres en formato hexadecimal
+            } catch (Exception e) {
+                throw new RuntimeException("Error al generar el ObjectId personalizado", e);
+            }
+        }
+
+
+        /**
+         * Obtiene un identificador único basado en la dirección MAC.
+         *
+         * @return Un arreglo de 5 bytes que representa el identificador único.
+         */
+        private static byte[] getMachineIdentifier() {
+            try {
+                Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+                while (networkInterfaces.hasMoreElements()) {
+                    NetworkInterface network = networkInterfaces.nextElement();
+                    if (!network.isLoopback() && network.getHardwareAddress() != null) {
+                        byte[] mac = network.getHardwareAddress();
+                        byte[] machineId = new byte[5];
+                        System.arraycopy(mac, 0, machineId, 0, Math.min(mac.length, 5));
+                        return machineId;
+                    }
+                }
+            } catch (Exception e) {
+                // Loguear el error si es necesario
+                Log.e("ObjectIdGenerator", "Error obteniendo la dirección MAC: " + e.getMessage());
+            }
+
+            // Si no se puede obtener la MAC, genera un ID único alternativo
+            byte[] fallbackId = new byte[5];
+            new SecureRandom().nextBytes(fallbackId); // Genera 5 bytes aleatorios como fallback
+            Log.w("ObjectIdGenerator", "Usando un ID único alternativo para machineId");
+            return fallbackId;
+        }
+
+
+        /**
+         * Convierte un entero a un arreglo de bytes de 4 elementos.
+         *
+         * @param value El valor entero.
+         * @return Un arreglo de 4 bytes.
+         */
+        private static byte[] intToBytes(int value) {
+            return new byte[]{
+                    (byte) (value >> 24),
+                    (byte) (value >> 16),
+                    (byte) (value >> 8),
+                    (byte) value
+            };
+        }
+    }
+
+
+
+
 
 
 }

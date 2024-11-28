@@ -176,8 +176,9 @@
             android:id="@+id/commentarios_seccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-            <!--android:visibility="gone"-->
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone">
+            <!---->
 
             <!-- Contenedor para la lista de comentarios -->
             <LinearLayout

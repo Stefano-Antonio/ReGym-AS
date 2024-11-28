@@ -178,13 +178,6 @@
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N1_Mg"
             android:exported="false" />
         <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No5_Mg"
-            android:exported="false" />
-        <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No4_Mg"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
-        <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No3_Mg"
             android:exported="false" />
         <activity
@@ -194,6 +187,9 @@
             android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_N1_Mg"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
+        <activity
+            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.ComentarioAdapter"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg"
             android:exported="false" />
