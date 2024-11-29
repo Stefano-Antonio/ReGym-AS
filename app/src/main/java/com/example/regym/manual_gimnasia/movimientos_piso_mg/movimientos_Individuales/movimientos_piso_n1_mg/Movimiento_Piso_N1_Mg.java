@@ -177,40 +177,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                     comentariosVisible = true; // Actualiza el estado a visible
 
                     // Llama al método para mostrar los comentarios
-                    Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorMovimiento(getIntent().getStringExtra("mov"));
-
-                    call.enqueue(new Callback<List<ApiClient.Comentario>>() {
-                        @Override
-                        public void onResponse(Call<List<ApiClient.Comentario>> call, Response<List<ApiClient.Comentario>> response) {
-                            if (response.isSuccessful()) {
-                                List<ApiClient.Comentario> comentariosDelBackend = response.body();
-
-                                if (comentariosDelBackend == null || comentariosDelBackend.isEmpty()) {
-                                    Log.e("API_RESPONSE", "No hay comentarios disponibles.");
-                                    Toast.makeText(getApplicationContext(), "No hay comentarios disponibles.", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-
-                                // Reemplaza el contenido de la lista en memoria con los comentarios nuevos
-                                listaComentariosEnMemoria.clear(); // Elimina todos los comentarios previos
-                                listaComentariosEnMemoria.addAll(comentariosDelBackend); // Agrega los nuevos comentarios
-
-                                // Notifica al adaptador que los datos han cambiado
-                                comentarioAdapter.notifyDataSetChanged();
-
-                                Log.d("COMENTARIOS", "Comentarios cargados correctamente: " + comentariosDelBackend.size());
-                            } else {
-                                Log.e("API_RESPONSE", "Error al obtener comentarios: " + response.message());
-                                Toast.makeText(getApplicationContext(), "No hay comentarios aun.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<ApiClient.Comentario>> call, Throwable t) {
-                            Log.e("API_ERROR", "Fallo en la llamada de API: " + t.getMessage());
-                            Toast.makeText(getApplicationContext(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    mostrarComentarios(getIntent().getStringExtra("mov"));
                 } else {
                     // Oculta la sección de comentarios
                     Comentarios_seccion.setVisibility(View.GONE);

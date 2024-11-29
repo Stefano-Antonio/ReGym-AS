@@ -10,8 +10,10 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiClient {
@@ -50,6 +52,15 @@ public class ApiClient {
         //Likes de los comentarios
         @POST("/api/comentarios/likeComentario")
         Call<LikeResponse> likeComentario(@Body LikeRequest likeRequest);
+
+        // Ruta para eliminar un comentario
+        @DELETE("/api/comentarios/eliminarComentario/{comentarioId}")
+        Call<Void> eliminarComentario(@Path("comentarioId") String comentarioId);
+
+        // Ruta para editar un comentario
+        @PUT("/api/comentarios/editarComentario/{comentarioId}")
+        Call<Void> editarComentario(@Path("comentarioId") String comentarioId, @Body EditarComentarioRequest request);
+
     }
 
     // Método estático para obtener el cliente Retrofit
@@ -298,6 +309,61 @@ public static class Comentario {
                     '}';
         }
     }
+
+        public static class DeleteRequest {
+            private String comentarioId;
+
+            public DeleteRequest(String comentarioId) {
+                this.comentarioId = comentarioId;
+            }
+
+            public String getComentarioId() {
+                return comentarioId;
+            }
+
+            public void setComentarioId(String comentarioId) {
+                this.comentarioId = comentarioId;
+            }
+        }
+
+        public static class DeleteResponse {
+            private String message;
+
+            public String getMessage() {
+                return message;
+            }
+
+            public void setMessage(String message) {
+                this.message = message;
+            }
+        }
+
+    public static class EditarComentarioRequest {
+        private String userId;
+        private String nuevoComentario;
+
+        public EditarComentarioRequest(String userId, String nuevoComentario) {
+            this.userId = userId;
+            this.nuevoComentario = nuevoComentario;
+        }
+
+        public String getUserId() {
+            return userId;
+        }
+
+        public void setUserId(String userId) {
+            this.userId = userId;
+        }
+
+        public String getNuevoComentario() {
+            return nuevoComentario;
+        }
+
+        public void setNuevoComentario(String nuevoComentario) {
+            this.nuevoComentario = nuevoComentario;
+        }
+    }
+
 
 
 }
