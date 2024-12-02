@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.regym.ApiClient;
@@ -67,6 +68,94 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         // Muestra el comentario
         holder.tvComentario.setText(comentario.getComentario());
 
+//respuestas
+        Log.d("ComentarioAdapter", "Respuestas del comentario: " + comentario.getRespuestas().size());
+
+        for (ApiClient.Respuesta respuesta : comentario.getRespuestas()) {
+            Log.d("ComentarioAdapter", "Respuesta: " + respuesta.getRespuesta() + ", Usuario: " + respuesta.getNombre());
+        }
+        Log.d("ComentarioAdapter", "Respuestas del comentario: " + comentario.getRespuestas());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        holder.recyclerViewRespuestas.setLayoutManager(layoutManager);
+
+        holder.btn_Respuestas.setOnClickListener(v -> {
+            if (holder.recyclerViewRespuestas.getVisibility() == View.GONE) {
+                holder.recyclerViewRespuestas.setVisibility(View.VISIBLE);
+                holder.btn_Respuestas.setImageResource(R.drawable.flecha_arriba); // Cambiar el ícono a "responder"
+            }else{
+                holder.btn_Respuestas.setImageResource(R.drawable.flecha_abajo); // Cambiar el ícono a "responder"
+
+                holder.recyclerViewRespuestas.setVisibility(View.GONE);
+
+            }
+        });
+        RespuestaAdapter respuestaAdapter = new RespuestaAdapter(comentario.getRespuestas(), context);
+        holder.recyclerViewRespuestas.setAdapter(respuestaAdapter);
+        respuestaAdapter.notifyDataSetChanged();
+
+
+        holder.btn_Responder.setOnClickListener(v -> {
+            if (holder.escribirRespuesta.getVisibility() == View.GONE) {
+                holder.escribirRespuesta.setVisibility(View.VISIBLE);
+                holder.escribirRespuesta.requestFocus();
+                holder.tvComentario.setVisibility(View.GONE); // Ocultar el texto original
+                holder.btn_Editar.setVisibility(View.GONE);
+                holder.btn_Eliminar.setVisibility(View.GONE);
+                holder.bntlike.setVisibility(View.GONE);
+                holder.tvLikesCount.setVisibility(View.GONE);
+                holder.btn_Responder.setImageResource(R.drawable.enviar); // Cambiar el ícono a "responder"
+
+            } else {
+                String respuesta = holder.escribirRespuesta.getText().toString().trim();
+
+
+                if (respuesta.isEmpty()) {
+                    Toast.makeText(context, "La respuesta no puede estar vacía.", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    holder.tvComentario.setVisibility(View.VISIBLE);
+                    holder.bntlike.setVisibility(View.VISIBLE);
+                    holder.tvLikesCount.setVisibility(View.VISIBLE);
+                    // Crear el objeto de la solicitud
+                    ApiClient.ResponderComentarioRequest request = new ApiClient.ResponderComentarioRequest(
+                            UserId,
+                            respuesta,
+                            comentario.getComentario_id()
+                    );
+
+                    // Realizar la petición a la API
+                    ApiClient.getApiService().responderComentario(request).enqueue(new Callback<ApiClient.Respuesta>() {
+                        @Override
+                        public void onResponse(Call<ApiClient.Respuesta> call, Response<ApiClient.Respuesta> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                ApiClient.Respuesta nuevaRespuesta = response.body();
+
+                                // Agregar la nueva respuesta a la lista
+                                comentario.getRespuestas().add(nuevaRespuesta); // Agregar la nueva respuesta a la lista
+                                notifyDataSetChanged(); // Actualizar la vista
+                                Toast.makeText(context, "Respuesta agregada con éxito.", Toast.LENGTH_SHORT).show();
+
+                                // Mantén el estado de isLiked y num_likes del comentario
+                                holder.bntlike.setImageResource(!comentario.isLiked() ? R.drawable.likebck : R.drawable.like);
+
+                                // Resetear el botón y ocultar el campo de texto
+                                holder.escribirRespuesta.setText("");
+                                holder.escribirRespuesta.setVisibility(View.GONE);
+                                holder.btn_Responder.setImageResource(R.drawable.responder); // Cambiar el ícono a "responder"
+                            } else {
+                                Toast.makeText(context, "Error al agregar la respuesta.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ApiClient.Respuesta> call, Throwable t) {
+                            Toast.makeText(context, "Fallo en la conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
         // Muestra el nombre del usuario
         if (comentario.getNombre() != null) {
             holder.tvNombreUsuario.setText(comentario.getNombre());
@@ -111,6 +200,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                 @Override
                 public void onResponse(Call<ApiClient.LikeResponse> call, Response<ApiClient.LikeResponse> response) {
                     holder.bntlike.setEnabled(true); // Habilitar después de la respuesta
+
                     if (response.isSuccessful() && response.body() != null) {
                         ApiClient.LikeResponse likeResponse = response.body();
                         // Sincroniza con los datos reales del servidor
@@ -159,18 +249,21 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
-                        // El comentario fue eliminado exitosamente
                         // Eliminar el comentario de la lista local (actualización optimista)
+
                         if (position >= 0 && position < comentarioList.size()) {
                             // Eliminar comentario normalmente si está dentro del rango
                             comentarioList.remove(position);
                             notifyItemRemoved(position);
                         }else if (position >= 1 && position ==  comentarioList.size()) {
-                            // Caso especial: Si solo queda un comentario, eliminarlo y limpiar la lista
+                            // Eliminar el comentario en la posición actual
                             comentarioList.remove(position);
                             notifyItemRemoved(position);
-                            comentarioList.clear();
-                            notifyDataSetChanged();  // Actualiza la vista si la lista está vacía
+
+                            // Si la lista queda vacía, actualiza la vista
+                            if (comentarioList.isEmpty()) {
+                                notifyDataSetChanged();  // O también puedes actualizar la visibilidad del RecyclerView si es necesario
+                            }
 
                         }else if(position == comentarioList.size() - 1 && comentarioList.size() > 1){
                             // Si es el último comentario y hay más de uno
@@ -185,17 +278,26 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                             notifyItemRemoved(position - 1);
 
 
+                        }else if (position >= 0 && position < comentarioList.size()) {
+                            comentarioList.remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, comentarioList.size()); // Actualiza índices
+                        }else{
+                            if (comentarioList.isEmpty()) {
+                                Log.e("ComentarioAdapter", "esempatya: " + position);
+
+                        }
                         }
                      } else {
-                        // Error al eliminar
-                      }
+                        Log.e("ComentarioAdapter", "Intento de acceso a una posición inválida: " + position);
+
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                  }
             });
-
 
             Toast.makeText(context, "Comentario eliminado", Toast.LENGTH_SHORT).show();
         });
@@ -208,7 +310,9 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                 holder.btn_Responder.setVisibility(View.GONE);
                 holder.etEditarComentario.setVisibility(View.VISIBLE);
                 holder.etEditarComentario.setText(comentario.getComentario()); // Prellenar con el texto actual
-                holder.btn_Editar.setImageResource(R.drawable.responder); // Cambiar ícono
+                holder.btn_Editar.setImageResource(R.drawable.enviar); // Cambiar ícono
+                holder.bntlike.setVisibility(View.GONE);
+                holder.tvLikesCount.setVisibility(View.GONE);
             } else {
                 // Confirmar la edición (guardar)
                 String nuevoTexto = holder.etEditarComentario.getText().toString().trim();
@@ -242,6 +346,8 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                                 holder.etEditarComentario.setVisibility(View.GONE);
                                 holder.btn_Responder.setVisibility(View.VISIBLE);
                                 holder.btn_Editar.setImageResource(R.drawable.editar); // Restaurar ícono original
+                                holder.bntlike.setVisibility(View.VISIBLE);
+                                holder.tvLikesCount.setVisibility(View.VISIBLE);
                             }
 
                             @Override
@@ -255,10 +361,12 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                                 holder.btn_Editar.setImageResource(R.drawable.editar); // Restaurar ícono original
                             }
                         });
+                // Mantén el estado de isLiked y num_likes del comentario
+                holder.bntlike.setImageResource(comentario.isLiked() ? R.drawable.likebck : R.drawable.like);
+
             }
         });
-
-
+//boton responder
     }
 
     @Override
@@ -275,6 +383,10 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         ImageButton btn_Editar;
         EditText etEditarComentario;
         ImageButton btn_Responder;
+        ImageButton btn_Respuestas;
+        RecyclerView recyclerViewRespuestas;
+        EditText escribirRespuesta;
+
         public ComentarioViewHolder(View itemView) {
             super(itemView);
             tvComentario = itemView.findViewById(R.id.tvComentario);
@@ -285,6 +397,9 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             btn_Editar = itemView.findViewById(R.id.btn_Editar);
             etEditarComentario = itemView.findViewById(R.id.etEditarComentario);
             btn_Responder = itemView.findViewById(R.id.btn_Responder);
+            recyclerViewRespuestas = itemView.findViewById(R.id.recyclerViewRespuestas);
+            escribirRespuesta = itemView.findViewById(R.id.escribirRespuesta);
+            btn_Respuestas = itemView.findViewById(R.id.btn_Respuestas);
         }
     }
     // Método para actualizar la lista de comentarios

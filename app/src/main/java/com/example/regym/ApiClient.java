@@ -21,10 +21,6 @@ public class ApiClient {
     private static Retrofit retrofit;
     private static ApiService apiService;
 
-
-
-
-    //Metodos para crear usuarios
     public interface ApiService {
 //Usuarios:
 
@@ -36,6 +32,7 @@ public class ApiClient {
         @POST("/api/usuarios/iniciarSesion")
         Call<ResponseBody> iniciarSesion(@Body HashMap<String, String> datosUsuario);
 
+        //Recuperar contraseña
         @POST("/api/usuarios/recuperarContrasena")
         Call<ResponseBody> recuperarContrasena(@Body HashMap<String, String> datosCorreo);
 
@@ -61,6 +58,11 @@ public class ApiClient {
         @PUT("/api/comentarios/editarComentario/{comentarioId}")
         Call<Void> editarComentario(@Path("comentarioId") String comentarioId, @Body EditarComentarioRequest request);
 
+        // Responder comentario
+        @POST("/api/comentarios/responder")
+        Call<Respuesta> responderComentario( @Body ResponderComentarioRequest request);
+
+
     }
 
     // Método estático para obtener el cliente Retrofit
@@ -73,6 +75,7 @@ public class ApiClient {
             apiService = retrofit.create(ApiService.class);
         }
     }
+
     // Constructor de ApiClient que inicializa Retrofit
     public static ApiService getApiService() {
         if (apiService == null) {
@@ -81,9 +84,8 @@ public class ApiClient {
         }
         return apiService;
     }
-//----------------------------------------------------------------------------
 
-
+//-------------------------------------------------------Contructores------------------------------------------------------------
     // Clase usuario
     public static class User {
         private String nombre;
@@ -143,8 +145,7 @@ public static class Comentario {
     private int num_likes;
     private String[] liked_by;
     private boolean isLiked;
-
-    private List<String> respuestas; // Lista de IDs de respuestas
+    private List<ApiClient.Respuesta> respuestas; // Lista de IDs de respuestas
     // Constructor
     public Comentario(String usuario_id,String nombre, String comentario, String movimiento, int num_likes, String comentario_id) {
         this.usuario_id = usuario_id;
@@ -197,11 +198,11 @@ public static class Comentario {
         this.num_likes = num_likes;
     }
 
-    public List<String> getRespuestas() {
+    public List<Respuesta> getRespuestas() {
         return respuestas;
     }
 
-    public void setRespuestas(List<String> respuestas) {
+    public void setRespuestas(List<Respuesta> respuestas) {
         this.respuestas = respuestas;
     }
 
@@ -228,6 +229,8 @@ public static class Comentario {
     public void setLiked(boolean liked) {
         isLiked = liked;
     }
+
+
 
 }
     public static class LikeRequest {
@@ -363,6 +366,80 @@ public static class Comentario {
             this.nuevoComentario = nuevoComentario;
         }
     }
+
+    public static class ResponderComentarioRequest {
+        private String usuario_id;
+        private String respuesta;
+        private String comentario_id;
+
+        public ResponderComentarioRequest(String usuario_id, String respuesta, String comentario_id) {
+            this.usuario_id = usuario_id;
+            this.respuesta = respuesta;
+            this.comentario_id = comentario_id;
+        }
+    }
+
+
+
+    public static class Respuesta {
+        private String respuesta_id;
+        private String usuario_id;   // ID del usuario que responde
+        private String nombre;       // Nombre del usuario
+        private String respuesta;    // Texto de la respuesta
+        private String comentario_id;
+        // Constructor
+        public Respuesta(String usuario_id, String nombre, String respuesta, String comentario_id) {
+
+            this.usuario_id = usuario_id;
+            this.nombre = nombre;
+            this.respuesta = respuesta;
+            this.comentario_id = comentario_id;
+        }
+
+        // Getters y Setters
+
+        public String getUsuario_id() {
+            return usuario_id;
+        }
+
+        public void setUsuario_id(String usuario_id) {
+            this.usuario_id = usuario_id;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getRespuesta() {
+            return respuesta;
+        }
+
+        public void setRespuesta(String respuesta) {
+            this.respuesta = respuesta;
+        }
+
+        public String getComentario_id() {
+            return comentario_id;
+        }
+
+        public void setComentario_id(String comentario_id) {
+            this.comentario_id = comentario_id;
+        }
+
+        @Override
+        public String toString() {
+            return "Respuesta{" +
+                    "respuesta='" + respuesta + '\'' +
+                    ", nombre='" + nombre + '\'' +
+                    '}';
+        }
+    }
+
+
 
 
 

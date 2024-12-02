@@ -47,6 +47,7 @@ import retrofit2.Response;
 
 public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
 
+    public static Movimiento_Piso_N1_Mg context;
     private List<ApiClient.Comentario> listaComentariosEnMemoria = new ArrayList<>();
     private ComentarioAdapter comentarioAdapter;
     private boolean comentariosVisible = false; // Variable para controlar la visibilidad de los comentarios
@@ -186,10 +187,6 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                 }
             }
         });
-
-
-
-//Comentarios:
 
 // Botón agregar comentario
         // Botón agregar comentario

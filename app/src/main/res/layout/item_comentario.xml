@@ -28,6 +28,15 @@
         android:padding="4dp"
         android:visibility="gone" />
 
+    <EditText
+        android:id="@+id/escribirRespuesta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escribe tu respuesta aqui..."
+        android:textSize="16sp"
+        android:padding="4dp"
+        android:visibility="gone"
+        />
     <!-- TextView para el contenido del comentario -->
     <TextView
         android:id="@+id/tvComentario"
@@ -37,6 +46,8 @@
         android:textSize="16sp"
         android:textColor="#333333"
         android:padding="4dp" />
+
+    <!-- RecyclerView para mostrar las respuestas -->
 
 
     <!-- Sección para el ícono de like y el contador -->
@@ -96,9 +107,25 @@
             android:src="@drawable/editar"
             android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
             />
-
+        <ImageButton
+            android:id="@+id/btn_Respuestas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/flecha_abajo"
+            android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
+        />
 
     </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRespuestas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" /> <!-- Por defecto está oculto -->
 
 
     <!-- TextView para la fecha del comentario (opcional) -->

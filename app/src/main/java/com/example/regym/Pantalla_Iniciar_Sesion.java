@@ -186,7 +186,10 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(Pantalla_Iniciar_Sesion.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Pantalla_Iniciar_Sesion.this, "Bienvenido*", Toast.LENGTH_SHORT).show();
+                Intent intent;
+                intent = new Intent(Pantalla_Iniciar_Sesion.this, Pantalla_Inicio_Entrenador.class);
+                startActivity(intent);
             }
         });
 

@@ -128,12 +128,7 @@
                 android:backgroundTint="#781005"
                 android:text="(*)3/4 DE PARADA DE MANOS" />
 
-            <Button
-                android:id="@+id/movimiento_9_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="POSE" />
+
 
 
 
