@@ -17,7 +17,8 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiClient {
-    private static final String BASE_URL = "http://10.0.2.2:4000/"; // Cambia esto a la URL de tu backend
+   // private static final String BASE_URL = "http://1192.168.96.233:4000/"; // Cambia esto a la URL de tu backend
+    private static final String BASE_URL = "http://10.0.2.2:4000/";
     private static Retrofit retrofit;
     private static ApiService apiService;
 
@@ -62,6 +63,8 @@ public class ApiClient {
         @POST("/api/comentarios/responder")
         Call<Respuesta> responderComentario( @Body ResponderComentarioRequest request);
 
+        @DELETE("/api/comentarios/eliminarRespuesta/{comentarioId}/{respuestaId}")
+        Call<Void> eliminarRespuesta(@Path("comentarioId") String comentarioId, @Path("respuestaId") String respuestaId);
 
     }
 
@@ -430,6 +433,7 @@ public static class Comentario {
             this.comentario_id = comentario_id;
         }
 
+        public String getRespuesta_id() {return respuesta_id;}
         @Override
         public String toString() {
             return "Respuesta{" +

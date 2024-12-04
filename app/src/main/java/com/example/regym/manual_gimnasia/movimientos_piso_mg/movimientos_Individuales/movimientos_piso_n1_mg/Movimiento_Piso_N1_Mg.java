@@ -46,10 +46,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
-
+    private ComentarioAdapter comentarioAdapter;
     public static Movimiento_Piso_N1_Mg context;
     private List<ApiClient.Comentario> listaComentariosEnMemoria = new ArrayList<>();
-    private ComentarioAdapter comentarioAdapter;
     private boolean comentariosVisible = false; // Variable para controlar la visibilidad de los comentarios
 
     //@SuppressLint("ClickableViewAccessibility")
@@ -156,17 +155,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         });
 
 //boton comentarios
-        //Guardar lista de likes:
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
-        recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Piso_N1_Mg.this));
 
-        // Inicializa el adaptador con una lista vacía
-        SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
-        String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
-        comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, this, userId);
-
-        // Asigna el adaptador al RecyclerView
-        recyclerView.setAdapter(comentarioAdapter);
 
         btn_comentarios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -357,7 +346,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         dialogo.show();
     }
 
-    private void mostrarComentarios(String movimientoId) {
+    public void mostrarComentarios(String movimientoId) {
         Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorMovimiento(movimientoId);
 
         call.enqueue(new Callback<List<ApiClient.Comentario>>() {
@@ -371,6 +360,13 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "No hay comentarios disponibles.", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    // Imprimir los IDs de los comentarios y respuestas
+                    for (ApiClient.Comentario comentario : comentariosDelBackend) {
+                        Log.d("COMENTARIOS", "Comentario ID: " + comentario.getComentario_id());
+                        for (ApiClient.Respuesta respuesta : comentario.getRespuestas()) {
+                            Log.d("COMENTARIOS", "Respuesta ID: " + respuesta.getRespuesta_id());
+                        }
+                    }
 //Guardar lista de likes:
                     RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
                     recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Piso_N1_Mg.this));
@@ -378,7 +374,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                     // Inicializa el adaptador con una lista vacía
                     SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                     String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
-               //     comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, this, userId);
+                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Piso_N1_Mg.this, userId);
 
                     // Asigna el adaptador al RecyclerView
                     recyclerView.setAdapter(comentarioAdapter);
@@ -405,6 +401,11 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         });
     }
 
+
+
+    public void ejemploMetodo() {
+        String movimiento = getIntent().getStringExtra("mov");
+    }
 
     // Función para imprimir los detalles del objeto Comentario
     private void printComentarioDetails(ApiClient.Comentario comentario) {

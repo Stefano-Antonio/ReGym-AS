@@ -55,8 +55,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:paddingTop="4dp"
+        android:gravity="start|center_vertical"
         >
 
         <!-- Botón de "like" -->
@@ -80,40 +80,55 @@
             android:layout_marginEnd="150dp" /> <!-- Add marginEnd -->/>
 
         <!-- Botón de "responer" -->
-        <ImageButton
-            android:id="@+id/btn_Responder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/responder"
-            android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
+        <!-- Add marginEnd -->
             />
         <!-- Botón de "eliminar" -->
-        <ImageButton
-            android:id="@+id/btn_Eliminar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/borrar"
-            android:padding="0dp"
-            android:layout_marginEnd="14dp" /> <!-- Add marginEnd -->
-            />
-        <!-- Botón de "editar" -->
-        <ImageButton
-            android:id="@+id/btn_Editar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/editar"
-            android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
-            />
+
         <ImageButton
             android:id="@+id/btn_Respuestas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/flecha_abajo"
-            android:layout_marginEnd="8dp" /> <!-- Add marginEnd -->
+            android:padding="0dp"
+            android:src="@drawable/flecha_abajo" />
+
+        <!-- Add marginEnd -->
+            />
+        <!-- Botón de "editar" -->
+        <ImageButton
+            android:id="@+id/btn_Responder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="0dp"
+            android:src="@drawable/responder" />
+
+
+        <ImageButton
+            android:id="@+id/btn_Editar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="0dp"
+            android:src="@drawable/editar" />
+
+        <ImageButton
+            android:id="@+id/btn_Eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="0dp"
+            android:src="@drawable/borrar" />
+
+        <!-- Add marginEnd -->
         />
 
     </LinearLayout>
