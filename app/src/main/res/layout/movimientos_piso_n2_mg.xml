@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".movimientos_piso_mg.Movimientos_Piso_N2_Mg">
-
+    tools:context=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N2_Mg">
 
     <ImageView
         android:id="@+id/Fondo_ginda2"
@@ -69,8 +68,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida"
         app:layout_constraintVertical_bias="0.0">
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,7 +137,6 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
                 android:text="Movimiento 10" />
-
 
         </LinearLayout>
 

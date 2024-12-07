@@ -13,7 +13,7 @@
         android:layout_marginTop="32dp"
         android:background="#781005"
         android:gravity="center"
-        android:text="Selecciona una opción"
+        android:text="Administrador"
         android:textColor="#F8F6F6"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +61,8 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="350dp"
-        android:layout_height="548dp"
+        android:layout_width="391dp"
+        android:layout_height="546dp"
         android:layout_marginTop="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,57 +75,164 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/agregar_usuario_btn"
-                android:layout_width="341dp"
-                android:layout_height="68dp"
-                android:layout_gravity="center_horizontal"
-                android:backgroundTint="#781005"
-                android:text="Agregar a un usuario nuevo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/eliminar_usuario_btn"
-                android:layout_width="341dp"
-                android:layout_height="68dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:backgroundTint="#781005"
-                android:text="Eliminar a un usuario"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Gen_rut_btn" />
+                <EditText
+                    android:id="@+id/buscar_usuario_input"
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#781005"
+                    android:hint="Buscar por matrícula"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textColorHint="#AAA" />
 
-            <Button
-                android:id="@+id/editar_usuario_btn"
-                android:layout_width="341dp"
-                android:layout_height="68dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:backgroundTint="#781005"
-                android:text="Editar la informacion de un usuario" />
+                <ImageButton
+                    android:id="@+id/buscar_usuario_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#781005"
+                    android:text="Buscar"
+                    android:textColor="#FFF"
+                    app:srcCompat="@drawable/buscar" />
 
-            <Button
-                android:id="@+id/administrar_comentarios_btn"
-                android:layout_width="341dp"
-                android:layout_height="68dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:backgroundTint="#781005"
-                android:text="Administrar y/o eliminar comentarios" />
+                <ImageButton
+                    android:id="@+id/administrar_matriculas_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    android:backgroundTint="#781005"
+                    android:text="Administrar, eliminar y agregar matriculas"
+                    app:srcCompat="@drawable/matricula" />
 
-            <Button
-                android:id="@+id/administrar_matriculas_btn"
-                android:layout_width="341dp"
-                android:layout_height="68dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:backgroundTint="#781005"
-                android:text="Administrar, eliminar y agregar matriculas" />
+            </LinearLayout>
+            <!-- Tabla de usuarios -->
+            <TableLayout
+                android:id="@+id/tabla_usuarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:background="#EEE">
+
+                <!-- Encabezados de la tabla -->
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Matrícula"
+                        android:textStyle="bold"
+                        android:background="#781005"
+                        android:textColor="#FFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Nombre"
+                        android:textStyle="bold"
+                        android:background="#781005"
+                        android:textColor="#FFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Seleccion"
+                        android:textStyle="bold"
+                        android:background="#781005"
+                        android:textColor="#FFF" />
+                </TableRow>
+
+                <!-- Ejemplo de fila de usuario -->
+                <TableRow
+                    android:id="@+id/edit_row"
+                    android:visibility="gone">
+
+                    <!-- EditText para la matrícula -->
+                    <EditText
+                        android:id="@+id/editar_matricula"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="8dp"
+                        android:hint="Matrícula"
+                        android:visibility="gone"
+                        android:inputType="text" />
+
+                    <!-- EditText para el nombre -->
+                    <EditText
+                        android:id="@+id/editar_nombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="8dp"
+                        android:hint="Nombre"
+                        android:visibility="gone"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="8dp"
+                        android:text="123456"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="8dp"
+                        android:text="Juan Pérez" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/eliminar_usuario_btn"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="60dp"
+                            android:backgroundTint="#781005"
+                            android:text="Eliminar a un usuario"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.495"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/Gen_rut_btn"
+                            app:srcCompat="@drawable/borrar" />
+
+                        <ImageButton
+                            android:id="@+id/editar_usuario_btn"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="60dp"
+                            android:backgroundTint="#781005"
+                            android:text="Editar la informacion de un usuario"
+                            app:srcCompat="@drawable/editar" />
+
+                        <ImageButton
+                            android:id="@+id/administrar_comentarios_btn"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="60dp"
+                            android:backgroundTint="#781005"
+                            android:text="Administrar y/o eliminar comentarios del usuario"
+                            app:srcCompat="@drawable/editar_comentario" />
+
+
+                    </LinearLayout>
+
+                </TableRow>
+            </TableLayout>
 
         </LinearLayout>
     </ScrollView>

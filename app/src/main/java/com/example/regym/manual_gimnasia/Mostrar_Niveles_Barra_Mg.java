@@ -23,72 +23,67 @@ public class Mostrar_Niveles_Barra_Mg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mostrar_niveles_barra_mg);
 
-//botones
+//Botones
         Button Nivel1_btn = findViewById(R.id.Nivel1_btn);
         Button Nivel2_btn = findViewById(R.id.Nivel2_btn);
         Button Nivel3_btn = findViewById(R.id.Nivel3_btn);
         Button Nivel4_btn = findViewById(R.id.Nivel4_btn);
         Button Nivel5_btn = findViewById(R.id.Nivel5_btn);
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
-// Recuperar el tipo de usuario del Intent
+
+//Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
 
 
-//boton Nivel1
+//Boton Nivel1
         Nivel1_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Mg.this, Movimientos_Barra_N1_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel2
+//Boton Nivel2
         Nivel2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Mg.this, Movimientos_Barra_N2_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel3
+//Boton Nivel3
         Nivel3_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Mg.this, Movimientos_Barra_N3_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel4
+//Boton Nivel4
         Nivel4_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Mg.this, Movimientos_Barra_N4_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel5
+//Boton Nivel5
         Nivel5_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Mg.this, Movimientos_Barra_N5_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Regresar
+//Boton Regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 if (tipoUsuario != "Atletas") {

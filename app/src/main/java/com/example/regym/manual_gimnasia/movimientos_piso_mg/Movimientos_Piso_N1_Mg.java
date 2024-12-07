@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.regym.R;
 import com.example.regym.manual_gimnasia.Mostrar_Niveles_Piso_Mg;
-import com.example.regym.manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_N1_Mg;
+import com.example.regym.manual_gimnasia.movimiento_Individual.Movimiento_Pantalla;
 
 public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
 
@@ -19,10 +19,10 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movimientos_piso_n1_mg);
 
-// Recuperar el tipo de usuario del Intent
+//Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
-//botones
+//Botones
 
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
         Button Movimiento1 = findViewById(R.id.movimiento_1_btn);
@@ -34,23 +34,22 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
         Button Movimiento7 = findViewById(R.id.movimiento_7_btn);
         Button Movimiento8 = findViewById(R.id.movimiento_8_btn);
 
-//boton Regresar
+//Boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Mostrar_Niveles_Piso_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Movimiento1
+
+//Boton Movimiento1
         Movimiento1.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_piso);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m1);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [POSE(*)]:Hacer demi-plié con ambas piernas. Contraer ligeramente los abdominales e inclinar el torso ligeramente hacia adelante.\n" +
@@ -67,13 +66,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento2
+
+//Boton Movimiento2
         Movimiento2.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_salto);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m2);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [RODADA ATRÁS AGRUPADA]: Doblar las rodillas para llegar a una posición en cuclillas, manteniendo los pies en el suelo.\n" +
@@ -88,13 +87,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento3
+
+//Boton Movimiento3
         Movimiento3.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_piso);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m3);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [RODADA A VELA]: Doblar las rodillas para llegar a una posición en cuclillas, manteniendo los pies en el suelo.\n" +
@@ -110,13 +109,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento4
+
+//Boton Movimiento4
         Movimiento4.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_salto);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m4);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [EQUILIBRIO EN PASSÉ AL FRENTE]: Dar un paso hacia adelante sobre la pierna derecha extendida con el pie derecho ligeramente girado hacia afuera (no en relevé). Flexionar la rodilla izquierda hacia adelante junto con el pie izquierdo en punta hacia adelante para tocar la rodilla derecha y realizar el EQUILIBRIO EN PASSÉ AL FRENTE. Marcar esta posición.\n" +
@@ -132,13 +131,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento5
+
+//Boton Movimiento5
         Movimiento5.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_piso);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m5);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [CHASSÉ AL FRENTE]: Bajar el talón derecho al suelo y mover el pie izquierdo hacia adelante a través de una 1ra posición girada para apuntar al suelo.\n" +
@@ -154,13 +153,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento6
+
+//Boton Movimiento6
         Movimiento6.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_salto);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m6);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [SALTO EXTENDIDO]: Cerrar el pie derecho al lado del izquierdo para terminar con ambos pies uno al lado del otro (pies en planta).\n" +
@@ -176,13 +175,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento7
+
+//Boton Movimiento7
         Movimiento7.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_piso);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m7);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [RODADA AL FRENTE AGRUPADA]: Flexionar las rodillas y estirarse hacia adelante para colocar las manos en el suelo. Bajar la cabeza al meter la barbilla hacia el pecho y mantener la espalda redondeada. Levantar la cadera para colocar la parte posterior de la cabeza y los hombros en el suelo. Empujar ambos pies para iniciar la RODADA AL FRENTE AGRUPADA.\n" +
@@ -195,13 +194,13 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Movimiento8
+
+//Boton Movimiento8
         Movimiento8.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimientos_Piso_N1_Mg.this, Movimiento_Pantalla.class);
                 intent.putExtra("movimiento_gift", R.raw.m1_n1_salto);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n1_m8);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "\"-Primera parte [¾ DE PARADA DE MANOS]: Apuntar el pie derecho adelante en el suelo.\n" +

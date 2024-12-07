@@ -1,4 +1,4 @@
-package com.example.regym.manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg;
+package com.example.regym.manual_gimnasia.movimiento_Individual;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -45,9 +45,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
+public class Movimiento_Pantalla extends AppCompatActivity {
     private ComentarioAdapter comentarioAdapter;
-    public static Movimiento_Piso_N1_Mg context;
+    public static Movimiento_Pantalla context;
     private List<ApiClient.Comentario> listaComentariosEnMemoria = new ArrayList<>();
     private boolean comentariosVisible = false; // Variable para controlar la visibilidad de los comentarios
 
@@ -57,7 +57,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //cargarComentarios();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.movimiento_piso_no1_mg);
+        setContentView(R.layout.movimiento_pantalla);
 
 //botones, scrolls, editTexts
 
@@ -73,7 +73,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
         NestedScrollView Comentarios_seccion = findViewById(R.id.commentarios_seccion);
         ImageButton btn_comentarios = findViewById(R.id.comentarios_btn);
         EditText inputComentario = findViewById(R.id.nuevo_comentario_edit_text);
-        Button enviarComentarioBtn = findViewById(R.id.agregar_comentario_btn);
+        ImageButton enviarComentarioBtn = findViewById(R.id.agregar_comentario_btn);
         TextView nuevo_comentario_edit_text = findViewById(R.id.nuevo_comentario_edit_text);
 //GIFS
 
@@ -268,7 +268,7 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                Intent intent = new Intent(Movimiento_Piso_N1_Mg.this, Movimientos_Piso_N1_Mg.class);
+                Intent intent = new Intent(Movimiento_Pantalla.this, Movimientos_Piso_N1_Mg.class);
                 startActivity(intent);
             }
         });
@@ -367,14 +367,15 @@ public class Movimiento_Piso_N1_Mg extends AppCompatActivity {
                             Log.d("COMENTARIOS", "Respuesta ID: " + respuesta.getRespuesta_id());
                         }
                     }
+
 //Guardar lista de likes:
                     RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
-                    recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Piso_N1_Mg.this));
+                    recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Pantalla.this));
 
                     // Inicializa el adaptador con una lista vacía
                     SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                     String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
-                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Piso_N1_Mg.this, userId);
+                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Pantalla.this, userId);
 
                     // Asigna el adaptador al RecyclerView
                     recyclerView.setAdapter(comentarioAdapter);

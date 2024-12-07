@@ -19,16 +19,13 @@ import com.example.regym.manual_gimnasia.movimientos_salto_mg.Movimientos_Salto_
 
 public class Mostrar_Niveles_Salto_Mg extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mostrar_niveles_salto_mg);
 
-
-//botones
+//Botones
         Button Nivel1_btn = findViewById(R.id.Nivel1_btn);
         Button Nivel2_btn = findViewById(R.id.Nivel2_btn);
         Button Nivel3_btn = findViewById(R.id.Nivel3_btn);
@@ -36,64 +33,62 @@ public class Mostrar_Niveles_Salto_Mg extends AppCompatActivity {
         Button Nivel5_btn = findViewById(R.id.Nivel5_btn);
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
-// Recuperar el tipo de usuario del Intent
+//Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
-
-//boton Nivel1
+//Boton Nivel1
         Nivel1_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Salto_Mg.this, Movimientos_Salto_N1_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel2
+
+//Boton Nivel2
         Nivel2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Salto_Mg.this, Movimientos_Salto_N2_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel3
+
+//Boton Nivel3
         Nivel3_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Salto_Mg.this, Movimientos_Salto_N3_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel4
+
+//Boton Nivel4
         Nivel4_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Salto_Mg.this, Movimientos_Salto_N4_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel5
+
+//Boton Nivel5
         Nivel5_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Salto_Mg.this, Movimientos_Salto_N5_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Regresar
+
+//Boton Regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
                 if (tipoUsuario != "Atletas") {
                     Log.d("TipoUsuario", "El usuario es un: " + tipoUsuario);
@@ -104,14 +99,10 @@ public class Mostrar_Niveles_Salto_Mg extends AppCompatActivity {
                     Intent intent = new Intent(Mostrar_Niveles_Salto_Mg.this, Manual_Gimnasia.class);
                     startActivity(intent);
                 }
-
             }
         });
 
     }
-
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

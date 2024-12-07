@@ -19,39 +19,37 @@ public class Pantalla_Inicio_Entrenador extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_inicio_entrenador);
-// Recuperar el tipo de usuario del Intent
+
+//Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
-//botones
+//Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
         Button gen_rut_btn = findViewById(R.id.gen_rut_btn);
         Button man_gim_btn = findViewById(R.id.man_gim_btn);
         Button most_clase_bas_btn = findViewById(R.id.most_clase_bas_btn);
 
-//boton regresar
+//Boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Pantalla_Iniciar_Sesion.class);
                 startActivity(intent);
             }
         });
-//boton generar rutina
+//Boton generar rutina
         gen_rut_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Generar_Rutina.class);
                 startActivity(intent);
             }
         });
-//boton manual
+//Boton manual
         man_gim_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Manual_Gimnasia.class);
@@ -60,10 +58,9 @@ public class Pantalla_Inicio_Entrenador extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Clase basica
+//Boton clase basica
         most_clase_bas_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Entrenador.this, Inicio_Clase_Basica.class);

@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N5_Mg"
+            android:exported="false" />
+        <activity
             android:name=".clase_basica.Clase_Basica_Salto"
             android:exported="false" />
         <activity
@@ -184,11 +187,11 @@
             android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No2_Mg"
             android:exported="false" />
         <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_N1_Mg"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:name=".manual_gimnasia.movimiento_Individual.Movimiento_Pantalla"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.ComentarioAdapter"
+            android:name=".manual_gimnasia.movimiento_Individual.ComentarioAdapter"
             tools:ignore="Instantiatable" />
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg"

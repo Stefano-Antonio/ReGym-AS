@@ -1,4 +1,4 @@
-package com.example.regym.manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg;
+package com.example.regym.manual_gimnasia.movimiento_Individual;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -23,10 +23,10 @@ import retrofit2.Response;
 
 public class RespuestaAdapter extends RecyclerView.Adapter<RespuestaAdapter.RespuestaViewHolder> {
 
-    private final Movimiento_Piso_N1_Mg context;
+    private final Movimiento_Pantalla context;
     private List<ApiClient.Respuesta> respuestas; // Cambiado a List<Respuesta> en lugar de List<Comentario>
     
-    public RespuestaAdapter(List<ApiClient.Respuesta> respuestas, Movimiento_Piso_N1_Mg context) {
+    public RespuestaAdapter(List<ApiClient.Respuesta> respuestas, Movimiento_Pantalla context) {
         this.respuestas = respuestas;
         this.context = context;
     }

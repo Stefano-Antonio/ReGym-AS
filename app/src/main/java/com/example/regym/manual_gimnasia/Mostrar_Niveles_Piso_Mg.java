@@ -15,14 +15,7 @@ import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N3
 import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N4_Mg;
 
 
-/*
-import com.example.regym.movimientos_barra_mg.Movimientos_Barra_N2_MG;
-import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N1_MG;
-import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N2_MG;
-import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N3_MG;
-import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N4_MG;
-import com.example.regym.movimientos_piso_mg.Movimientos_Piso_N5_MG;
-*/
+
 public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
 
 
@@ -32,7 +25,7 @@ public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mostrar_niveles_piso_mg);
 
-//botones
+//Botones
         Button Nivel1_btn = findViewById(R.id.Nivel1_btn);
         Button Nivel2_btn = findViewById(R.id.Nivel2_btn);
         Button Nivel3_btn = findViewById(R.id.Nivel3_btn);
@@ -40,14 +33,12 @@ public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
         Button Nivel5_btn = findViewById(R.id.Nivel5_btn);
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
-// Recuperar el tipo de usuario del Intent
+//Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
-
-//boton Nivel1
+//Boton Nivel1
         Nivel1_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg.class);
@@ -56,48 +47,48 @@ public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Nivel2
+
+//Boton Nivel2
         Nivel2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N2_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel3
+
+//Boton Nivel3
         Nivel3_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N3_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel4
+
+//Boton Nivel4
         Nivel4_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N4_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Nivel5
+
+//Boton Nivel5
         Nivel5_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
             }
         });
-//boton Regresar
+
+//Boton Regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 if (tipoUsuario != "Atletas") {

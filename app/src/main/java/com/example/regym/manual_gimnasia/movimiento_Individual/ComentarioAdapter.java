@@ -1,4 +1,4 @@
-package com.example.regym.manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg;
+package com.example.regym.manual_gimnasia.movimiento_Individual;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -29,13 +29,13 @@ import retrofit2.Response;
 
 public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.ComentarioViewHolder> {
     public static List<ApiClient.Comentario> comentarioList;
-    private Movimiento_Piso_N1_Mg context;
+    private Movimiento_Pantalla context;
     private Context context2;
     private String UserId;
     private boolean aux;
     private String[] liked_by;
 
-    public ComentarioAdapter(List<ApiClient.Comentario> comentarioList,  Movimiento_Piso_N1_Mg context, String usuarioId) {
+    public ComentarioAdapter(List<ApiClient.Comentario> comentarioList, Movimiento_Pantalla context, String usuarioId) {
         this.comentarioList = comentarioList;
         this.context = context;
         this.UserId = usuarioId;
@@ -163,6 +163,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                     holder.tvLikesCount.setVisibility(View.VISIBLE);
 
                     holder.escribirRespuesta.setVisibility(View.GONE);
+                    Toast.makeText(context, "Error de conexion, comentario no realizado.", Toast.LENGTH_SHORT).show();
 
                     // Crear el objeto de la solicitud
                     ApiClient.ResponderComentarioRequest request = new ApiClient.ResponderComentarioRequest(

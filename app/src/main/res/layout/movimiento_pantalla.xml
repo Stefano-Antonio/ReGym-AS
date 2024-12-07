@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#F4F0F0"
     android:gravity="center_horizontal"
-    tools:context=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_N1_Mg">
+    tools:context=".manual_gimnasia.movimiento_Individual.Movimiento_Pantalla">
 
     <ImageView
         android:id="@+id/Fondo_ginda2"
@@ -209,14 +209,16 @@
                         android:layout_height="wrap_content"
                         android:hint="Agregar comentario..." />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/agregar_comentario_btn"
                         android:layout_width="70dp"
                         android:layout_height="40dp"
                         android:layout_gravity="end"
                         android:layout_marginTop="4dp"
+                        android:background="#F4F0F0"
                         android:backgroundTint="#781005"
-                        android:text="Agregar" />
+                        android:text="Agregar"
+                        app:srcCompat="@drawable/enviar" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

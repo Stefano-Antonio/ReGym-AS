@@ -27,7 +27,7 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
 
 
 
-//botones
+//Botones
         Button Nivel1_btn = findViewById(R.id.Nivel1_btn);
         Button Nivel2_btn = findViewById(R.id.Nivel2_btn);
         Button Nivel3_btn = findViewById(R.id.Nivel3_btn);
@@ -35,10 +35,10 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
         Button Nivel5_btn = findViewById(R.id.Nivel5_btn);
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
-// Recuperar el tipo de usuario del Intent
+//Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
-//boton Nivel1
+//Boton Nivel1
         Nivel1_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;
@@ -48,7 +48,8 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Nivel2
+
+//Boton Nivel2
         Nivel2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;
@@ -58,7 +59,8 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Nivel3
+
+//Boton Nivel3
         Nivel3_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;
@@ -68,7 +70,8 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Nivel4
+
+//Boton Nivel4
         Nivel4_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;
@@ -78,7 +81,8 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Nivel5
+
+//Boton Nivel5
         Nivel5_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;
@@ -88,7 +92,8 @@ public class Mostrar_Niveles_Viga_Mg extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Regresar
+
+//Boton Regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;

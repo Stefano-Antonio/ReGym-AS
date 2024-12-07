@@ -15,10 +15,10 @@ public class Creditos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creditos);
 
-//botones
+//Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
-//boton regresar
+//Boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;

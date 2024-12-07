@@ -19,7 +19,7 @@ public class Manual_Gimnasia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manual_gimnasia);
 
-//botones
+//Botones
         Button Salto_btn = findViewById(R.id.Salto_btn);
         Button Piso_btn = findViewById(R.id.Piso_btn);
         Button Barra_btn = findViewById(R.id.Barra_btn);
@@ -27,10 +27,9 @@ public class Manual_Gimnasia extends AppCompatActivity {
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
 
-//boton Salto
+//Boton salto
         Salto_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Mostrar_Niveles_Salto_Mg.class);
@@ -39,10 +38,9 @@ public class Manual_Gimnasia extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Piso
+//Boton piso
         Piso_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Mostrar_Niveles_Piso_Mg.class);
@@ -51,30 +49,27 @@ public class Manual_Gimnasia extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//boton Barra
+//Boton barra
         Barra_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Mostrar_Niveles_Barra_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Viga
+//Boton viga
         Viga_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Mostrar_Niveles_Viga_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Regresar
+//Boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Manual_Gimnasia.this, Pantalla_Inicio_Entrenador.class);

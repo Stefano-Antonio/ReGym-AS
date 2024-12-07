@@ -24,58 +24,52 @@ public class Pantalla_Inicio_Atletas extends AppCompatActivity {
 // Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
-//botones
+//Botones
         Button Salto_btn = findViewById(R.id.Salto_btn);
         Button Piso_btn = findViewById(R.id.Piso_btn);
         Button Barra_btn = findViewById(R.id.Barra_btn);
         Button Viga_btn = findViewById(R.id.Viga_btn);
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
-
-//boton Salto
+//Boton salto
         Salto_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Atletas.this, Mostrar_Niveles_Salto_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Piso
+//Boton piso
         Piso_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Atletas.this, Mostrar_Niveles_Piso_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Barra
+//Boton barra
         Barra_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Atletas.this, Mostrar_Niveles_Barra_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Viga
+//Boton viga
         Viga_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Atletas.this, Mostrar_Niveles_Viga_Mg.class);
                 startActivity(intent);
             }
         });
-//boton Regresar
+//Boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Inicio_Atletas.this, Pantalla_Iniciar_Sesion.class);

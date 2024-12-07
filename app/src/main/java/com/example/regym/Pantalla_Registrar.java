@@ -23,6 +23,7 @@ import retrofit2.Response;
 public class Pantalla_Registrar extends AppCompatActivity {
 
     private EditText nombreEditText, correoEditText, matriculaEditText, passwordEditText,passwordEditText2;
+    private String id;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -31,23 +32,20 @@ public class Pantalla_Registrar extends AppCompatActivity {
         setContentView(R.layout.pantalla_registrar);
         Log.d("Pantalla_Registrar", "onCreate: Iniciando actividad");
 
-        //botones
+//Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
         Button Registrarse_btn = findViewById(R.id.Registrarse_btn);
 
 
-        // Instancia de ApiClient
-        ApiClient apiClient = new ApiClient();
 
-        //Credenciales del usuario
         nombreEditText = findViewById(R.id.Nombre_contenedor);
         correoEditText = findViewById(R.id.Correo_contenedor);
         matriculaEditText = findViewById(R.id.Matricula_contenedor);
         passwordEditText = findViewById(R.id.Constraseña_contenedor);
         passwordEditText2 = findViewById(R.id.Constraseña2_contenedor);
-        //boton regresar
 
-        //icono ojo en contenedor contraseña
+
+        //Funcion de icono ojo en contenedor contraseña
         passwordEditText.setOnTouchListener((v, event) -> {
             boolean isPasswordVisible = false;
             if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -58,7 +56,8 @@ public class Pantalla_Registrar extends AppCompatActivity {
                         // Ocultar contraseña
                         passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_con_slash, 0); // Cambia a ojo con slash
-                    } else {
+                    }
+                    else {
                         // Mostrar contraseña
                         passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_sin_slash, 0); // Cambia a ojo sin slash
@@ -70,7 +69,7 @@ public class Pantalla_Registrar extends AppCompatActivity {
             }
             return false;
         });
-        //icono ojo en contenedor de confirmación de contraseña
+        //Funcion de icono ojo en contenedor de confirmacion contraseña
         passwordEditText2.setOnTouchListener((v, event) -> {
             boolean isPasswordVisible = false;
             if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -81,7 +80,8 @@ public class Pantalla_Registrar extends AppCompatActivity {
                         // Ocultar contraseña
                         passwordEditText2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         passwordEditText2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_con_slash, 0); // Cambia a ojo con slash
-                    } else {
+                    }
+                    else {
                         // Mostrar contraseña
                         passwordEditText2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         passwordEditText2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_sin_slash, 0); // Cambia a ojo sin slash
@@ -93,8 +93,7 @@ public class Pantalla_Registrar extends AppCompatActivity {
             }
             return false;
         });
-
-        //boton regresar
+//Boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             //View v;
@@ -104,20 +103,21 @@ public class Pantalla_Registrar extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //boton registrarse
+//Boton registrarse
         Registrarse_btn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
                 if (passwordEditText.getText().toString().equals(passwordEditText2.getText().toString())) {
-                    //captura de datos del usuario
+
+
                     String nombre = nombreEditText.getText().toString();
                     String correo = correoEditText.getText().toString();
                     String matricula = matriculaEditText.getText().toString();
                     String password = passwordEditText.getText().toString();
 
-                    // Asignar credenciales a clase usuario
-                    ApiClient.User usuario1 = new ApiClient.User(nombre, correo, matricula, password);
+                    ApiClient.Usuario usuario1 = new ApiClient.Usuario(id, nombre, correo, matricula, password);
+
                     int x;
                     try {
                         x = verificarMatricula(matricula);
@@ -126,44 +126,58 @@ public class Pantalla_Registrar extends AppCompatActivity {
                     }
                     if (x == 1) {
                         registrarUsuario(usuario1);
-                    }else{
+                    }
+                    else{
                         Toast.makeText(getApplicationContext(), "La matricula tienen un formato incorrecto", Toast.LENGTH_LONG).show();
-
                         }
 
-                }else{
+                }
+                else{
+
                     Throwable e = new Throwable();
                     Log.e("Error", "Error al leer la respuesta: " + e.getMessage());
                     Toast.makeText(getApplicationContext(), "La confirmación de la contraseña no coincide", Toast.LENGTH_LONG).show();
                 }
             }
-
-
         });
     }
 
-    //Funcion Registrar usuario
-    private void registrarUsuario(ApiClient.User user){
+//Funcion Registrar usuario
+    private void registrarUsuario(ApiClient.Usuario user){
+
         ApiClient.ApiService apiService = ApiClient.getApiService();
-        Call<ApiClient.User> call = apiService.crearUsuario(user);
+        Call<ApiClient.Usuario> call = apiService.crearUsuario(user);
         Log.d("RegistrarUsuario", "Intentando registrar usuario: " + user.getNombre());
 
-        call.enqueue(new Callback<ApiClient.User>() {
-            //@Override
-            public void onResponse(Call<ApiClient.User> call, Response<ApiClient.User> response) {
+        call.enqueue(new Callback<ApiClient.Usuario>() {
+
+            public void onResponse(Call<ApiClient.Usuario> call, Response<ApiClient.Usuario> response) {
+
                 if (response.isSuccessful()) {
-                    ApiClient.User user = response.body();
-                    Toast.makeText(Pantalla_Registrar.this, "Usuario registrado", Toast.LENGTH_SHORT).show();
-                // Redirigir a otra pantalla después del registro
+
+                    ApiClient.Usuario user = response.body();
+                    if (user != null) {
+                        Log.d("RegistrarUsuario", "Usuario registrado: " + user);
+                        Toast.makeText(Pantalla_Registrar.this, "Usuario registrado: " + user.getNombre(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e("RegistrarUsuario", "Error en la respuesta: " + response.code());
+                    }
+
+
+                    // Redirigir a otra pantalla después del registro
                 Intent intent = new Intent(Pantalla_Registrar.this, Pantalla_Iniciar_Sesion.class);
                 startActivity(intent);
-                } else {
+                }
+                else {
+
                     try {
-                        String errorMessage = response.errorBody().string(); // Extraer el mensaje de error
-                        // Verificar si el error es de duplicado de correo o matricula
+
+                        String errorMessage = response.errorBody().string();
+
                         if (errorMessage.contains("duplicate key error") && errorMessage.contains("correo") || errorMessage.contains("matricula")) {
                             Toast.makeText(Pantalla_Registrar.this, "El correo o matricula ya está registrado en otro usuario", Toast.LENGTH_SHORT).show();
-                        } else {
+                        }
+                        else {
                             Log.e("Error", "Error en el registro: " + errorMessage);
                             Toast.makeText(Pantalla_Registrar.this, "Error en el registro", Toast.LENGTH_SHORT).show();
                         }
@@ -176,35 +190,34 @@ public class Pantalla_Registrar extends AppCompatActivity {
 
 
             @Override
-            public void onFailure(Call<ApiClient.User> call, Throwable t) {
+            public void onFailure(Call<ApiClient.Usuario> call, Throwable t) {
                 Log.e("RegistrarUsuario", "Error en la conexión: " + t.getMessage());
                 Toast.makeText(Pantalla_Registrar.this, "Error en la conexión", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
-    //Funcion verificacion correo y matricula
+//Funcion verificacion correo y matricula
     public int verificarMatricula(String matricula) throws Exception {
-        ApiClient.User user;
+        ApiClient.Usuario user;
         int x;
 
         if (matricula.startsWith("U") && matricula.length() == 4) {
             x=1;
-        } else if (matricula.startsWith("E") && matricula.length() == 4) {
+        }
+        else if (matricula.startsWith("E") && matricula.length() == 4) {
             x=1;
-        } else if (matricula.startsWith("A") && matricula.length() == 4) {
+        }
+        else if (matricula.startsWith("A") && matricula.length() == 4) {
             x=1;
-        } else {
+        }
+        else {
             x=0;
         }
 
         return x;
     }
 
-    public interface UsuarioCallback {
-        void onSuccess();
-        void onFailure(String errorMessage);
-    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

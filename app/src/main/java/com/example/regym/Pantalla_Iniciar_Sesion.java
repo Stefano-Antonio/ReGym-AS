@@ -36,33 +36,35 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_iniciar_sesion);
 
-        //botones
+//Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
         Button Continuar_btn = findViewById(R.id.Continuar_btn);
         Button recuperarContraseñaBtn = findViewById(R.id.Recuperar_contraseña_btn);
 
-        // Instancia de ApiClient
+//Instancia de ApiClient
         ApiClient apiClient = new ApiClient();
 
-        //Credenciales del usuario
+//Credenciales del usuario
         correoEditText = findViewById(R.id.Correo_contenedor);
         passwordEditText = findViewById(R.id.Contraseña_contenedor);
 
-        //icono ojo en contenedor contraseña
+//Icono ojo en contenedor contraseña
         passwordEditText.setOnTouchListener((v, event) -> {
             boolean isPasswordVisible = false;
             if (event.getAction() == MotionEvent.ACTION_UP) {
-                int drawableEndPosition = passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[2].getBounds().width();
 
+                int drawableEndPosition = passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[2].getBounds().width();
                 if (event.getRawX() >= drawableEndPosition) {
+
                     if (passwordEditText.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
                         // Ocultar contraseña
                         passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_con_slash, 0); // Cambia a ojo con slash
-                    } else {
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_con_slash, 0);
+                    }
+                    else {
                         // Mostrar contraseña
                         passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_sin_slash, 0); // Cambia a ojo sin slash
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ojo_sin_slash, 0);
                     }
                     // Colocar el cursor al final del texto
                     passwordEditText.setSelection(passwordEditText.getText().length());
@@ -71,32 +73,27 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
             }
             return false;
         });
-        //boton regresar
+//boton regresar
         Regresar_btn.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
-            //View v;
             public void onClick(View v) {
 
                 Intent intent = new Intent(Pantalla_Iniciar_Sesion.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-        //boton continuar
+//Boton continuar
         Continuar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            //View v;
             public void onClick(View v) {
 
                 correo = correoEditText.getText().toString();
                 password = passwordEditText.getText().toString();
                 iniciarSesion(correo, password);
-
             }
         });
-        //boton recuperar contraseña
-
+//Boton recuperar contraseña
         recuperarContraseñaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +106,7 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
             }
         });
     }
-    // inicio de sesión
+//Inicio de sesión
     private void iniciarSesion(String correo, String password) {
         HashMap<String, String> datosUsuario = new HashMap<>();
         datosUsuario.put("correo", correo);
@@ -119,26 +116,25 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null) {
+
                     String responseBodyString = null;
                     try {
+
                         responseBodyString = response.body().string();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    Log.d("RESPUESTA", "Cuerpo de la respuesta: " + responseBodyString);
-                    try {
-                        JSONObject jsonResponse = new JSONObject(responseBodyString);
-                        Log.d("DEBUG_JSON_RESPONSE", responseBodyString);  // Revisa la estructura exacta
 
-                        // Asegúrate de que los nombres de claves coincidan con el JSON de la respuesta
+                    try {
+
+                        JSONObject jsonResponse = new JSONObject(responseBodyString);
                         String tipoUsuario = jsonResponse.optString("tipoUsuario", "desconocido");
                         JSONObject usuarioObj = jsonResponse.optJSONObject("usuario");
 
                         if (usuarioObj != null) {
-                            String userId = usuarioObj.optString("_id", "");  // Revisa que la clave sea "_id" o "userId"
+
+                            String userId = usuarioObj.optString("_id", "");
                             String nombre = usuarioObj.optString("nombre", "");
-                            Log.d("DEBUG", "userId: " + userId);
-                            Log.d("DEBUG", "nombre: " + nombre);
 
                             Intent intent;
                             switch (tipoUsuario) {
@@ -155,12 +151,11 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                                     Toast.makeText(Pantalla_Iniciar_Sesion.this, "No se encontró ningún usuario con ese correo", Toast.LENGTH_SHORT).show();
                                     return;
                             }
-
                             intent.putExtra("tipoUsuario", tipoUsuario);
                             intent.putExtra("userId", userId);
                             intent.putExtra("nombre", nombre);
 
-                            // Guardar los datos en SharedPreferences
+                            //Guardar los datos en SharedPreferences
                             SharedPreferences usuarioDatos = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                             SharedPreferences.Editor editor = usuarioDatos.edit();
                             editor.putString("userId", userId);
@@ -169,7 +164,8 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                             editor.apply();
                             startActivity(intent);
 
-                        } else {
+                        }
+                        else {
                             Toast.makeText(Pantalla_Iniciar_Sesion.this, "Formato de respuesta incorrecto", Toast.LENGTH_SHORT).show();
                         }
 
@@ -179,11 +175,11 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                     }
 
 
-                } else {
+                }
+                else {
                     Toast.makeText(Pantalla_Iniciar_Sesion.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(Pantalla_Iniciar_Sesion.this, "Bienvenido*", Toast.LENGTH_SHORT).show();
@@ -192,11 +188,9 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
-    //metodo recuperar contraseña
+//Metodo recuperar contraseña
     private void recuperarContrasena(String correo) {
         HashMap<String, String> datosCorreo = new HashMap<>();
         datosCorreo.put("correo", correo);
@@ -216,7 +210,8 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                         Log.e("ERROR", "Error al leer la respuesta: " + e.getMessage());
                         Toast.makeText(Pantalla_Iniciar_Sesion.this, "Error al leer la respuesta", Toast.LENGTH_SHORT).show();
                     }
-                } else {
+                }
+                else {
                     Log.e("ERROR", "Correo no encontrado o respuesta nula");
                     Toast.makeText(Pantalla_Iniciar_Sesion.this, "Correo no encontrado", Toast.LENGTH_SHORT).show();
                 }
@@ -229,12 +224,6 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
 
     @Override
     protected void onDestroy() {
