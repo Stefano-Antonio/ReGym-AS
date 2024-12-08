@@ -62,7 +62,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "<Brazos>: Permanecen arriba en todo momento y cuando se hace el descenso. Si se invirtió la (*) INVERSIÓN LATERAL, simplemente regresar al texto.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m1");
+                intent.putExtra("mov","P_n1_m1");
                 startActivity(intent);
             }
         });
@@ -83,7 +83,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "<Brazos>: Arriba al principio de la rodada. Terminar la rodada con los brazos arriba; después abrir en diagonal arriba a los lados.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m2");
+                intent.putExtra("mov","P_n1_m2");
                 startActivity(intent);
             }
         });
@@ -105,7 +105,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "<Brazos>: Al finalizar la rodada, colocar la mano derecha en la cadera y levantar el brazo izquierdo hacia adelante y arriba a la corona.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m3");
+                intent.putExtra("mov","P_n1_m3");
                 startActivity(intent);
             }
         });
@@ -127,7 +127,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "<Brazos>: Permanecen envueltos frente al cuerpo (abrazo).");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m4");
+                intent.putExtra("mov","P_n1_m4");
                 startActivity(intent);
             }
         });
@@ -149,7 +149,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "Enfoque: Al frente.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m5");
+                intent.putExtra("mov","P_n1_m5");
                 startActivity(intent);
             }
         });
@@ -171,7 +171,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "<Brazos>: Abrir fluidamente para terminar en diagonal arriba a los lados.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m6");
+                intent.putExtra("mov","P_n1_m6");
                 startActivity(intent);
             }
         });
@@ -190,7 +190,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "<Brazos>: Al terminar la rodada, levantar los brazos arriba, después abrir en diagonal arriba a los lados.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m7");
+                intent.putExtra("mov","P_n1_m7");
                 startActivity(intent);
             }
         });
@@ -221,7 +221,7 @@ public class Movimientos_Piso_N1_Mg extends AppCompatActivity {
                         "4. Mantener buena alineación en el CHASSÉ AL FRENTE y el SALTO EXTENDIDO.");  // Texto de descripción
                 intent.putExtra("informacion_ayuda", "En este movimiento se recomienda trabajar sobre una linea recta al momento de realizar la vuelta de carro, asi como ayudarse con un colchon al momento de poner las manos, esto para que facilite a la gimnasta la realización del ejercicio correctamente");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON");
-                intent.putExtra("mov","n1_m8");
+                intent.putExtra("mov","P_n1_m8");
                 startActivity(intent);
             }
 

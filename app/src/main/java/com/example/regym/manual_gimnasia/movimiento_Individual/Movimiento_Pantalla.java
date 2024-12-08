@@ -402,12 +402,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         });
     }
 
-
-
-    public void ejemploMetodo() {
-        String movimiento = getIntent().getStringExtra("mov");
-    }
-
     // Función para imprimir los detalles del objeto Comentario
     private void printComentarioDetails(ApiClient.Comentario comentario) {
         Log.d("Comentario Details", "ID Usuario: " + comentario.getUsuario_id());
@@ -418,8 +412,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         Log.d("Comentario Details", "Comentario ID: " + comentario.getComentario_id());
         Log.d("Comentario Details", "Respuestas: " + comentario.getRespuestas());
     }
-
-
 
     public class ObjectIdGenerator {
         /**

@@ -83,6 +83,10 @@ public class ApiClient {
         @PUT("/api/administrador/usuarios/editar/{matriculaAux}")
         Call<Void> actualizarUsuario(@Path("matriculaAux") String matriculaAux, @Body Usuario usuario);
 
+        // Cargar comentarios "movimiento:dinamico"
+        @GET("/api/administrador/comentarios/{movimiento}/{usuarioId}")
+        Call<List<ApiClient.Comentario>> obtenerComentariosPorId(@Path("movimiento") String movimiento,@Path("usuarioId") String usuarioId);
+
 
     }
 

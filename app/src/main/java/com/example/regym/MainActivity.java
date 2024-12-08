@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.regym.administrador.Pantalla_Inicio_Administrador;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {

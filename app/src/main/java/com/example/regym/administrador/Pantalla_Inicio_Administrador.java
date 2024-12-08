@@ -1,4 +1,4 @@
-package com.example.regym;
+package com.example.regym.administrador;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.regym.ApiClient;
+import com.example.regym.Pantalla_Iniciar_Sesion;
+import com.example.regym.R;
 
 import java.util.List;
 
@@ -123,6 +127,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
         // Limpiar la tabla solo de las filas de usuarios, no el encabezado
         tablaUsuarios.removeViewsInLayout(1, tablaUsuarios.getChildCount() - 1);  // Esto elimina solo las filas y mantiene el encabezado.
 
+        Log.d("Usuarios", "Datos" + usuarios.toString());
         for (ApiClient.Usuario usuario : usuarios) {
             // Crear una nueva fila de la tabla
             TableRow fila = new TableRow(this);
@@ -170,7 +175,13 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
             ImageButton administrarComentariosBtn = new ImageButton(this);
             administrarComentariosBtn.setImageResource(R.drawable.editar_comentario);
             administrarComentariosBtn.setLayoutParams(botonesParams);
-            administrarComentariosBtn.setOnClickListener(v -> administrarComentarios(usuario.getId()));
+            administrarComentariosBtn.setOnClickListener(v -> {
+                Intent intent;
+                intent = new Intent(Pantalla_Inicio_Administrador.this, Manual_Gimansia_Comentarios.class);
+                intent.putExtra("usuarioId", usuario.getId()); // Pasar el ID del usuario
+                Log.d("usuarioId", usuario.getId());
+                startActivity(intent);
+            });
             botonesLayout.addView(administrarComentariosBtn);
 
             // Configurar el primer OnClickListener para editar
@@ -252,13 +263,13 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                 });
             });
 
-// Agregar el botón al layout
+            // Agregar el botón al layout
             botonesLayout.addView(editarBtn);
 
-// Añadir el layout de botones a la fila
+            // Añadir el layout de botones a la fila
             fila.addView(botonesLayout);
 
-// Añadir la fila a la tabla
+            // Añadir la fila a la tabla
             tablaUsuarios.addView(fila);
 
         }
@@ -325,11 +336,6 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
     }
 
 
-
-    private void administrarComentarios(String userId) {
-        Toast.makeText(this, "Administrar comentarios del usuario: " + userId, Toast.LENGTH_SHORT).show();
-        // Aquí puedes implementar la lógica para administrar comentarios
-    }
 
 
     @Override

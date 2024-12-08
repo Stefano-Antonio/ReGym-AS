@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".administrador.Comentarios_Usuario"
+            android:exported="false" />
+        <activity
+            android:name=".administrador.Manual_Gimansia_Comentarios"
+            android:exported="false" />
+        <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N5_Mg"
             android:exported="false" />
         <activity
@@ -218,7 +224,7 @@
             android:name=".Pantalla_Registrar"
             android:exported="false" />
         <activity
-            android:name=".Pantalla_Inicio_Administrador"
+            android:name=".administrador.Pantalla_Inicio_Administrador"
             android:exported="false" />
         <activity
             android:name=".Pantalla_Inicio_Atletas"
