@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".administrador.Comentarios_Usuario">
 
-
     <ImageView
         android:id="@+id/Fondo_ginda2"
         android:layout_width="634dp"
@@ -63,18 +62,17 @@
         app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
         app:layout_constraintVertical_bias="0.2" />
 
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/commentarios_seccion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Mensaje_bienvenida"
-        tools:ignore="MissingConstraints"
-        android:visibility="gone">
-        <!---->
+        tools:ignore="MissingConstraints">
 
         <!-- Contenedor para la lista de comentarios -->
         <LinearLayout
@@ -85,19 +83,15 @@
             android:padding="16dp">
 
             <!-- RecyclerView para mostrar la lista de comentarios -->
-
-            <!-- Añadir un nuevo comentario -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewComentarios"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF" />
-
-
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <ImageButton
+
+<ImageButton
         android:id="@+id/comentarios_btn"
         android:layout_width="98dp"
         android:layout_height="74dp"
@@ -108,6 +102,5 @@
         app:layout_constraintTop_toBottomOf="@+id/Fondo_ginda2"
         app:layout_constraintVertical_bias="0.048"
         app:srcCompat="@drawable/editar_comentario_doble_bk" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

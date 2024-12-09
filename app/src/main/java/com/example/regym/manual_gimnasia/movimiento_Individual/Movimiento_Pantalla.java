@@ -375,7 +375,8 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                     // Inicializa el adaptador con una lista vacía
                     SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                     String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
-                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Pantalla.this, userId);
+                    String matricula = "Z";
+                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Pantalla.this, userId, matricula);
 
                     // Asigna el adaptador al RecyclerView
                     recyclerView.setAdapter(comentarioAdapter);

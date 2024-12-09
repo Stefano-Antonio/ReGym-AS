@@ -30,6 +30,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
     private TableLayout tablaUsuarios;
     private String matriculaAUX;
     private String nombreAUX;
+    private String matriculaA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
 
         // Recuperar el tipo de usuario del Intent
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
+        matriculaA = "A";
 
         //Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
@@ -163,7 +165,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
             ImageButton eliminarBtn = new ImageButton(this);
             eliminarBtn.setImageResource(R.drawable.borrar);
             eliminarBtn.setLayoutParams(botonesParams);
-            eliminarBtn.setOnClickListener(v -> eliminarUsuario(usuario.getMatricula()));
+            eliminarBtn.setOnClickListener(v -> eliminarUsuario(usuario.getMatricula(), usuario.getId()));
             botonesLayout.addView(eliminarBtn);
 
             // Botón para editar
@@ -179,6 +181,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(Pantalla_Inicio_Administrador.this, Manual_Gimansia_Comentarios.class);
                 intent.putExtra("usuarioId", usuario.getId()); // Pasar el ID del usuario
+                intent.putExtra("matricula", (CharSequence) matriculaA);
                 Log.d("usuarioId", usuario.getId());
                 startActivity(intent);
             });
@@ -276,9 +279,9 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
     }
 
 
-    private void eliminarUsuario(String matricula) {
+    private void eliminarUsuario(String matricula, String usuarioId) {
         ApiClient.ApiService apiService = ApiClient.getApiService();
-        Call<Void> call = apiService.eliminarUsuario(matricula);
+        Call<Void> call = apiService.eliminarUsuario(matricula, usuarioId);
 
         call.enqueue(new Callback<Void>() {
             @Override

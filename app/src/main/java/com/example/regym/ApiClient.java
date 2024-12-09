@@ -76,8 +76,8 @@ public class ApiClient {
         Call<List<Usuario>> getUsuarios();
 
         // Ruta para eliminar un usuario
-        @DELETE("/api/administrador/usuarios/eliminar/{matricula}")
-        Call<Void> eliminarUsuario(@Path("matricula") String matricula);
+        @DELETE("/api/administrador/usuarios/eliminar/{matricula}/{usuarioId}")
+        Call<Void> eliminarUsuario(@Path("matricula") String matricula,  @Path("usuarioId") String usuarioId);
 
         // Método para actualizar los datos de un usuario
         @PUT("/api/administrador/usuarios/editar/{matriculaAux}")

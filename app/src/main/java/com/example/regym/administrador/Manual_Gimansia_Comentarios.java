@@ -18,6 +18,7 @@ public class Manual_Gimansia_Comentarios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manual_gimansia_comentarios);
         String usuarioId = getIntent().getStringExtra("usuarioId");
+        String matricula = getIntent().getStringExtra("matricula");
 
 //Botones
         Button Salto_btn = findViewById(R.id.Salto_btn);
@@ -36,6 +37,7 @@ public class Manual_Gimansia_Comentarios extends AppCompatActivity {
                 String ComId = "S";
                 intent.putExtra("ComId",ComId);
                 intent.putExtra("usuarioId", usuarioId);
+                intent.putExtra("matricula", matricula);
                 startActivity(intent);
             }
         });
@@ -48,6 +50,7 @@ public class Manual_Gimansia_Comentarios extends AppCompatActivity {
                 String ComId = "P";
                 intent.putExtra("ComId",ComId);
                 intent.putExtra("usuarioId", usuarioId);
+                intent.putExtra("matricula", matricula);
                 startActivity(intent);
             }
         });
@@ -60,6 +63,7 @@ public class Manual_Gimansia_Comentarios extends AppCompatActivity {
                 String ComId = "B";
                 intent.putExtra("ComId",ComId);
                 intent.putExtra("usuarioId", usuarioId);
+                intent.putExtra("matricula", matricula);
                 startActivity(intent);
             }
         });
@@ -72,6 +76,7 @@ public class Manual_Gimansia_Comentarios extends AppCompatActivity {
                 String ComId = "V";
                 intent.putExtra("ComId",ComId);
                 intent.putExtra("usuarioId", usuarioId);
+                intent.putExtra("matricula", matricula);
                 startActivity(intent);
             }
         });

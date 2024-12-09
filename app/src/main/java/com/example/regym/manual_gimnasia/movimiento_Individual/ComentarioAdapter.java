@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,19 +30,19 @@ import retrofit2.Response;
 
 public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.ComentarioViewHolder> {
     public static List<ApiClient.Comentario> comentarioList;
+    private final String matricula;
     private Movimiento_Pantalla context;
     private Context context2;
     private String UserId;
     private boolean aux;
     private String[] liked_by;
 
-    public ComentarioAdapter(List<ApiClient.Comentario> comentarioList, Movimiento_Pantalla context, String usuarioId) {
+    public ComentarioAdapter(List<ApiClient.Comentario> comentarioList, Movimiento_Pantalla context, String usuarioId, String matricula) {
         this.comentarioList = comentarioList;
         this.context = context;
         this.UserId = usuarioId;
+        this.matricula = matricula;
     }
-
-
 
     @NonNull
     @Override
@@ -50,6 +51,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
 
         return new ComentarioViewHolder(view);
     }
+
 
     //cargar contenido del comentario:
     @Override
@@ -68,16 +70,29 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             // Resto de la lógica aquí
         }
 
-        // Muestra el comentario
+        // Muestra el comentario para adinistrador
+        if (matricula.charAt(0) == 'A') {
 
-        holder.tvComentario.setText(comentario.getComentario());
+            holder.tvComentario.setText("Likes:");
 
-        // Muestra el nombre del usuario
-        if (comentario.getNombre() != null) {
-            holder.tvNombreUsuario.setText(comentario.getNombre());
-        } else {
-            holder.tvNombreUsuario.setText("Usuario desconocido"); // Fallback
+            // Muestra el nombre del usuario
+            if (comentario.getNombre() != null) {
+                holder.tvNombreUsuario.setText(comentario.getComentario());
+            } else {
+                holder.tvNombreUsuario.setText("Usuario desconocido"); // Fallback
+            }
+        }else{
+
+            holder.tvComentario.setText(comentario.getComentario());
+
+            // Muestra el nombre del usuario
+            if (comentario.getNombre() != null) {
+                holder.tvNombreUsuario.setText(comentario.getNombre());
+            } else {
+                holder.tvNombreUsuario.setText("Usuario desconocido"); // Fallback
+            }
         }
+
 
         // Muestra los likes
         holder.tvLikesCount.setText(String.valueOf(comentario.getNum_likes()));
@@ -97,7 +112,6 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         // Configurar el comportamiento del botón
         Log.e("ESTADO1:" , String.valueOf(comentario.isLiked()));
 
-
         Log.d("ComentarioAdapter", "Respuestas del comentario: " + comentario.getRespuestas().size());
 
         for (ApiClient.Respuesta respuesta : comentario.getRespuestas()) {
@@ -108,16 +122,47 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         holder.recyclerViewRespuestas.setLayoutManager(layoutManager);
 
-
         //visualizacion de eliminar y editar solo si el comentario es del mismo usuarrio:
-
         if (comentario.getUsuario_id().equals(UserId)) {
             holder.btn_Eliminar.setVisibility(View.VISIBLE);
             holder.btn_Editar.setVisibility(View.VISIBLE);
+
         } else {
             holder.btn_Eliminar.setVisibility(View.GONE);
             holder.btn_Editar.setVisibility(View.GONE);
+
+            View tvLikesCount = holder.tvLikesCount;
+            ViewGroup.LayoutParams params = tvLikesCount.getLayoutParams();
+            ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
+
+            // Modificar el margen final (marginEnd) en función de las unidades de densidad (dp)
+            int newMarginEnd = 575; // Por ejemplo, 50 píxeles (o el valor en dp convertido a px)
+            marginParams.setMarginEnd(newMarginEnd);
+
+            // Aplicar los nuevos LayoutParams al View
+            tvLikesCount.setLayoutParams(marginParams);
+
         }
+
+        //Ocultar botones al administrador:
+        if (matricula.charAt(0) == 'A') {
+            holder.btn_Responder.setVisibility(View.GONE);
+            holder.btn_Editar.setVisibility(View.GONE);
+            holder.bntlike.setVisibility(View.GONE);
+            holder.btn_Respuestas.setVisibility(View.GONE);
+
+            View tvLikesCount = holder.tvLikesCount;
+            ViewGroup.LayoutParams params = tvLikesCount.getLayoutParams();
+            ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
+
+            // Modificar el margen final (marginEnd) en función de las unidades de densidad (dp)
+            int newMarginEnd = 750; // Por ejemplo, 50 píxeles (o el valor en dp convertido a px)
+            marginParams.setMarginEnd(newMarginEnd);
+
+            // Aplicar los nuevos LayoutParams al View
+            tvLikesCount.setLayoutParams(marginParams);
+        }
+
 //respuestas
 
         holder.btn_Respuestas.setOnClickListener(v -> {
@@ -132,7 +177,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             }
         });
 
-        RespuestaAdapter respuestaAdapter = new RespuestaAdapter(comentario.getRespuestas(), context);
+        RespuestaAdapter respuestaAdapter = new RespuestaAdapter(comentario.getRespuestas(), context, UserId, comentario.getUsuario_id());
         holder.recyclerViewRespuestas.setAdapter(respuestaAdapter);
         respuestaAdapter.notifyDataSetChanged();
 
@@ -163,7 +208,6 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                     holder.tvLikesCount.setVisibility(View.VISIBLE);
 
                     holder.escribirRespuesta.setVisibility(View.GONE);
-                    Toast.makeText(context, "Error de conexion, comentario no realizado.", Toast.LENGTH_SHORT).show();
 
                     // Crear el objeto de la solicitud
                     ApiClient.ResponderComentarioRequest request = new ApiClient.ResponderComentarioRequest(
@@ -413,6 +457,8 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             }
 
         });
+
+
     }
 
     @Override
@@ -432,6 +478,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         ImageButton btn_Respuestas;
         RecyclerView recyclerViewRespuestas;
         EditText escribirRespuesta;
+        LinearLayout likeSection;
 
         public ComentarioViewHolder(View itemView) {
             super(itemView);
@@ -446,6 +493,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             recyclerViewRespuestas = itemView.findViewById(R.id.recyclerViewRespuestas);
             escribirRespuesta = itemView.findViewById(R.id.escribirRespuesta);
             btn_Respuestas = itemView.findViewById(R.id.btn_Respuestas);
+            likeSection = itemView.findViewById(R.id.likeSection);
         }
     }
     // Método para actualizar la lista de comentarios

@@ -42,6 +42,8 @@ public class Comentarios_Usuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.comentarios_usuario);
         String usuarioId = getIntent().getStringExtra("usuarioId");
+        String matricula = getIntent().getStringExtra("matricula");
+
 
 //botones, scrolls, editTexts
 
@@ -62,7 +64,7 @@ public class Comentarios_Usuario extends AppCompatActivity {
                     comentariosVisible = true; // Actualiza el estado a visible
 
                     // Llama al método para mostrar los comentarios
-                    mostrarComentarios(getIntent().getStringExtra("ComId"));
+                    mostrarComentarios(getIntent().getStringExtra("ComId"), matricula);
                 } else {
                     // Oculta la sección de comentarios
                     Comentarios_seccion.setVisibility(View.GONE);
@@ -92,7 +94,7 @@ public class Comentarios_Usuario extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void mostrarComentarios(String movimientoId) {
+    public void mostrarComentarios(String movimientoId, String matricula) {
         String userId = getIntent().getStringExtra("usuarioId");
 
         Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorId(movimientoId, userId);
@@ -116,14 +118,20 @@ public class Comentarios_Usuario extends AppCompatActivity {
                         }
                     }
 
-//Guardar lista de likes:
                     RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
                     recyclerView.setLayoutManager(new LinearLayoutManager( Comentarios_Usuario.this));
 
                     // Inicializa el adaptador con una lista vacía
                     SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                     String usuarioId = getIntent().getStringExtra("usuarioId");
-                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Comentarios_Usuario.context, usuarioId);
+
+                   /* Collections.sort(listaComentariosEnMemoria, new Comparator<ApiClient.Comentario>() {
+                        @Override
+                        public int compare(ApiClient.Comentario u1, ApiClient.Comentario u2) {
+                            return u1.getNombre().compareTo(u2.getNombre()); // Comparar por el nombre
+                        }
+                    });*/
+                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Comentarios_Usuario.context, usuarioId, matricula);
 
                     // Asigna el adaptador al RecyclerView
                     recyclerView.setAdapter(comentarioAdapter);

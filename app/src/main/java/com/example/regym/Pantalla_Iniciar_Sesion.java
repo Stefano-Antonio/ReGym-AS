@@ -31,6 +31,8 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
 
     private EditText correoEditText, passwordEditText;
     private String correo,password;
+    private String matricula;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +121,8 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null) {
 
-                    String responseBodyString = null;
+                    String responseBodyString = String.valueOf(response.body());
+                    Log.d("API_REhSPONSE", responseBodyString);
                     try {
 
                         responseBodyString = response.body().string();
@@ -156,6 +159,7 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
                             intent.putExtra("tipoUsuario", tipoUsuario);
                             intent.putExtra("userId", userId);
                             intent.putExtra("nombre", nombre);
+                            intent.putExtra("matricula", matricula);
 
                             //Guardar los datos en SharedPreferences
                             SharedPreferences usuarioDatos = getSharedPreferences("DatosUsuario", MODE_PRIVATE);

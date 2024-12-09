@@ -25,10 +25,14 @@ public class RespuestaAdapter extends RecyclerView.Adapter<RespuestaAdapter.Resp
 
     private final Movimiento_Pantalla context;
     private List<ApiClient.Respuesta> respuestas; // Cambiado a List<Respuesta> en lugar de List<Comentario>
+    private String usuarioId;
+    private String comentarioId;
     
-    public RespuestaAdapter(List<ApiClient.Respuesta> respuestas, Movimiento_Pantalla context) {
+    public RespuestaAdapter(List<ApiClient.Respuesta> respuestas, Movimiento_Pantalla context, String usuarioId, String comentarioId) {
         this.respuestas = respuestas;
         this.context = context;
+        this.usuarioId = usuarioId;
+        this.comentarioId = comentarioId;
     }
 
     @Override
@@ -43,6 +47,15 @@ public class RespuestaAdapter extends RecyclerView.Adapter<RespuestaAdapter.Resp
         Log.d("ComentarioAdapter", "Cargando respuesta: " + respuesta.getRespuesta());  // Verifica el texto de la respuesta
         holder.tvRespuesta.setText(respuesta.getRespuesta()); // Asumiendo que tienes un método getRespuesta() que devuelve el texto de la respuesta
         holder.tvNombreUsuarioRespuesta.setText(respuesta.getNombre());
+
+    Log.d("RespuestaAdapter", "Comentario ID: " + comentarioId);
+    Log.d("RespuestaAdapter", "Usuario ID: " + usuarioId);
+    Log.d("RespuestaAdapter", "Respuesta ID: " + respuesta.getUsuario_id());
+
+        if (!respuesta.getUsuario_id().equals(usuarioId)) {
+
+            holder.btn_Eliminar_Respuesta.setVisibility(View.GONE);
+        }
 
 
 //Eliminar Respuesta
