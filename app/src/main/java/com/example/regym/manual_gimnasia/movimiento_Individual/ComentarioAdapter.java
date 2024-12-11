@@ -169,17 +169,18 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             if (holder.recyclerViewRespuestas.getVisibility() == View.GONE) {
                 holder.recyclerViewRespuestas.setVisibility(View.VISIBLE);
                 holder.btn_Respuestas.setImageResource(R.drawable.flecha_arriba); // Cambiar el ícono a "responder"
+                RespuestaAdapter respuestaAdapter = new RespuestaAdapter(comentario.getRespuestas(), context, UserId, comentario.getComentario_id());
+                holder.recyclerViewRespuestas.setAdapter(respuestaAdapter);
+                respuestaAdapter.notifyDataSetChanged();
             }else{
                 holder.btn_Respuestas.setImageResource(R.drawable.flecha_abajo); // Cambiar el ícono a "responder"
-
                 holder.recyclerViewRespuestas.setVisibility(View.GONE);
+
 
             }
         });
 
-        RespuestaAdapter respuestaAdapter = new RespuestaAdapter(comentario.getRespuestas(), context, UserId, comentario.getUsuario_id());
-        holder.recyclerViewRespuestas.setAdapter(respuestaAdapter);
-        respuestaAdapter.notifyDataSetChanged();
+
 
 
         holder.btn_Responder.setOnClickListener(v -> {
@@ -197,7 +198,6 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             } else {
                 String respuesta = holder.escribirRespuesta.getText().toString().trim();
 
-
                 if (respuesta.isEmpty()) {
                     Toast.makeText(context, "La respuesta no puede estar vacía.", Toast.LENGTH_SHORT).show();
                     return;
@@ -206,12 +206,16 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                     holder.btn_Respuestas.setVisibility(View.VISIBLE);
                     holder.bntlike.setVisibility(View.VISIBLE);
                     holder.tvLikesCount.setVisibility(View.VISIBLE);
-
                     holder.escribirRespuesta.setVisibility(View.GONE);
 
                     // Crear el objeto de la solicitud
+                    String respuesta_id= "";
+                    String nombre= "";
+
                     ApiClient.ResponderComentarioRequest request = new ApiClient.ResponderComentarioRequest(
+                            respuesta_id,
                             UserId,
+                            nombre,
                             respuesta,
                             comentario.getComentario_id()
                     );
@@ -222,7 +226,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                         public void onResponse(Call<ApiClient.Respuesta> call, Response<ApiClient.Respuesta> response) {
                             if (response.isSuccessful() && response.body() != null) {
                                 ApiClient.Respuesta nuevaRespuesta = response.body();
-
+                                Log.e("Respuesta de entrada","respuesta:"+response.body());
                                 // Agregar la nueva respuesta a la lista
                                 comentario.getRespuestas().add(nuevaRespuesta); // Agregar la nueva respuesta a la lista
                                 comentario.setLiked(comentario.isLiked());
@@ -317,49 +321,49 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
 
 //Configurar el botón de eliminar
        holder.btn_Eliminar.setOnClickListener(v -> {
-                                // Llamar a la función para eliminar el comentario
-                                    new AlertDialog.Builder(context)
-                                        .setTitle("Eliminar respuesta")
-                                        .setMessage("¿Estás seguro de que deseas eliminar este comentario?")
-                                         .setPositiveButton("Eliminar", (dialog, which) -> {
+            // Llamar a la función para eliminar el comentario
+                new AlertDialog.Builder(context)
+                    .setTitle("Eliminar respuesta")
+                    .setMessage("¿Estás seguro de que deseas eliminar este comentario?")
+                     .setPositiveButton("Eliminar", (dialog, which) -> {
 
-                                                    ApiClient.getApiService().eliminarComentario(comentario.getComentario_id()).enqueue(new Callback<Void>() {
-                                    @Override
-                                    public void onResponse(Call<Void> call, Response<Void> response) {
-                                        if (response.isSuccessful()) {
-                                            // Eliminar el comentario de la lista local
-                                            if (position >= 0 && position < comentarioList.size()) {
-                                                // Eliminar el comentario en la posición dada
-                                                comentarioList.remove(position);
-                                                notifyItemRemoved(position);
+                                ApiClient.getApiService().eliminarComentario(comentario.getComentario_id()).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        // Eliminar el comentario de la lista local
+                        if (position >= 0 && position < comentarioList.size()) {
+                            // Eliminar el comentario en la posición dada
+                            comentarioList.remove(position);
+                            notifyItemRemoved(position);
 
-                                                // Verificar si la lista está vacía después de eliminar
-                                                if (comentarioList.isEmpty()) {
-                                                    // Si la lista está vacía, puedes actualizar la UI para reflejar esto
-                                                    notifyDataSetChanged(); // Refresca completamente el adaptador
-                                                } else {
-                                                    // Si hay elementos restantes, actualiza los índices del RecyclerView
-                                                    notifyItemRangeChanged(position, comentarioList.size() - position);
-                                                }
-                                            } else {
-                                                Log.e("ComentarioAdapter", "Posición fuera de rango o lista vacía. Posición: " + position);
-                                            }
+                            // Verificar si la lista está vacía después de eliminar
+                            if (comentarioList.isEmpty()) {
+                                // Si la lista está vacía, puedes actualizar la UI para reflejar esto
+                                notifyDataSetChanged(); // Refresca completamente el adaptador
+                            } else {
+                                // Si hay elementos restantes, actualiza los índices del RecyclerView
+                                notifyItemRangeChanged(position, comentarioList.size() - position);
+                            }
+                        } else {
+                            Log.e("ComentarioAdapter", "Posición fuera de rango o lista vacía. Posición: " + position);
+                        }
 
-                                        } else {
-                                            Log.e("ComentarioAdapter", "Intento de acceso a una posición inválida: " + position);
+                    } else {
+                        Log.e("ComentarioAdapter", "Intento de acceso a una posición inválida: " + position);
 
-                                        }
-                                    }
+                    }
+                }
 
-                                    @Override
-                                    public void onFailure(Call<Void> call, Throwable t) {
-                                    }
-                                });
-                                         })
-                                            .setNegativeButton("Cancelar", null)
-                                            .show();
-                                Toast.makeText(context, "Comentario eliminado", Toast.LENGTH_SHORT).show();
-                            });
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                }
+            });
+                     })
+                        .setNegativeButton("Cancelar", null)
+                        .show();
+            Toast.makeText(context, "Comentario eliminado", Toast.LENGTH_SHORT).show();
+       });
 
 
 

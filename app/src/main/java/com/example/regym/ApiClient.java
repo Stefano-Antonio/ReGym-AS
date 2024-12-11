@@ -199,7 +199,7 @@ public class ApiClient {
             this.movimiento = movimiento;
             this.comentario_id = comentario_id;
             this.num_likes = num_likes;
-            this.respuestas = new ArrayList<>();
+            this.respuestas = (respuestas != null) ? respuestas : new ArrayList<>();
         }
 
         public String getUsuario_id() {
@@ -352,12 +352,17 @@ public class ApiClient {
     }
 //Constructor de ResponderComentarioRequest
     public static class ResponderComentarioRequest {
+
+        private String respuesta_id;
         private String usuario_id;
+        private String nombre;
         private String respuesta;
         private String comentario_id;
 
-        public ResponderComentarioRequest(String usuario_id, String respuesta, String comentario_id) {
+        public ResponderComentarioRequest(String respuesta_id, String usuario_id, String nombre, String respuesta, String comentario_id) {
+            this.respuesta_id = respuesta_id;
             this.usuario_id = usuario_id;
+            this.nombre = nombre;
             this.respuesta = respuesta;
             this.comentario_id = comentario_id;
         }
@@ -371,7 +376,8 @@ public class ApiClient {
         private String respuesta;    // Texto de la respuesta
         private String comentario_id;
 
-        public Respuesta(String usuario_id, String nombre, String respuesta, String comentario_id) {
+        public Respuesta(String respuesta_id, String usuario_id, String nombre, String respuesta, String comentario_id) {
+            this.respuesta_id = respuesta_id;
             this.usuario_id = usuario_id;
             this.nombre = nombre;
             this.respuesta = respuesta;
@@ -406,17 +412,20 @@ public class ApiClient {
             return comentario_id;
         }
 
-        public void setComentario_id(String comentario_id) {
-            this.comentario_id = comentario_id;
-        }
+        public void setComentario_id(String comentario_id) {this.comentario_id = comentario_id;}
 
         public String getRespuesta_id() {return respuesta_id;}
+
+        public void setRespuesta_id(String respuesta_id) {this.respuesta_id = respuesta_id;}
 
         @Override
         public String toString() {
             return "Respuesta{" +
+                    "resouestasid:" + respuesta_id + '\'' +
+                    "usuarioId:" + usuario_id + '\'' +
+                    "nombre='" + nombre + '\'' +
                     "respuesta='" + respuesta + '\'' +
-                    ", nombre='" + nombre + '\'' +
+                    "comentarioId:" + comentario_id + '\'' +
                     '}';
         }
     }

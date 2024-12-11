@@ -365,10 +365,16 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                         Log.d("COMENTARIOS", "Comentario ID: " + comentario.getComentario_id());
                         for (ApiClient.Respuesta respuesta : comentario.getRespuestas()) {
                             Log.d("COMENTARIOS", "Respuesta ID: " + respuesta.getRespuesta_id());
+                            Log.d("usuarioId", "usuarioId : " + respuesta.getUsuario_id());
+                            Log.d("nombre", "nombre : " + respuesta.getNombre());
+                            Log.d("respuesta", "respuesta : " + respuesta.getRespuesta());
+                            Log.d("comentario_id", "comentario_id : " + respuesta.getComentario_id());
+
+
                         }
                     }
 
-//Guardar lista de likes:
+                    //Guardar lista de likes:
                     RecyclerView recyclerView = findViewById(R.id.recyclerViewComentarios);
                     recyclerView.setLayoutManager(new LinearLayoutManager( Movimiento_Pantalla.this));
 
@@ -376,14 +382,27 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                     SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                     String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
                     String matricula = "Z";
-                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Pantalla.this, userId, matricula);
-
-                    // Asigna el adaptador al RecyclerView
-                    recyclerView.setAdapter(comentarioAdapter);
 
                     // Limpia y actualiza la lista en memoria
                     listaComentariosEnMemoria.clear();
                     listaComentariosEnMemoria.addAll(comentariosDelBackend);
+
+                    comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Pantalla.this, userId, matricula);
+
+                    // Asigna el adaptador al RecyclerView
+                    recyclerView.setAdapter(comentarioAdapter);
+                    // Imprimir los comentarios y sus respuestas
+                    for (ApiClient.Comentario comentario : listaComentariosEnMemoria) {
+                        Log.d("COMENTARIO", "Comentario ID: " + comentario.getComentario_id());
+                        Log.d("COMENTARIO", "Comentario: " + comentario.getComentario());
+
+                        // Imprimir las respuestas asociadas
+                        for (ApiClient.Respuesta respuesta : comentario.getRespuestas()) {
+                            Log.d("RESPUESTA", "Respuesta ID: " + respuesta.getRespuesta_id());
+                            Log.d("RESPUESTA", "Respuesta: " + respuesta.getRespuesta());
+                        }
+                    }
+
 
                     // Notifica al adaptador que los datos han cambiado
                     comentarioAdapter.notifyDataSetChanged();

@@ -50,20 +50,19 @@ public class RespuestaAdapter extends RecyclerView.Adapter<RespuestaAdapter.Resp
 
     Log.d("RespuestaAdapter", "Comentario ID: " + comentarioId);
     Log.d("RespuestaAdapter", "Usuario ID: " + usuarioId);
-    Log.d("RespuestaAdapter", "Respuesta ID: " + respuesta.getUsuario_id());
+    Log.d("RespuestaAdapter", "Respuesta ID: " + respuesta);
 
-        if (!respuesta.getUsuario_id().equals(usuarioId)) {
+        if (respuesta.getUsuario_id() != null &&!respuesta.getUsuario_id().equals(usuarioId)) {
 
             holder.btn_Eliminar_Respuesta.setVisibility(View.GONE);
         }
 
 
 //Eliminar Respuesta
+
         holder.btn_Eliminar_Respuesta.setOnClickListener(v -> {
-            String comentarioId = respuestas.get(position).getComentario_id(); // ID del comentario
-            String respuestaId = respuestas.get(position).getRespuesta_id(); // ID de la respuesta
-            Log.d("RespuestaAdapter", "Comentario ID: " + comentarioId);
-            Log.d("RespuestaAdapter", "Respuesta ID: " + respuestaId);
+            Log.d("RespuestaAdapter2", "Comentario ID: " + comentarioId);
+            Log.d("RespuestaAdapter2", "Respuesta ID: " + respuesta.getRespuesta_id());
 
             // Mostrar un diálogo de confirmación
             new AlertDialog.Builder(context)
@@ -71,7 +70,7 @@ public class RespuestaAdapter extends RecyclerView.Adapter<RespuestaAdapter.Resp
                     .setMessage("¿Estás seguro de que deseas eliminar esta respuesta?")
                     .setPositiveButton("Eliminar", (dialog, which) -> {
                         // Llamada a la API para eliminar la respuesta
-                        ApiClient.getApiService().eliminarRespuesta(comentarioId, respuestaId).enqueue(new Callback<Void>() {
+                        ApiClient.getApiService().eliminarRespuesta(comentarioId, respuesta.getRespuesta_id()).enqueue(new Callback<Void>() {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
                                         if (response.isSuccessful()) {

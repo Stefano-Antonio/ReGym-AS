@@ -3,6 +3,7 @@ package com.example.regym;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +46,9 @@ public class Pantalla_Registrar extends AppCompatActivity {
         matriculaEditText = findViewById(R.id.Matricula_contenedor);
         passwordEditText = findViewById(R.id.Constraseña_contenedor);
         passwordEditText2 = findViewById(R.id.Constraseña2_contenedor);
+        SharedPreferences matriculasDisponibles = getSharedPreferences("matriculas", MODE_PRIVATE);
+        // Recuperamos la lista de matrículas disponibles
+        Set<String> matriculas = matriculasDisponibles.getStringSet("matriculas_disponibles", new HashSet<>());
 
 
         //Funcion de icono ojo en contenedor contraseña
@@ -113,7 +119,21 @@ public class Pantalla_Registrar extends AppCompatActivity {
 
                     String nombre = nombreEditText.getText().toString();
                     String correo = correoEditText.getText().toString();
-                    String matricula = matriculaEditText.getText().toString();
+                    String matricula = matriculaEditText.getText().toString();//matricula
+                    SharedPreferences sharedPreferences = getSharedPreferences("matriculas", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    // Suponiendo que matriculaDisponible es la matrícula que quieres guardar
+                    String matriculaDisponible = "12345";
+
+                    // Recuperamos la lista de matrículas disponibles (si existe)
+                    Set<String> matriculas = sharedPreferences.getStringSet("matriculas_disponibles", new HashSet<>());
+                    matriculas.add(matriculaDisponible);
+
+                    // Guardamos la lista actualizada
+                    editor.putStringSet("matriculas_disponibles", matriculas);
+                    editor.apply();
+
                     String password = passwordEditText.getText().toString();
 
                     ApiClient.Usuario usuario1 = new ApiClient.Usuario(id, nombre, correo, matricula, password);
@@ -125,7 +145,12 @@ public class Pantalla_Registrar extends AppCompatActivity {
                         throw new RuntimeException(e);
                     }
                     if (x == 1) {
-                        registrarUsuario(usuario1);
+                        if (matriculas.contains(matriculas)) {
+                            registrarUsuario(usuario1);
+                        }else {
+                            // La matrícula no está disponible, muestra un mensaje al usuario
+                            Toast.makeText(getApplicationContext(), "La matrícula no está disponible.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else{
                         Toast.makeText(getApplicationContext(), "La matricula tienen un formato incorrecto", Toast.LENGTH_LONG).show();
@@ -144,6 +169,16 @@ public class Pantalla_Registrar extends AppCompatActivity {
 
 //Funcion Registrar usuario
     private void registrarUsuario(ApiClient.Usuario user){
+
+        EditText etMatricula = findViewById(R.id.Matricula_contenedor);
+        String matriculaBusqueda = etMatricula.getText().toString().trim();
+
+        // Recuperar la lista de matrículas disponibles
+        SharedPreferences sharedPreferences = getSharedPreferences("matriculas", MODE_PRIVATE);
+        Set<String> matriculas = sharedPreferences.getStringSet("matriculas_disponibles", new HashSet<>());
+
+        // Eliminar la matrícula de las disponibles después de registrarse
+        matriculas.remove(matriculaBusqueda);
 
         ApiClient.ApiService apiService = ApiClient.getApiService();
         Call<ApiClient.Usuario> call = apiService.crearUsuario(user);

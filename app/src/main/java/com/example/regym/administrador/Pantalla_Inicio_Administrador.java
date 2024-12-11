@@ -1,6 +1,7 @@
 package com.example.regym.administrador;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +21,10 @@ import com.example.regym.ApiClient;
 import com.example.regym.Pantalla_Iniciar_Sesion;
 import com.example.regym.R;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +52,23 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
         String tipoUsuario = getIntent().getStringExtra("tipoUsuario");
         matriculaA = "A";
 
+
+        //matricula
+        SharedPreferences sharedPreferences = getSharedPreferences("matriculas", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Suponiendo que matriculaDisponible es la matrícula que quieres guardar
+        String matriculaDisponible = "A100";
+
+        // Recuperamos la lista de matrículas disponibles (si existe)
+        Set<String> matriculas = sharedPreferences.getStringSet("matriculas_disponibles", new HashSet<>());
+        matriculas.add(matriculaDisponible);
+
+        // Guardamos la lista actualizada
+        editor.putStringSet("matriculas_disponibles", matriculas);
+        editor.apply();
+
+
         //Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
         ImageButton eliminar_usuario_btn = findViewById(R.id.eliminar_usuario_btn);
@@ -55,6 +76,19 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
         ImageButton editar_usuario_btn = findViewById(R.id.editar_usuario_btn);
         ImageButton administrar_matriculas_btn = findViewById(R.id.administrar_matriculas_btn);
 
+        EditText etBuscarMatricula = findViewById(R.id.buscar_usuario_input);
+        ImageButton btnBuscar = findViewById(R.id.buscar_usuario_btn);
+
+
+
+        //Boton buscar por matricula
+        btnBuscar.setOnClickListener(v -> {
+
+            String matriculaBusqueda = etBuscarMatricula.getText().toString().trim();
+            buscarUsuarioPorMatricula(matriculaBusqueda);
+            btnBuscar.setImageResource(R.drawable.responder); // Cambia la imagen del botón
+            etBuscarMatricula.setText("");
+        });
 
 
         //Boton regresar
@@ -276,6 +310,59 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
             tablaUsuarios.addView(fila);
 
         }
+    }
+
+    private void buscarUsuarioPorMatricula(String matriculaBusqueda) {
+        ApiClient.ApiService apiService = ApiClient.getApiService();
+        Call<List<ApiClient.Usuario>> call = apiService.getUsuarios();
+
+        call.enqueue(new Callback<List<ApiClient.Usuario>>() {
+            @Override
+            public void onResponse(Call<List<ApiClient.Usuario>> call, Response<List<ApiClient.Usuario>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Filtrar la lista de usuarios por matrícula
+                    List<ApiClient.Usuario> usuariosFiltrados = new ArrayList<>();
+                    for (ApiClient.Usuario usuario : response.body()) {
+
+                        if (usuario.getMatricula().equalsIgnoreCase(matriculaBusqueda)) {
+                            usuariosFiltrados.add(usuario);
+
+                        }
+                    }
+
+                    if (usuariosFiltrados.isEmpty()) {
+
+                        EditText etBuscarMatricula = findViewById(R.id.buscar_usuario_input);
+                        ImageButton btnBuscar = findViewById(R.id.buscar_usuario_btn);
+                        btnBuscar.setImageResource(R.drawable.responder); // Cambia la imagen del botón
+                        List<ApiClient.Usuario> usuarios = response.body();
+                        mostrarUsuariosEnTabla(usuarios);
+                        btnBuscar.setImageResource(R.drawable.buscar); // Cambia la imagen del botón
+
+                        if (etBuscarMatricula.getText().toString().trim().isEmpty()) {
+                            Toast.makeText(
+                                    Pantalla_Inicio_Administrador.this,
+                                    "Recarga/Incorrecto",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    } else {
+                        // Mostrar los usuarios encontrados en la tabla
+
+                        mostrarUsuariosEnTabla(usuariosFiltrados);
+                    }
+
+                } else {
+                    Toast.makeText(Pantalla_Inicio_Administrador.this, "Error al cargar usuarios", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ApiClient.Usuario>> call, Throwable t) {
+                Toast.makeText(Pantalla_Inicio_Administrador.this, "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

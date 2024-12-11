@@ -45,9 +45,9 @@ public class Comentarios_Usuario extends AppCompatActivity {
         String matricula = getIntent().getStringExtra("matricula");
 
 
-//botones, scrolls, editTexts
-
+        //botones, scrolls, editTexts
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
+
         //comentarios
         NestedScrollView Comentarios_seccion = findViewById(R.id.commentarios_seccion);
         ImageButton btn_comentarios = findViewById(R.id.comentarios_btn);
@@ -83,6 +83,7 @@ public class Comentarios_Usuario extends AppCompatActivity {
 
                 Intent intent = new Intent(Comentarios_Usuario.this, Manual_Gimansia_Comentarios.class);
                 intent.putExtra("usuarioId", usuarioId);
+                intent.putExtra("matricula", matricula);
                 startActivity(intent);
             }
         });
