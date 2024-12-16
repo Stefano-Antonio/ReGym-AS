@@ -235,7 +235,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                                 Toast.makeText(context, "Respuesta agregada con éxito.", Toast.LENGTH_SHORT).show();
 
                                 // Mantén el estado de isLiked y num_likes del comentario
-                                holder.bntlike.setImageResource(!comentario.isLiked() ? R.drawable.likebck : R.drawable.like);
+                                holder.bntlike.setImageResource(comentario.isLiked() ? R.drawable.likebck : R.drawable.like);
 
                                 // Resetear el botón y ocultar el campo de texto
                                 holder.escribirRespuesta.setText("");
@@ -322,12 +322,12 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
 //Configurar el botón de eliminar
        holder.btn_Eliminar.setOnClickListener(v -> {
             // Llamar a la función para eliminar el comentario
-                new AlertDialog.Builder(context)
+                new AlertDialog.Builder(holder.itemView.getContext())
                     .setTitle("Eliminar respuesta")
                     .setMessage("¿Estás seguro de que deseas eliminar este comentario?")
                      .setPositiveButton("Eliminar", (dialog, which) -> {
 
-                                ApiClient.getApiService().eliminarComentario(comentario.getComentario_id()).enqueue(new Callback<Void>() {
+                ApiClient.getApiService().eliminarComentario(comentario.getComentario_id()).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
@@ -362,7 +362,8 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                      })
                         .setNegativeButton("Cancelar", null)
                         .show();
-            Toast.makeText(context, "Comentario eliminado", Toast.LENGTH_SHORT).show();
+           Toast.makeText(holder.itemView.getContext(), "Comentario eliminado", Toast.LENGTH_SHORT).show();
+
        });
 
 

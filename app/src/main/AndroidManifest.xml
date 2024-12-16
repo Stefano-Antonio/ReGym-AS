@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".generacion_rutina.movimientos_piso_gr.Rutina_Generada_Piso_Guardar"
+            android:exported="false" />
+        <activity
             android:name=".administrador.Comentarios_Usuario"
             android:exported="false" />
         <activity
@@ -175,9 +178,6 @@
             android:name=".manual_gimnasia.Mostrar_Niveles_Salto_Mg"
             android:exported="false" />
         <activity
-            android:name=".manual_gimnasia.movimientos_salto_mg.movimientos_individuales.movimientos_salto_n1_mg.Movimiento_Salto_N1_No1_Mg"
-            android:exported="false" />
-        <activity
             android:name=".manual_gimnasia.movimientos_viga_mg.Movimientos_Viga_N1_Mg"
             android:exported="false" />
         <activity
@@ -185,12 +185,6 @@
             android:exported="false" />
         <activity
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N1_Mg"
-            android:exported="false" />
-        <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No3_Mg"
-            android:exported="false" />
-        <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.movimientos_Individuales.movimientos_piso_n1_mg.Movimiento_Piso_No2_Mg"
             android:exported="false" />
         <activity
             android:name=".manual_gimnasia.movimiento_Individual.Movimiento_Pantalla"
@@ -210,9 +204,6 @@
             android:exported="false" />
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N2_Mg"
-            android:exported="false" />
-        <activity
-            android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N5_Mg"
             android:exported="false" />
         <activity
             android:name=".manual_gimnasia.Mostrar_Niveles_Piso_Mg"

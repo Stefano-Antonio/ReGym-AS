@@ -17,12 +17,12 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiClient {
-   // private static final String BASE_URL = "http://1192.168.96.233:4000/"; // Cambiar a la URL del backend
+    //private static final String BASE_URL = "http://192.168.137.199:4000/"; // Cambiar a la URL del backend
     private static final String BASE_URL = "http://10.0.2.2:4000/";
     private static Retrofit retrofit;
     private static ApiService apiService;
-
     public interface ApiService {
+
 //Usuarios:
 
         // Registrar un usuario
@@ -79,15 +79,29 @@ public class ApiClient {
         @DELETE("/api/administrador/usuarios/eliminar/{matricula}/{usuarioId}")
         Call<Void> eliminarUsuario(@Path("matricula") String matricula,  @Path("usuarioId") String usuarioId);
 
-        // Método para actualizar los datos de un usuario
-        @PUT("/api/administrador/usuarios/editar/{matriculaAux}")
-        Call<Void> actualizarUsuario(@Path("matriculaAux") String matriculaAux, @Body Usuario usuario);
+        // Ruta para editar usuarios dede el administrador:
+        @PUT("/api/administrador/usuarios/editar/{matriculaAux}/{matricula}/{nombre}")
+        Call<Void> actualizarUsuario(@Path("matriculaAux") String matriculaAux,@Path("matricula") String matricula, @Path("nombre") String nombre);
 
         // Cargar comentarios "movimiento:dinamico"
         @GET("/api/administrador/comentarios/{movimiento}/{usuarioId}")
         Call<List<ApiClient.Comentario>> obtenerComentariosPorId(@Path("movimiento") String movimiento,@Path("usuarioId") String usuarioId);
 
+        //0btener de matriculas:
+        @GET("/api/administrador/matriculas")
+        Call<RespuestaMatriculas> obtenerMatriculas();
 
+        //Guardar matricula
+        @POST("/api/administrador/matriculas/{matricula}")
+        Call<RespuestaMatriculas> agregarMatricula(@Path("matricula") String matricula);
+
+        //Eiminar matricula
+        @DELETE("eliminarMatricula/{matricula}")
+        Call<Void> eliminarMatricula(@Path("matricula") String matricula);
+
+        // Ruta para obtener comentarios eliminados
+        @GET("/api/administrador/comentarioseliminados")
+        Call<List<ApiClient.Comentario>> obtenerComentariosEliminados();
     }
 
     // Método estático para obtener el cliente Retrofit
@@ -119,15 +133,15 @@ public class ApiClient {
         private String nombre;
         private String correo;
         private String matricula;
-        private String password;
+        private String contraseña;
 
-        public Usuario(String id, String nombre,String correo, String matricula , String password) {
+        public Usuario(String id, String nombre,String correo, String matricula , String contraseña) {
 
             this.id = id;
             this.nombre = nombre;
             this.correo = correo;
             this.matricula = matricula;
-            this.password = password;
+            this.contraseña = contraseña;
         }
 
 
@@ -160,11 +174,11 @@ public class ApiClient {
         }
 
         public String getPassword() {
-            return password;
+            return contraseña;
         }
 
-        public void setPassword(String password) {
-            this.password = password;
+        public void setPassword(String contraseña) {
+            this.contraseña = contraseña;
         }
 
         @Override
@@ -174,7 +188,7 @@ public class ApiClient {
                     ", nombre='" + nombre + '\'' +
                     ", correo='" + correo + '\'' +
                     ", matricula='" + matricula + '\'' +
-                    ", password='" + password + '\'' +
+                    ", contraseña='" + contraseña + '\'' +
                     '}';
         }
     }
@@ -427,6 +441,27 @@ public class ApiClient {
                     "respuesta='" + respuesta + '\'' +
                     "comentarioId:" + comentario_id + '\'' +
                     '}';
+        }
+    }
+
+    public class RespuestaMatriculas {
+        private String mensaje;
+        private List<String> matriculas;
+
+        public String getMensaje() {
+            return mensaje;
+        }
+
+        public void setMensaje(String mensaje) {
+            this.mensaje = mensaje;
+        }
+
+        public List<String> getMatriculas() {
+            return matriculas;
+        }
+
+        public void setMatriculas(List<String> matriculas) {
+            this.matriculas = matriculas;
         }
     }
 

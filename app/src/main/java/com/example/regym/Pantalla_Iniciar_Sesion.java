@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
 
     private EditText correoEditText, passwordEditText;
-    private String correo,password;
+    private String correo,contraseña;
     private String matricula;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -93,8 +93,8 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
             public void onClick(View v) {
 
                 correo = correoEditText.getText().toString();
-                password = passwordEditText.getText().toString();
-                iniciarSesion(correo, password);
+                contraseña = passwordEditText.getText().toString();
+                iniciarSesion(correo, contraseña);
             }
         });
 //Boton recuperar contraseña
@@ -111,11 +111,11 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
         });
     }
 //Inicio de sesión
-    private void iniciarSesion(String correo, String password) {
+    private void iniciarSesion(String correo, String contraseña) {
         HashMap<String, String> datosUsuario = new HashMap<>();
         datosUsuario.put("correo", correo);
-        datosUsuario.put("password", password);
-
+        datosUsuario.put("contraseña", contraseña);
+        Log.d("API_REQUEST", datosUsuario.toString());
         ApiClient.getApiService().iniciarSesion(datosUsuario).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

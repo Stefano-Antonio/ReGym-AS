@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#781005"
-                    android:hint="Buscar por matrícula"
+                    android:hint="Buscar por matrícula/nombre"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
