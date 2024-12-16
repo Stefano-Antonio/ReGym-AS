@@ -264,16 +264,10 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
 
             // Configurar el primer OnClickListener para editar
             editarBtn.setOnClickListener(v -> {
-                matricula.setVisibility(View.GONE);
                 nombre.setVisibility(View.GONE);
 
-                fila.removeView(matricula);
                 fila.removeView(nombre);
 
-                EditText matriculaEdit = new EditText(this);
-                matriculaEdit.setText(usuario.getMatricula());
-                matriculaEdit.setPadding(8, 8, 8, 8);
-                fila.addView(matriculaEdit, 0);
 
                 EditText nombreEdit = new EditText(this);
                 nombreEdit.setText(usuario.getNombre());
@@ -285,10 +279,9 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                 administrarComentariosBtn.setVisibility(View.GONE);
 
                 editarBtn.setOnClickListener(v1 -> {
-                    matriculaAUX = matriculaEdit.getText().toString();
+                    matriculaAUX =usuario.getMatricula();
                     nombreAUX = nombreEdit.getText().toString();
 
-                    fila.removeView(matriculaEdit);
                     fila.removeView(nombreEdit);
 
                     TextView matricula2 = new TextView(this);
