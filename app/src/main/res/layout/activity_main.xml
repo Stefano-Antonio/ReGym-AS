@@ -8,6 +8,19 @@
     android:backgroundTint="#FBFBFB"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/Fondo_ginda"
+        android:layout_width="1010dp"
+        android:layout_height="97dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fondo_vino" />
+
     <TextView
         android:id="@+id/Mensaje_bienvenida"
         android:layout_width="364dp"
@@ -63,17 +76,6 @@
         app:layout_constraintVertical_bias="0.434"
         app:srcCompat="@drawable/incufidez_logo" />
 
-    <ImageView
-        android:id="@+id/Fondo_ginda"
-        android:layout_width="1010dp"
-        android:layout_height="97dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/fondo_vino" />
 
     <Button
         android:id="@+id/creditos_btn"
@@ -101,4 +103,5 @@
         app:layout_constraintStart_toEndOf="@+id/Iniciar_sesion_btn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.806" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

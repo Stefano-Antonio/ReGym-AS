@@ -82,53 +82,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="POSE(*). VUELTA DE CARRO" />
+                android:text="ENTRADA DE APOYO DE POSE DE PESCADO AL FRENTE" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA ATRAS AGRUPADA" />
+                android:text="(*) PARADA DE MANOS TRANSVERSAL" />
             <Button
                 android:id="@+id/movimiento_3_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA A VELA" />
+                android:text="EQUIULIBRIO EN relevé" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
+                android:text="SALTO EXTENDIDO" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="CHASSE AL FRENTE" />
+                android:text="ARABESCA (45°)" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="SALTO EXTENDIDO" />
+                android:text="SALTO LEAP SPLIT CON PIERNAS EXTENDIDAS (90º)" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA AL FRENTE AGRUPADA" />
+                android:text="DOS (2) ½ (180º) GIROS PIVOTE" />
 
             <Button
                 android:id="@+id/movimiento_8_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="(*)3/4 DE PARADA DE MANOS" />
-
-
+                android:text="(*) SALIDA DE INVERSIÓN LATERAL A PARADA DE MANOS LATERAL" />
 
 
 

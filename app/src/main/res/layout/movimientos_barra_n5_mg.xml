@@ -82,51 +82,103 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="POSE(*). VUELTA DE CARRO" />
+                android:text="POSICION INICIAL" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA ATRAS AGRUPADA" />
+                android:text="IMPULSO POR ARRIBA DE LA HORIZONTAL" />
             <Button
                 android:id="@+id/movimiento_3_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA A VELA" />
+                android:text="VUELTA DE APOYO LIBRE POR ARRIBA DE LA HORIZONTAL
+" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
+                android:text="PLANTILLAS COMPLETAS ATRÁS AL APOYO LIBRE" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="CHASSE AL FRENTE" />
+                android:text="STALDER ATRÁS AL APOYO LIBRE" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="SALTO EXTENDIDO" />
+                android:text="KIP CARPADO O CON PIERNAS SEPARADAS" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA AL FRENTE AGRUPADA" />
+                android:text="IMPULSO, COLOCACIÓN DE CUCLILLAS" />
 
             <Button
                 android:id="@+id/movimiento_8_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="(*)3/4 DE PARADA DE MANOS" />
+                android:text="SALTO A KIP DE SUSPENSIÓN LARGA" />
+
+            <Button
+                android:id="@+id/movimiento_9_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="IMPULSO POR ARRIBA DE LA HORIZONTAL" />
+
+
+            <Button
+                android:id="@+id/movimiento_10_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="MEDIO GIGANTE AL APOYO" />
+
+            <Button
+                android:id="@+id/movimiento_11_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="SUB BALANCEO, PRIMER CONTRABALANCEO" />
+
+            <Button
+                android:id="@+id/movimiento_12_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="PRIMER CONTRABALANCEO" />
+
+            <Button
+                android:id="@+id/movimiento_13_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="BALANCEO AL FRENTE, SEGUNDO CONTRABALANCEO" />
+
+            <Button
+                android:id="@+id/movimiento_14_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="SEGUNDO CONTRABALANCEO" />
+
+            <Button
+                android:id="@+id/movimiento_15_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="BALANCEO AL FRENTE A SALIDA DE FLYAWAY" />
+
 
 
 

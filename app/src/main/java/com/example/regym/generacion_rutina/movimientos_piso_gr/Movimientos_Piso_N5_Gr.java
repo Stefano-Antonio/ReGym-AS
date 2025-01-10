@@ -3,178 +3,121 @@ package com.example.regym.generacion_rutina.movimientos_piso_gr;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.regym.R;
 import com.example.regym.generacion_rutina.Mostrar_Niveles_Piso_Gr;
+import com.example.regym.generacion_rutina.Rutina_Generada;
 
 
-public class Movimientos_Piso_N5_Gr extends AppCompatActivity{
+public class Movimientos_Piso_N5_Gr extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(com.example.regym.R.layout.movimientos_piso_n1_gr);
+        setContentView(R.layout.movimientos_piso_n5_gr);
 
-//botones
-
+        // Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
         Button Generar_btn = findViewById(R.id.Generar_btn);
-//switchs
-        Switch miSwitch1 = findViewById(R.id.Movimiento1_swtch);
-        Switch miSwitch2 = findViewById(R.id.Movimiento2_swtch);
-        Switch miSwitch3 = findViewById(R.id.Movimiento3_swtch);
-        Switch miSwitch4 = findViewById(R.id.Movimiento4_swtch);
-        Switch miSwitch5 = findViewById(R.id.Movimiento5_swtch);
-        Switch miSwitch6 = findViewById(R.id.Movimiento6_swtch);
-        Switch miSwitch7 = findViewById(R.id.Movimiento7_swtch);
-        Switch miSwitch8 = findViewById(R.id.Movimiento8_swtch);
-        Switch miSwitch9 = findViewById(R.id.Movimiento9_swtch);
 
+        // Switches
+        Switch[] switches = {
+                findViewById(R.id.Movimiento1_swtch),
+                findViewById(R.id.Movimiento2_swtch),
+                findViewById(R.id.Movimiento3_swtch),
+                findViewById(R.id.Movimiento4_swtch),
+                findViewById(R.id.Movimiento5_swtch),
+                findViewById(R.id.Movimiento6_swtch),
+                findViewById(R.id.Movimiento7_swtch),
+                findViewById(R.id.Movimiento8_swtch),
+                findViewById(R.id.Movimiento8_swtch),
+                findViewById(R.id.Movimiento10_swtch),
+        };
 
-//boton Regresar
-        Regresar_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //View v;
-            public void onClick(View v) {
-
-                Intent intent = new Intent(Movimientos_Piso_N5_Gr.this, Mostrar_Niveles_Piso_Gr.class);
-                startActivity(intent);
-            }
+        // Botón "Regresar"
+        Regresar_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(Movimientos_Piso_N5_Gr.this, Mostrar_Niveles_Piso_Gr.class);
+            startActivity(intent);
         });
-//boton Generar
-        Generar_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Envía los datos a la actividad de destino
-                Intent intent = new Intent(Movimientos_Piso_N5_Gr.this, Rutina_Generada_Piso.class);
-                intent.putExtra("mostrarInformacion", miSwitch1.isChecked());
-                intent.putExtra("mostrarInformacion2", miSwitch2.isChecked());
-                intent.putExtra("mostrarInformacion3", miSwitch3.isChecked());
-                intent.putExtra("mostrarInformacion4", miSwitch4.isChecked());
-                intent.putExtra("mostrarInformacion5", miSwitch5.isChecked());
-                intent.putExtra("mostrarInformacion6", miSwitch6.isChecked());
-                intent.putExtra("mostrarInformacion7", miSwitch7.isChecked());
-                intent.putExtra("mostrarInformacion8", miSwitch8.isChecked());
-                intent.putExtra("mostrarInformacion9", miSwitch9.isChecked());
-                startActivity(intent);
-            }
-              /*  if (miSwitch1.isChecked()) { // Verifica si el Switch está activado
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion", true);
-                    startActivity(intent); // Abre la segunda Activity
-                } else if(miSwitch2.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion2", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch3.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion3", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch4.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion4", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch5.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion5", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch6.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion6", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch7.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion7", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch8.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion8", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else if(miSwitch9.isChecked()){
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    intent.putExtra("mostrarInformacion9", true);
-                    startActivity(intent); // Abre la segunda Activity
-                }else {
-                    // El Switch está desactivado, puedes mostrar un mensaje o realizar otra acción
-                    //Toast.makeText(Movimientos_Piso_N1_GR.this, "Activa el Switch para generar la rutina", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Movimientos_Piso_N1_GR.this, Rutina_Generada_Piso_n1_gr.class);
-                    startActivity(intent); // Abre la segunda Activity
+
+        // Botón "Generar"
+        Generar_btn.setOnClickListener(v -> {
+            boolean switchChecked = false;
+            StringBuilder fortalecimiento = new StringBuilder();
+            StringBuilder aparato = new StringBuilder();
+            StringBuilder acondicionamiento = new StringBuilder();
+
+            for (int i = 0; i < switches.length; i++) {
+                if (switches[i].isChecked()) {
+                    switchChecked = true;
+                    switch (i + 1) {
+                        case 1:
+                            fortalecimiento.append("-Flexiones Laterales-Realiza 3 series de 10 flexiones laterales por lado. \n");
+                            aparato.append("-Plancha Lateral-Mantén la posición de plancha lateral durante 30-45 segundos por lado. \n");
+                            acondicionamiento.append("-Inversión Lateral-Practica 3 series de 8 repeticiones de inversión lateral.\n ");
+                            break;
+                        case 2:
+                            fortalecimiento.append("-Flexiones de Brazos-Realiza 3 series de 12 flexiones. \n");
+                            aparato.append("-Rodadas en el Suelo-Realiza 3 series de 8 rodadas atrás. \n");
+                            acondicionamiento.append("-Rodada Atrás a Lagartija-Practica 3 series de 10 repeticiones de rodada atrás a posición de lagartija. \n");
+                            break;
+                        case 3:
+                            fortalecimiento.append("-Sentadillas-Realiza 3 series de 15 sentadillas. \n");
+                            aparato.append("-Estocadas-Realiza 3 series de 12 estocadas por pierna. \n");
+                            acondicionamiento.append("-Pose de Passé-Practica 3 series de 10 repeticiones de pose de passé al frente. \n");
+                            break;
+                        case 4:
+                            fortalecimiento.append("-Elevaciones de Piernas-Realiza 3 series de 15 elevaciones de piernas.\n ");
+                            aparato.append("-Saltos en Caja-Realiza 3 series de 12 saltos. \n");
+                            acondicionamiento.append("-Chassé al Frente-Practica 3 series de 10 repeticiones de chassé al frente. \n");
+                            break;
+                        case 5:
+                            fortalecimiento.append("-Sentadillas-Realiza 3 series de 15 sentadillas.\n ");
+                            aparato.append("-Estocadas-Realiza 3 series de 12 estocadas por pierna. \n");
+                            acondicionamiento.append("-Salto Jump Split-Practica 3 series de 8 repeticiones de salto jump split.\n ");
+                            break;
+                        case 6:
+                            fortalecimiento.append("-Flexiones de Brazos-Realiza 3 series de 12 flexiones. \n");
+                            aparato.append("-Plancha-Mantén la posición de plancha durante 45-60 segundos. \n");
+                            acondicionamiento.append("-Parada de Manos-Practica 3 series de 10 repeticiones de parada de manos. \n");
+                            break;
+                        case 7:
+                            fortalecimiento.append("-Abdominales-Realiza 3 series de 20 abdominales. \n");
+                            aparato.append("-Elevaciones de Piernas-Realiza 3 series de 15 elevaciones de piernas. \n");
+                            acondicionamiento.append("-Vela-Practica 3 series de 10 repeticiones de vela. \n");
+                            break;
+                        case 8:
+                            fortalecimiento.append("-Sentadillas-Realiza 3 series de 15 sentadillas. \n");
+                            aparato.append("-Estocadas-Realiza 3 series de 12 estocadas por pierna.. \n");
+                            acondicionamiento.append("-Arco y Patada a Pasar-Practica 3 series de 8 repeticiones de arco seguido de patada a pasar. \n");
+                            break;
+                        case 9:
+                            fortalecimiento.append("-Abdominales-Realiza 3 series de 20 abdominales. \n");
+                            aparato.append("-Elevaciones de Piernas-Realiza 3 series de 15 elevaciones de piernas. \n");
+                            acondicionamiento.append("-Vela-Practica 3 series de 10 repeticiones de vela. \n");
+                            break;
+                        case 10:
+                            fortalecimiento.append("-Sentadillas-Realiza 3 series de 15 sentadillas. \n");
+                            aparato.append("-Estocadas-Realiza 3 series de 12 estocadas por pierna.. \n");
+                            acondicionamiento.append("-Arco y Patada a Pasar-Practica 3 series de 8 repeticiones de arco seguido de patada a pasar. \n");
+                            break;
+                    }
                 }
             }
-        });*/
-        });
-/*
-//switch_1
-        miSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+            if (switchChecked) {
+                Intent intent = new Intent(Movimientos_Piso_N5_Gr.this, Rutina_Generada.class);
+                intent.putExtra("fortalecimiento", fortalecimiento.toString().trim());
+                intent.putExtra("aparato", aparato.toString().trim());
+                intent.putExtra("acondicionamiento", acondicionamiento.toString().trim());
+                startActivity(intent);
+            } else {
+                Toast.makeText(Movimientos_Piso_N5_Gr.this, "Activa un Switch para generar la rutina", Toast.LENGTH_SHORT).show();
             }
         });
-//switch_2
-        miSwitch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_3
-        miSwitch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_4
-        miSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_5
-        miSwitch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_6
-        miSwitch6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_7
-        miSwitch7.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_8
-        miSwitch8.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-//switch_9
-        miSwitch9.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });*/
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }

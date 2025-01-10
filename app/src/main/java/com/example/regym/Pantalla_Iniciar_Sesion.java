@@ -51,8 +51,13 @@ public class Pantalla_Iniciar_Sesion extends AppCompatActivity {
 //Credenciales del usuario
         correoEditText = findViewById(R.id.Correo_contenedor);
         passwordEditText = findViewById(R.id.Contraseña_contenedor);
+// Establecer el tipo de entrada para ocultar la contraseña por defecto
+        passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
 
 //Icono ojo en contenedor contraseña
+        // Ocultar contraseña
+
         passwordEditText.setOnTouchListener((v, event) -> {
             boolean isPasswordVisible = false;
             if (event.getAction() == MotionEvent.ACTION_UP) {

@@ -76,64 +76,58 @@
                 android:id="@+id/Movimiento1_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="POSE(*). VUELTA DE CARRO"
+                android:text="Pose, (*) INVERSIÓN LATERAL"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento2_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RODADA ATRAS AGRUPADA"
+                android:text="RODADA ATRÁS A POSICIÓN DE LAGARTIJA"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento3_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RODADA A VELA"
+                android:text="Pose DE PASSÉ AL FRENTE"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento4_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE"
+                android:text="CHASSÉ AL FRENTE"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento5_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CHASSE AL FRENTE"
+                android:text="SALTO JUMP SPLIT"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento6_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SALTO EXTENDIDO"
+                android:text="(*) PARADA DE MANOS"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento7_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RODADA AL FRENTE AGRUPADA"
+                android:text="VELA"
                 android:layout_gravity="center_horizontal" />
 
             <Switch
                 android:id="@+id/Movimiento8_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="(*)3/4 DE PARADA DE MANOS"
+                android:text="ARCO, (*) PATADA A PASAR"
                 android:layout_gravity="center_horizontal" />
 
-            <Switch
-                android:id="@+id/Movimiento9_swtch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="POSE"
-                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>

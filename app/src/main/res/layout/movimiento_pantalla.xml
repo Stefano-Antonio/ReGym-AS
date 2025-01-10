@@ -22,12 +22,12 @@
 
     <TextView
         android:id="@+id/Mensaje_bienvenida"
-        android:layout_width="274dp"
-        android:layout_height="34dp"
+        android:layout_width="329dp"
+        android:layout_height="57dp"
         android:layout_marginTop="12dp"
         android:background="#781005"
         android:gravity="center"
-        android:text="POSE(*). VUELTA DE CARRO"
+        android:text="Titutlo"
         android:textColor="#F8F6F6"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,20 +47,6 @@
         app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@drawable/logo_incufidez_fondo_vino" />
 
-    <Button
-        android:id="@+id/Regresar_btn"
-        android:layout_width="76dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#781005"
-        android:drawableTop="@drawable/flechamedia_regreso"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
-        app:layout_constraintVertical_bias="0.2" />
 
     <LinearLayout
         android:id="@+id/opciones"
@@ -151,7 +137,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/tabla_seccion"
-            android:layout_width="355dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_gravity="center_horizontal">

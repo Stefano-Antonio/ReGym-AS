@@ -9,6 +9,11 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.regym.R;
+import com.example.regym.generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N1_Gr;
+import com.example.regym.generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N2_Gr;
+import com.example.regym.generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N3_Gr;
+import com.example.regym.generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N4_Gr;
+import com.example.regym.generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N5_Gr;
 
 public class Mostrar_Niveles_Barra_Gr extends AppCompatActivity {
 
@@ -34,8 +39,8 @@ public class Mostrar_Niveles_Barra_Gr extends AppCompatActivity {
             //View v;
             public void onClick(View v) {
 
-                /*Intent intent = new Intent(Mostrar_Niveles_Barra_Gr.this, Movimientos_Barra_N1_Gr.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(Mostrar_Niveles_Barra_Gr.this, Movimientos_Barra_N1_Gr.class);
+                startActivity(intent);
             }
         });
 //boton Nivel2
@@ -43,9 +48,9 @@ public class Mostrar_Niveles_Barra_Gr extends AppCompatActivity {
             @Override
             //View v;
             public void onClick(View v) {
-/*
+
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Gr.this, Movimientos_Barra_N2_Gr.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
 //boton Nivel3
@@ -53,9 +58,9 @@ public class Mostrar_Niveles_Barra_Gr extends AppCompatActivity {
             @Override
             //View v;
             public void onClick(View v) {
-/*
+
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Gr.this, Movimientos_Barra_N3_Gr.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
 //boton Nivel4
@@ -63,9 +68,9 @@ public class Mostrar_Niveles_Barra_Gr extends AppCompatActivity {
             @Override
             //View v;
             public void onClick(View v) {
-/*
+
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Gr.this, Movimientos_Barra_N4_Gr.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
 //boton Nivel5
@@ -73,9 +78,9 @@ public class Mostrar_Niveles_Barra_Gr extends AppCompatActivity {
             @Override
             //View v;
             public void onClick(View v) {
-/*
+
                 Intent intent = new Intent(Mostrar_Niveles_Barra_Gr.this, Movimientos_Barra_N5_Gr.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
 //boton Regresar

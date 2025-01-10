@@ -273,7 +273,6 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                 nombreEdit.setText(usuario.getNombre());
                 nombreEdit.setPadding(8, 8, 8, 8);
                 fila.addView(nombreEdit, 1);
-
                 editarBtn.setImageResource(R.drawable.enviar);
                 eliminarBtn.setVisibility(View.GONE);
                 administrarComentariosBtn.setVisibility(View.GONE);
@@ -668,32 +667,6 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
         return x;
     }
 
-    private void obtenerComentariosEliminados() {
-        /*ApiClient.ApiService apiService = ApiClient.ApiService.getClient().create(ApiClient.ApiService.class);
-        Call<List<ApiClient.Comentario>> call = apiService.obtenerComentariosEliminados();
-
-        call.enqueue(new Callback<List<ApiClient.Comentario>>() {
-            @Override
-            public void onResponse(Call<List<ApiClient.Comentario>> call, Response<List<ApiClient.Comentario>> response) {
-                if (response.isSuccessful()) {
-                    List<ApiClient.Comentario> comentarios = response.body();
-                    if (comentarios != null) {
-                        // Mostrar los comentarios en el ListView
-                        comentarioAdapter = new ComentarioAdapter(Pantalla_Inicio_Administrador.this, comentarios);
-                        listViewComentarios.setAdapter(comentarioAdapter);
-                    }
-                } else {
-                    Toast.makeText(ComentariosActivity.this, "No se pudieron obtener los comentarios", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ApiClient.Comentario>> call, Throwable t) {
-                Log.e("ComentariosActivity", "Error al obtener comentarios", t);
-                Toast.makeText(ComentariosActivity.this, "Error al obtener comentarios", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

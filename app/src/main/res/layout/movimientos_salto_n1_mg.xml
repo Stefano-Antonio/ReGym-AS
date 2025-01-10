@@ -82,51 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="POSE(*). VUELTA DE CARRO" />
-            <Button
-                android:id="@+id/movimiento_2_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="RODADA ATRAS AGRUPADA" />
-            <Button
-                android:id="@+id/movimiento_3_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="RODADA A VELA" />
-            <Button
-                android:id="@+id/movimiento_4_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
-            <Button
-                android:id="@+id/movimiento_5_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="CHASSE AL FRENTE" />
-            <Button
-                android:id="@+id/movimiento_6_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="SALTO EXTENDIDO" />
-
-            <Button
-                android:id="@+id/movimiento_7_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="RODADA AL FRENTE AGRUPADA" />
-
-            <Button
-                android:id="@+id/movimiento_8_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="(*)3/4 DE PARADA DE MANOS" />
+                android:text="PARADA DE MANOS A DESCENSO A LA POSICIÓN DE EXTENSIÓN ACOSTADA" />
 
 
 

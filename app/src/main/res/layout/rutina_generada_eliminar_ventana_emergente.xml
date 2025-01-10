@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".generacion_rutina.Rutina_Generada_Guardar">
+
+    <ImageView
+        android:id="@+id/fondo_ginda"
+        android:layout_width="313dp"
+        android:layout_height="89dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <ImageView
+        android:id="@+id/fondo_ginda2"
+        android:layout_width="378dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/si_btn"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="59dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#F4F0F0"
+        android:drawableTop="@drawable/tachita"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/fondo_ginda"
+        app:layout_constraintEnd_toEndOf="@+id/fondo_ginda"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="@+id/fondo_ginda"
+        app:layout_constraintTop_toTopOf="@+id/fondo_ginda"
+        app:layout_constraintVertical_bias="0.432" />
+
+    <Button
+        android:id="@+id/no_btn"
+        android:layout_width="79dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="72dp"
+        android:backgroundTint="#781005"
+        android:scaleType="fitCenter"
+        android:text="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fondo_ginda" />
+
+    <Button
+        android:id="@+id/si_btn"
+        android:layout_width="82dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="112dp"
+        android:backgroundTint="#781005"
+        android:scaleType="fitCenter"
+        android:text="si"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fondo_ginda" />
+
+    <TextView
+        android:id="@+id/Pregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Seguro que desea aliminar la rutina?"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@+id/si_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fondo_ginda"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

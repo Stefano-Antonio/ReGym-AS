@@ -258,7 +258,7 @@ private void registrarUsuario(ApiClient.Usuario user) {
             } else {
                 try {
                     String errorMessage = response.errorBody().string();
-                    if (errorMessage.contains("duplicate key error") && (errorMessage.contains("correo") || errorMessage.contains("matricula"))) {
+                    if (errorMessage.contains("credenciales duplicadas") && (errorMessage.contains("correo") || errorMessage.contains("matricula"))) {
                         Toast.makeText(Pantalla_Registrar.this, "El correo o la matrícula ya está registrado en otro usuario", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.e("Error", "Error en el registro: " + errorMessage);

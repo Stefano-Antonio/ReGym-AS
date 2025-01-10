@@ -82,109 +82,52 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 1" />
+                android:text="DESPLANTE LATERAL" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 2" />
+                android:text="Chassé AL FRENTE, Pose EN DESPLANTE" />
             <Button
                 android:id="@+id/movimiento_3_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 3" />
+                android:text="Chassé al frente, SALTO LEAP SPLIT CON PIERNAS EXTENDIDAS" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 4" />
+                android:text="PARADA DE MANOS ARCO, PATADA A PASAR" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 5" />
+                android:text="RODADA ATRÁS A ABRIR A 45° POR ARRIBA DE LA HORIZONTAL" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 6" />
+                android:text="½ (180°) giro boca ABAJO A GIRO DE POSE" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 7" />
+                android:text="RODADA ATRÁS A ABRIR A 45° POR ARRIBA DE LA HORIZONTAL" />
 
             <Button
                 android:id="@+id/movimiento_8_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 8" />
+                android:text="Pose ½ ARRODILLA" />
 
-            <Button
-                android:id="@+id/movimiento_9_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 9" />
-            <Button
-                android:id="@+id/movimiento_10_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 10" />
-            <Button
-                android:id="@+id/movimiento_11_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 11" />
-
-            <Button
-                android:id="@+id/movimiento_12_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 12" />
-
-            <Button
-                android:id="@+id/movimiento_13_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 13" />
-
-            <Button
-                android:id="@+id/movimiento_14_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 14" />
-            <Button
-                android:id="@+id/movimiento_15_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 15" />
-            <Button
-                android:id="@+id/movimiento_16_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 16" />
-            <Button
-                android:id="@+id/movimiento_17_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 17" />
 
 
 

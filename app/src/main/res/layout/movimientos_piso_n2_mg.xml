@@ -79,64 +79,52 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 1" />
+                android:text="Pose, (*) INVERSIÓN LATERAL" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 2" />
+                android:text="RODADA ATRÁS A POSICIÓN DE LAGARTIJA" />
             <Button
                 android:id="@+id/movimiento_3_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 3" />
+                android:text="Pose DE PASSÉ AL FRENTE" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 4" />
+                android:text="CHASSÉ AL FRENTE" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 5" />
+                android:text="SALTO JUMP SPLIT" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 6" />
+                android:text="(*) PARADA DE MANOS" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 7" />
+                android:text="VELA" />
 
             <Button
                 android:id="@+id/movimiento_8_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="Movimiento 8" />
+                android:text="ARCO, (*) PATADA A PASAR" />
 
-            <Button
-                android:id="@+id/movimiento_9_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 9" />
-            <Button
-                android:id="@+id/movimiento_10_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="Movimiento 10" />
 
         </LinearLayout>
 

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".generacion_rutina.Rutina_Generada_Guardar">
+
+    <ImageView
+        android:id="@+id/fondo_ginda"
+        android:layout_width="313dp"
+        android:layout_height="89dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <ImageView
+        android:id="@+id/fondo_ginda2"
+        android:layout_width="378dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRemplaza"
+        app:srcCompat="@drawable/fondo_vino" />
+
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="59dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#F4F0F0"
+        android:drawableTop="@drawable/tachita"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/fondo_ginda"
+        app:layout_constraintEnd_toEndOf="@+id/fondo_ginda"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="@+id/fondo_ginda"
+        app:layout_constraintTop_toTopOf="@+id/fondo_ginda"
+        app:layout_constraintVertical_bias="0.432" />
+
+
+    <ImageButton
+        android:id="@+id/buttonGuardar"
+        android:layout_width="67dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="#781005"
+        android:scaleType="fitCenter"
+        android:src="@drawable/guardar"
+        app:layout_constraintBottom_toTopOf="@+id/fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fondo_ginda"
+        app:layout_constraintVertical_bias="0.518" />
+
+    <ImageButton
+        android:id="@+id/buttonRemplaza"
+        android:layout_width="67dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#781005"
+        android:scaleType="fitCenter"
+        android:src="@drawable/responder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fondo_ginda" />
+
+    <ImageButton
+        android:id="@+id/buttonVisualizar"
+        android:layout_width="67dp"
+        android:layout_height="64dp"
+        android:backgroundTint="#781005"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ojo_sin_slash"
+        app:layout_constraintBottom_toTopOf="@+id/fondo_ginda2"
+        app:layout_constraintEnd_toStartOf="@+id/buttonGuardar"
+        app:layout_constraintStart_toEndOf="@+id/buttonRemplaza"
+        app:layout_constraintTop_toBottomOf="@+id/fondo_ginda"
+        app:layout_constraintVertical_bias="0.518" />
+
+    <TextView
+        android:id="@+id/remplazar_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remplazar"
+        app:layout_constraintBottom_toTopOf="@+id/fondo_ginda2"
+        app:layout_constraintEnd_toStartOf="@+id/guardar_txt"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRemplaza"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/visualizar_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visualizar"
+        app:layout_constraintBottom_toTopOf="@+id/fondo_ginda2"
+        app:layout_constraintEnd_toStartOf="@+id/guardar_txt"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toEndOf="@+id/remplazar_txt"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVisualizar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/guardar_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Guardar"
+        app:layout_constraintBottom_toTopOf="@+id/fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuardar"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

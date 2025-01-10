@@ -82,53 +82,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="POSE(*). VUELTA DE CARRO" />
+                android:text="(*) ENTRADA DE SALTO AL APOYO FRONTAL" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA ATRAS AGRUPADA" />
+                android:text="(*) PATADA DE AGUJA" />
             <Button
                 android:id="@+id/movimiento_3_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA A VELA" />
+                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
+                android:text="SALTO EXTENDIDO" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="CHASSE AL FRENTE" />
+                android:text="ARABESCA" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="SALTO EXTENDIDO" />
+                android:text="BALANCEO DE PIERNA DERECHA" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA AL FRENTE AGRUPADA" />
-
-            <Button
-                android:id="@+id/movimiento_8_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#781005"
-                android:text="(*)3/4 DE PARADA DE MANOS" />
-
-
+                android:text="BALANCEO DE PIERNA DERECHA" />
 
 
 

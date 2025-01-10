@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.regym.Pantalla_Inicio_Entrenador;
 import com.example.regym.R;
 
 public class Generar_Rutina extends AppCompatActivity{
@@ -24,7 +23,6 @@ public class Generar_Rutina extends AppCompatActivity{
         Button Piso_btn = findViewById(R.id.Piso_btn);
         Button Barra_btn = findViewById(R.id.Barra_btn);
         Button Viga_btn = findViewById(R.id.Viga_btn);
-        Button Regresar_btn = findViewById(R.id.Regresar_btn);
 
 
 //boton Salto
@@ -67,16 +65,7 @@ public class Generar_Rutina extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-//boton Regresar
-        Regresar_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //View v;
-            public void onClick(View v) {
 
-                Intent intent = new Intent(Generar_Rutina.this, Pantalla_Inicio_Entrenador.class);
-                startActivity(intent);
-            }
-        });
 
 
 

@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="POSE(*). VUELTA DE CARRO" />
+                android:text="ENTRADA DE APOYO DE POSE DE PESCADO AL FRENTE" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
@@ -94,25 +94,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA A VELA" />
+                android:text="(*) RODADA ATRÁS A MÍNIMO ¾ DE PARADA DE MANOS" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
+                android:text="(*) FLIC-FLAC A UNA PIERNA" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="CHASSE AL FRENTE" />
+                android:text="FLIC-FLAC A DOS PIERNAS" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="SALTO EXTENDIDO" />
+                android:text="(*) ARCO AL FRENTE A UNA PIERNA (150°)" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
@@ -126,7 +126,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="(*)3/4 DE PARADA DE MANOS" />
+                android:text="PATADA ATRAS, Pose DE passé AL FRENTE" />
+            <Button
+                android:id="@+id/movimiento_9_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="PATADA ATRAS, Pose DE passé AL FRENTE" />
+
+            <Button
+                android:id="@+id/movimiento_10_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="(*) INVERSIÓN LATERAL" />
+
+            <Button
+                android:id="@+id/movimiento_11_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#781005"
+                android:text="SALIDA DE MORTAL ATRÁS AGRUPADO" />
 
 
 

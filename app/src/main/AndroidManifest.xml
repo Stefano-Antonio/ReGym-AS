@@ -9,16 +9,16 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo_regym"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo_regym"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReGym"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".generacion_rutina.movimientos_piso_gr.Rutina_Generada_Piso_Guardar"
+            android:name=".generacion_rutina.Rutina_Generada_Guardar"
             android:exported="false" />
         <activity
             android:name=".administrador.Comentarios_Usuario"
@@ -42,16 +42,7 @@
             android:name=".clase_basica.Clase_Basica_Barra"
             android:exported="false" />
         <activity
-            android:name=".generacion_rutina.movimientos_viga_gr.Rutina_Generada_Viga"
-            android:exported="false" />
-        <activity
-            android:name=".generacion_rutina.movimientos_salto_gr.Rutina_Generada_Salto"
-            android:exported="false" />
-        <activity
-            android:name=".generacion_rutina.movimientos_barra_gr.Rutina_Generada_Barra"
-            android:exported="false" />
-        <activity
-            android:name=".generacion_rutina.movimientos_piso_gr.Rutina_Generada_Piso"
+            android:name=".generacion_rutina.Rutina_Generada"
             android:exported="false" />
         <activity
             android:name=".generacion_rutina.movimientos_salto_gr.Movimientos_Salto_N5_Gr"

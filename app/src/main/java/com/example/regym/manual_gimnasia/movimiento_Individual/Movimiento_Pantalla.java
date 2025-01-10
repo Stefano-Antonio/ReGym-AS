@@ -27,7 +27,6 @@ import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.regym.ApiClient;
 import com.example.regym.R;
-import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +50,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
     private List<ApiClient.Comentario> listaComentariosEnMemoria = new ArrayList<>();
     private boolean comentariosVisible = false; // Variable para controlar la visibilidad de los comentarios
 
-    //@SuppressLint("ClickableViewAccessibility")
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +58,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         setContentView(R.layout.movimiento_pantalla);
 
 //botones, scrolls, editTexts
-
-        Button Regresar_btn = findViewById(R.id.Regresar_btn);
         ImageButton Ayuda_btn = findViewById(R.id.boton_ayuda_imagen);
         //descripcion
         ImageButton bnt_descripcion = findViewById(R.id.descripcion_btn);
@@ -75,21 +71,37 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         EditText inputComentario = findViewById(R.id.nuevo_comentario_edit_text);
         ImageButton enviarComentarioBtn = findViewById(R.id.agregar_comentario_btn);
         TextView nuevo_comentario_edit_text = findViewById(R.id.nuevo_comentario_edit_text);
-//GIFS
 
+        //GIFS
         ImageView imageViewGif = findViewById(R.id.Movimiento_gift);
-
         //Traer el gift del movimiento
         int gifResource = getIntent().getIntExtra("movimiento_gift", R.raw.m1_n1_piso); // GIF predeterminado si no se pasa nada
-        //Traer el texto del movimiento
-        String descripcion_texto_a_mostrar = getIntent().getStringExtra("descripcion_texto_a_mostrar");
-        TextView descripcion_texto = findViewById(R.id.descripcion);
         //Traer la tabla del movimiento
-
-        // Obtén el recurso de la imagen pasada por Intent
         int tablaImagenRec = getIntent().getIntExtra("tabla_imagen", R.drawable.tabla_piso_n1_m1);
-        // Encuentra el ImageView en el XML
         ImageView tablaImagen = findViewById(R.id.tabla);
+
+
+        Log.d("DEBUG", "Título recibido: " + getIntent().getStringExtra("titulo"));
+        Log.d("DEBUG", "Descripción recibida: " + getIntent().getStringExtra("descripcion_texto_a_mostrar"));
+
+        //Traer el texto del movimiento
+        TextView descripcion_texto = findViewById(R.id.descripcion);
+        TextView titulo_txt = findViewById(R.id.Mensaje_bienvenida);
+        String titulo = getIntent().getStringExtra("titulo");
+        String descripcion = getIntent().getStringExtra("descripcion_texto_a_mostrar");
+
+        if (titulo != null) {
+            titulo_txt.setText(titulo);
+        } else {
+            Log.e("ERROR", "Título no encontrado en el Intent");
+        }
+
+        if (descripcion != null) {
+            descripcion_texto.setText(descripcion);
+        } else {
+            Log.e("ERROR", "Descripción no encontrada en el Intent");
+        }
+
 
         //Gift funcion
         Glide.with(this)
@@ -130,7 +142,7 @@ public class Movimiento_Pantalla extends AppCompatActivity {
             public void onClick(View v) {
                 if (descripcion1_seccion.getVisibility() == View.GONE) {
                     descripcion1_seccion.setVisibility(View.VISIBLE);  // Muestra la sección de comentarios
-                    descripcion_texto.setText((CharSequence) descripcion_texto_a_mostrar);
+                    descripcion_texto.setText((CharSequence) getIntent().getStringExtra("descripcion_texto_a_mostrar"));
                     bnt_descripcion.setImageResource(R.drawable.ocultar_descripcion_btn);  // Cambia la imagen del botón
                 }else {
                     descripcion1_seccion.setVisibility(View.GONE);  // Oculta la sección de comentarios
@@ -155,8 +167,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         });
 
 //boton comentarios
-
-
         btn_comentarios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,7 +188,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         });
 
 // Botón agregar comentario
-        // Botón agregar comentario
         enviarComentarioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -254,29 +263,17 @@ public class Movimiento_Pantalla extends AppCompatActivity {
 
 
 //boton ayuda
-
         Ayuda_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mostrarPopup();
             }
         });
-//boton Regresar
 
-        Regresar_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //View v;
-            public void onClick(View v) {
-
-                Intent intent = new Intent(Movimiento_Pantalla.this, Movimientos_Piso_N1_Mg.class);
-                startActivity(intent);
-            }
-        });
 
 
 
 //ScrollView funcionamiento
-
         descripcion1_seccion.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -294,28 +291,21 @@ public class Movimiento_Pantalla extends AppCompatActivity {
 
     private void mostrarPopup() {
 
-
         Dialog dialogo = new Dialog(this);
-
         // Obtén el mensaje de ayuda usando la clave correcta
         String mensajeAyuda = getIntent().getStringExtra("informacion_ayuda");
-
         // Infla el layout de la pantalla emergente
         View pantalla_emergente = getLayoutInflater().inflate(R.layout.movimiento1_piso_mg_ayuda, null);
-
         // Encuentra el TextView en el layout inflado
         TextView textViewAyuda = pantalla_emergente.findViewById(R.id.advertencia_texto_txt);
-
         // Establece el texto con el mensaje recibido
         if (mensajeAyuda != null) {
             textViewAyuda.setText(mensajeAyuda);
         }
-
         // Obtiene referencias a los elementos
         Button regresar = pantalla_emergente.findViewById(R.id.Regresar_btn);
         TextView link = pantalla_emergente.findViewById(R.id.hipervinculo);
         ScrollView scrollView = pantalla_emergente.findViewById(R.id.scrollView4);
-
         // Configura listeners para los botones
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -336,11 +326,9 @@ public class Movimiento_Pantalla extends AppCompatActivity {
             public void onClick(View v) {
                 String url = "https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON"; // Reemplaza con la URL real
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-
                 startActivity(intent);
             }
         });
-
         // Crea el Dialog
         dialogo.setContentView(pantalla_emergente);
         dialogo.show();
@@ -348,10 +336,10 @@ public class Movimiento_Pantalla extends AppCompatActivity {
 
     public void mostrarComentarios(String movimientoId) {
         Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorMovimiento(movimientoId);
-
         call.enqueue(new Callback<List<ApiClient.Comentario>>() {
             @Override
             public void onResponse(Call<List<ApiClient.Comentario>> call, Response<List<ApiClient.Comentario>> response) {
+
                 if (response.isSuccessful()) {
                     List<ApiClient.Comentario> comentariosDelBackend = response.body();
 
@@ -386,31 +374,25 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                     // Limpia y actualiza la lista en memoria
                     listaComentariosEnMemoria.clear();
                     listaComentariosEnMemoria.addAll(comentariosDelBackend);
-
                     comentarioAdapter = new ComentarioAdapter(listaComentariosEnMemoria, Movimiento_Pantalla.this, userId, matricula);
-
                     // Asigna el adaptador al RecyclerView
                     recyclerView.setAdapter(comentarioAdapter);
                     // Imprimir los comentarios y sus respuestas
                     for (ApiClient.Comentario comentario : listaComentariosEnMemoria) {
                         Log.d("COMENTARIO", "Comentario ID: " + comentario.getComentario_id());
                         Log.d("COMENTARIO", "Comentario: " + comentario.getComentario());
-
                         // Imprimir las respuestas asociadas
                         for (ApiClient.Respuesta respuesta : comentario.getRespuestas()) {
                             Log.d("RESPUESTA", "Respuesta ID: " + respuesta.getRespuesta_id());
                             Log.d("RESPUESTA", "Respuesta: " + respuesta.getRespuesta());
                         }
                     }
-
-
                     // Notifica al adaptador que los datos han cambiado
                     comentarioAdapter.notifyDataSetChanged();
-
                     Log.d("COMENTARIOS", "Comentarios cargados correctamente: " + comentariosDelBackend.size());
                 } else {
                     Log.e("API_RESPONSE", "Error al obtener comentarios: " + response.message());
-                    Toast.makeText(getApplicationContext(), "No se pudieron cargar los comentarios.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No hay comentarios disponibles.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -421,7 +403,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
             }
         });
     }
-
     // Función para imprimir los detalles del objeto Comentario
     private void printComentarioDetails(ApiClient.Comentario comentario) {
         Log.d("Comentario Details", "ID Usuario: " + comentario.getUsuario_id());
@@ -432,7 +413,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         Log.d("Comentario Details", "Comentario ID: " + comentario.getComentario_id());
         Log.d("Comentario Details", "Respuestas: " + comentario.getRespuestas());
     }
-
     public class ObjectIdGenerator {
         /**
          * Genera un ObjectId personalizado siguiendo el formato estándar:
@@ -460,19 +440,12 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                 for (byte b : objectIdBytes) {
                     objectId.append(String.format("%02x", b)); // Convierte cada byte a hexadecimal
                 }
-
                 return objectId.toString(); // Retorna un String de 24 caracteres en formato hexadecimal
             } catch (Exception e) {
                 throw new RuntimeException("Error al generar el ObjectId personalizado", e);
             }
         }
-
-
-        /**
-         * Obtiene un identificador único basado en la dirección MAC.
-         *
-         * @return Un arreglo de 5 bytes que representa el identificador único.
-         */
+        //Obtiene un identificador único basado en la dirección MAC. @return Un arreglo de 5 bytes que representa el identificador único.
         private static byte[] getMachineIdentifier() {
             try {
                 Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
@@ -489,21 +462,13 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                 // Loguear el error si es necesario
                 Log.e("ObjectIdGenerator", "Error obteniendo la dirección MAC: " + e.getMessage());
             }
-
             // Si no se puede obtener la MAC, genera un ID único alternativo
             byte[] fallbackId = new byte[5];
             new SecureRandom().nextBytes(fallbackId); // Genera 5 bytes aleatorios como fallback
             Log.w("ObjectIdGenerator", "Usando un ID único alternativo para machineId");
             return fallbackId;
         }
-
-
-        /**
-         * Convierte un entero a un arreglo de bytes de 4 elementos.
-         *
-         * @param value El valor entero.
-         * @return Un arreglo de 4 bytes.
-         */
+        //Convierte un entero a un arreglo de bytes de 4 elementos. @param value El valor entero.@return Un arreglo de 4 bytes.
         private static byte[] intToBytes(int value) {
             return new byte[]{
                     (byte) (value >> 24),
@@ -513,12 +478,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
             };
         }
     }
-
-
-
-
-
-
 }
 
 

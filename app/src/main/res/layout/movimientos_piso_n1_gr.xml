@@ -128,12 +128,6 @@
                 android:text="(*)3/4 DE PARADA DE MANOS"
                 android:layout_gravity="center_horizontal" />
 
-            <Switch
-                android:id="@+id/Movimiento9_swtch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="POSE"
-                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>

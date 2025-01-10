@@ -82,51 +82,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="POSE(*). VUELTA DE CARRO" />
+                android:text="(*) ENTRADA DE SALTO AL APOYO FRONTAL" />
             <Button
                 android:id="@+id/movimiento_2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA ATRAS AGRUPADA" />
+                android:text="(*) PATADA DE UNA PIERNA A LEVANTARSE" />
             <Button
                 android:id="@+id/movimiento_3_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA A VELA" />
+                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
             <Button
                 android:id="@+id/movimiento_4_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="EQUILIBRIO EN PASSÉ AL FRENTE" />
+                android:text="en relevé, Plié, Relevé, Plié, SALTO EXTENDIDO" />
             <Button
                 android:id="@+id/movimiento_5_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="CHASSE AL FRENTE" />
+                android:text="ARABESCA (30º)" />
             <Button
                 android:id="@+id/movimiento_6_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="SALTO EXTENDIDO" />
+                android:text="BALANCEO DE PIERNA AL FRENTE" />
 
             <Button
                 android:id="@+id/movimiento_7_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="RODADA AL FRENTE AGRUPADA" />
+                android:text="½ (180º) GIRO PIVOTE" />
 
             <Button
                 android:id="@+id/movimiento_8_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#781005"
-                android:text="(*)3/4 DE PARADA DE MANOS" />
+                android:text="(*) SALIDA DE INVERSIÓN LATERAL A PARADA DE MANOS LATERAL" />
 
 
 
