@@ -2,6 +2,8 @@ package com.example.regym.generacion_rutina;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -17,8 +19,15 @@ public class Rutina_Generada extends AppCompatActivity {
         setContentView(R.layout.rutina_generada);
 
         // Botones
-        //Button regresarBtn = findViewById(R.id.Regresar_btn);
+        Button regresar_btn = findViewById(R.id.Regresar_btn);
         ImageButton guardarBtn = findViewById(R.id.buttonGuardar);
+
+        regresar_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();  // Cierra la actividad actual y regresa a la anterior
+            }
+        });
 
         // TextViews principales
         TextView fortalecimientoTxt = findViewById(R.id.fortalecimiento_txt);

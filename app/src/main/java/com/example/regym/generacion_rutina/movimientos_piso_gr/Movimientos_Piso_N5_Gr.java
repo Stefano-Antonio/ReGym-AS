@@ -34,7 +34,7 @@ public class Movimientos_Piso_N5_Gr extends AppCompatActivity {
                 findViewById(R.id.Movimiento6_swtch),
                 findViewById(R.id.Movimiento7_swtch),
                 findViewById(R.id.Movimiento8_swtch),
-                findViewById(R.id.Movimiento8_swtch),
+                findViewById(R.id.Movimiento9_swtch),
                 findViewById(R.id.Movimiento10_swtch),
         };
 
@@ -114,6 +114,7 @@ public class Movimientos_Piso_N5_Gr extends AppCompatActivity {
                 intent.putExtra("fortalecimiento", fortalecimiento.toString().trim());
                 intent.putExtra("aparato", aparato.toString().trim());
                 intent.putExtra("acondicionamiento", acondicionamiento.toString().trim());
+                intent.putExtra("tipo", "piso");
                 startActivity(intent);
             } else {
                 Toast.makeText(Movimientos_Piso_N5_Gr.this, "Activa un Switch para generar la rutina", Toast.LENGTH_SHORT).show();

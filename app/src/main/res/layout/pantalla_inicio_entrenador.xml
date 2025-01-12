@@ -46,12 +46,12 @@
 
     <Button
         android:id="@+id/Regresar_btn"
-        android:layout_width="76dp"
-        android:layout_height="66dp"
+        android:layout_width="113dp"
+        android:layout_height="63dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="#781005"
-        android:drawableTop="@drawable/flechamedia_regreso"
+        android:backgroundTint="#400B05"
         android:gravity="center"
+        android:text="Cerrar sesión"
         app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"

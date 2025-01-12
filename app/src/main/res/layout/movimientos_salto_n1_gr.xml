@@ -76,7 +76,7 @@
                 android:id="@+id/Movimiento1_swtch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PARADA DE MANOS A DESCENSO A LA POSICIÓN DE EXTENSIÓN ACOSTADA"
+                android:text="SALTO N1"
                 android:layout_gravity="center_horizontal" />
 
 

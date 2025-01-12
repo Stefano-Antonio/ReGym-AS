@@ -19,210 +19,278 @@
         tools:targetApi="31">
         <activity
             android:name=".generacion_rutina.Rutina_Generada_Guardar"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".administrador.Comentarios_Usuario"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".administrador.Manual_Gimansia_Comentarios"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N5_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".clase_basica.Clase_Basica_Salto"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".clase_basica.Calse_Basica_Viga"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".clase_basica.Clase_Basica_Piso"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".clase_basica.Clase_Basica_Barra"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.Rutina_Generada"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_salto_gr.Movimientos_Salto_N5_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_salto_gr.Movimientos_Salto_N4_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_salto_gr.Movimientos_Salto_N3_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_salto_gr.Movimientos_Salto_N2_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_salto_gr.Movimientos_Salto_N1_Gr"
             android:exported="false"
-            android:theme="@style/Theme.ReGym" />
+            android:theme="@style/Theme.ReGym"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_viga_gr.Movimientos_Viga_N5_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_viga_gr.Movimientos_Viga_N4_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_viga_gr.Movimientos_Viga_N3_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_viga_gr.Movimientos_Viga_N2_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_viga_gr.Movimientos_Viga_N1_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N5_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N4_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N3_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N2_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_barra_gr.Movimientos_Barra_N1_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_piso_gr.Movimientos_Piso_N5_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_piso_gr.Movimientos_Piso_N4_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_piso_gr.Movimientos_Piso_N3_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_piso_gr.Movimientos_Piso_N2_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.movimientos_piso_gr.Movimientos_Piso_N1_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".clase_basica.Inicio_Clase_Basica"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.Mostrar_Niveles_Salto_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.Mostrar_Niveles_Viga_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.Mostrar_Niveles_Barra_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.Mostrar_Niveles_Piso_Gr"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".generacion_rutina.Generar_Rutina"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_viga_mg.Movimientos_Viga_N5_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_viga_mg.Movimientos_Viga_N4_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_viga_mg.Movimientos_Viga_N3_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_viga_mg.Movimientos_Viga_N2_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_salto_mg.Movimientos_Salto_N5_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_salto_mg.Movimientos_Salto_N4_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_salto_mg.Movimientos_Salto_N3_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_salto_mg.Movimientos_Salto_N2_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N5_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N4_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N3_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N2_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.Mostrar_Niveles_Barra_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.Mostrar_Niveles_Viga_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.Mostrar_Niveles_Salto_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_viga_mg.Movimientos_Viga_N1_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_salto_mg.Movimientos_Salto_N1_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_barra_mg.Movimientos_Barra_N1_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimiento_Individual.Movimiento_Pantalla"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimiento_Individual.ComentarioAdapter"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N1_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N4_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N3_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N2_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.Mostrar_Niveles_Piso_Mg"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".manual_gimnasia.Manual_Gimnasia"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Registrar"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".administrador.Pantalla_Inicio_Administrador"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Inicio_Atletas"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Inicio_Entrenador"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Creditos"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Iniciar_Sesion"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

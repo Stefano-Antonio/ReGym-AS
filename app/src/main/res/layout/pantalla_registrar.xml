@@ -82,7 +82,7 @@
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="nombre y apellido"
+        android:hint="nombre"
         android:textColor="#818181"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

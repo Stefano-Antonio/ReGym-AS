@@ -32,7 +32,6 @@ public class Movimientos_Viga_N3_Gr extends AppCompatActivity {
                 findViewById(R.id.Movimiento6_swtch),
                 findViewById(R.id.Movimiento7_swtch),
                 findViewById(R.id.Movimiento8_swtch),
-                findViewById(R.id.Movimiento9_swtch),
         };
 
         // Botón "Regresar"

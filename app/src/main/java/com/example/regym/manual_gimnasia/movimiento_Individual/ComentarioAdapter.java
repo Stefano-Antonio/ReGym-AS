@@ -198,9 +198,16 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
             } else {
                 String respuesta = holder.escribirRespuesta.getText().toString().trim();
 
+                if (respuesta.length() > 70) {
+                    Toast.makeText(context, "La respuesta no puede tener más de 40 caracteres.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (respuesta.isEmpty()) {
                     Toast.makeText(context, "La respuesta no puede estar vacía.", Toast.LENGTH_SHORT).show();
                     return;
+
+
                 }else {
                     holder.tvComentario.setVisibility(View.VISIBLE);
                     holder.btn_Respuestas.setVisibility(View.VISIBLE);
@@ -362,8 +369,6 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
                      })
                         .setNegativeButton("Cancelar", null)
                         .show();
-           Toast.makeText(holder.itemView.getContext(), "Comentario eliminado", Toast.LENGTH_SHORT).show();
-
        });
 
 

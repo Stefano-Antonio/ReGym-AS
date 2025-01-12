@@ -13,7 +13,7 @@ import com.example.regym.R;
 import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N2_Mg;
 import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N3_Mg;
 import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N4_Mg;
-
+import com.example.regym.manual_gimnasia.movimientos_piso_mg.Movimientos_Piso_N5_Mg;
 
 
 public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
@@ -83,6 +83,8 @@ public class Mostrar_Niveles_Piso_Mg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(Mostrar_Niveles_Piso_Mg.this, Movimientos_Piso_N5_Mg.class);
+                startActivity(intent);
             }
         });
 

@@ -659,7 +659,7 @@ public class Movimientos_Piso_N5_Mg extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Movimientos_Piso_N5_Mg.this, Movimiento_Pantalla.class);
-                intent.putExtra("movimiento_gift", R.raw.m9_n5_piso);  // Recurso del GIF
+                intent.putExtra("movimiento_gift", R.raw.m10_n5_piso);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n5_m9);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "Correr (sin número específico de pasos) y hacer una talacha con alguna de las tres técnicas\n" +
                         "de talacha aceptables mostradas en el Glosario y realizar una REDONDILLA, FLIC-FLAC.\n" +
@@ -682,7 +682,7 @@ public class Movimientos_Piso_N5_Mg extends AppCompatActivity {
                         "Equilibrio: Mantener el equilibrio en la posición de redondilla es muy difícil.");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=9D__4XNOJXk&pp=ygUTcnV0aW5hIHBpc28gbml2ZWwgNQ%3D%3D");
                 intent.putExtra("mov","P_n5_m9");
-                intent.putExtra("titulo", "½ (180°) GIRO BOCA ABAJO A GIRO DE TRONCO/GIRAR A LEVANTARSE");
+                intent.putExtra("titulo", "REDONDILLA, FLIC-FLAC");
                 startActivity(intent);
             }
 
@@ -694,7 +694,7 @@ public class Movimientos_Piso_N5_Mg extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Movimientos_Piso_N5_Mg.this, Movimiento_Pantalla.class);
-                intent.putExtra("movimiento_gift", R.raw.m10_n5_piso);  // Recurso del GIF
+                intent.putExtra("movimiento_gift", R.raw.m9_n5_piso);  // Recurso del GIF
                 intent.putExtra("tabla_imagen", R.drawable.tabla_piso_n5_m10);  // Recurso de la tabla
                 intent.putExtra("descripcion_texto_a_mostrar", "Dar un paso adelante con la derecha y cerrar el pie izquierdo al lado del pie derecho (los pies\n" +
                         "están en planta). Hacer demi-plié con ambas piernas.\n" +

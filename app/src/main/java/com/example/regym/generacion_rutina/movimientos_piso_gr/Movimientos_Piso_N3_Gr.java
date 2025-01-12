@@ -18,7 +18,7 @@ public class Movimientos_Piso_N3_Gr extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.movimientos_piso_n2_gr);
+        setContentView(R.layout.movimientos_piso_n3_gr);
 
         // Botones
         Button Regresar_btn = findViewById(R.id.Regresar_btn);
@@ -102,6 +102,7 @@ public class Movimientos_Piso_N3_Gr extends AppCompatActivity {
                 intent.putExtra("fortalecimiento", fortalecimiento.toString().trim());
                 intent.putExtra("aparato", aparato.toString().trim());
                 intent.putExtra("acondicionamiento", acondicionamiento.toString().trim());
+                intent.putExtra("tipo", "piso");
                 startActivity(intent);
             } else {
                 Toast.makeText(Movimientos_Piso_N3_Gr.this, "Activa un Switch para generar la rutina", Toast.LENGTH_SHORT).show();

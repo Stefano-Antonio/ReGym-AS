@@ -102,6 +102,7 @@ public class Movimientos_Piso_N2_Gr extends AppCompatActivity {
                 intent.putExtra("fortalecimiento", fortalecimiento.toString().trim());
                 intent.putExtra("aparato", aparato.toString().trim());
                 intent.putExtra("acondicionamiento", acondicionamiento.toString().trim());
+                intent.putExtra("tipo", "piso");
                 startActivity(intent);
             } else {
                 Toast.makeText(Movimientos_Piso_N2_Gr.this, "Activa un Switch para generar la rutina", Toast.LENGTH_SHORT).show();

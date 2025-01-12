@@ -20,6 +20,21 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/fondo_vino" />
 
+    <Button
+        android:id="@+id/Regresar_btn"
+        android:layout_width="76dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#781005"
+        android:drawableTop="@drawable/flechamedia_regreso"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/Fondo_ginda2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Fondo_ginda2"
+        app:layout_constraintVertical_bias="0.2" />
+
     <TextView
         android:id="@+id/Mensaje_bienvenida"
         android:layout_width="329dp"
@@ -161,7 +176,7 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/commentarios_seccion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:visibility="gone">
             <!---->
@@ -184,7 +199,7 @@
                 <!-- Añadir un nuevo comentario -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="130dp"
                     android:background="#f0f0f0"
                     android:orientation="vertical"
                     android:padding="8dp">

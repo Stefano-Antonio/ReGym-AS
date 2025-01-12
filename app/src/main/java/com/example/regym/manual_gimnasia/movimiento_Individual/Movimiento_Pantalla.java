@@ -36,6 +36,7 @@ import java.net.NetworkInterface;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         EditText inputComentario = findViewById(R.id.nuevo_comentario_edit_text);
         ImageButton enviarComentarioBtn = findViewById(R.id.agregar_comentario_btn);
         TextView nuevo_comentario_edit_text = findViewById(R.id.nuevo_comentario_edit_text);
+        Button regresar_btn = findViewById(R.id.Regresar_btn);
 
         //GIFS
         ImageView imageViewGif = findViewById(R.id.Movimiento_gift);
@@ -135,6 +137,12 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                     }
                 });
 
+        regresar_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();  // Cierra la actividad actual y regresa a la anterior
+            }
+        });
 
 //boton descripcion
         bnt_descripcion.setOnClickListener(new View.OnClickListener() {
@@ -191,6 +199,98 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         enviarComentarioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Lista de malas palabras
+                List<String> malasPalabras = Arrays.asList(
+                        "maldito", "idiota", "estúpido", "imbécil", "tonto",
+                        "mierda", "cabron", "cabrona", "pendejo", "pendeja",
+                        "puto", "puta", "put@", "pvt@", "pvto", "pvta",
+                        "fck", "f*ck", "fuck", "f#ck", "shit", "sh1t",
+                        "mierd@", "culero", "culera", "cabrón", "bastardo",
+                        "hdp", "hijo de puta", "hijueputa", "perra", "zorra",
+                        "zorr@", "imbecil", "bastarda", "madre", "chingar",
+                        "chingón", "chingada", "pito", "verga", "v3rga", "vrga",
+                        "naco", "güey", "guey", "w3y", "gay", "gaylord",
+                        "@ss", "asshole", "coño", "picha", "estupido","tonta",
+                        "tonto", "estúpida", "estúpido", "imbécil", "imbécil@",
+                        "burro", "burra", "pendejada", "pendejo", "pendeja", "mamón",
+                        "mamona", "idiota", "idiota@", "desgraciado", "desgraciada",
+                        "bruto", "bruta", "menso", "mensa", "cabrón", "cabrona", "perro",
+                        "perra", "mierda", "mirda", "mierd@", "culo", "cl0", "culo@",
+                        "verga", "v3rga", "vrga", "vrga", "coño", "pto", "puto",
+                        "puta", "chingar", "chingada", "chingón", "chingue",
+                        "pa madre", "hijo de p*", "hijueputa", "zorra", "puta madre",
+                        "asesino", "asesina", "matón", "matona", "violador",
+                        "violadora", "violación", "tortura", "naco", "nac@",
+                        "nac@zo", "gorilla", "gorill@", "indio", "india", "negro",
+                        "negra", "joto", "maricón", "put@", "lesbiana", "travesti",
+                        "pinga", "picha", "teta", "tetas", "huevos", "chorizo",
+                        "vagina", "mamada", "chupaculo", "follar", "follada",
+                        "sexo anal", "sexo oral", "mamón", "cabrón", "hijo de perra",
+                        "pedazo de mierda", "malparido", "maldito", "maldita sea",
+                        "racista", "xenófobo", "homofóbico", "misoginia",
+                        "machista", "feminazi", "fck", "f#ck", "sh1t", "sh!t",
+                        "b!tch", "btch", "c0ño", "c**o","cabrón", "cabrona",
+                        "chinga", "chnga", "put@ madre", "v3rg@", "verga",
+                        "chupapija", "p**o", "coo", "gilipollas", "imbécil",
+                        "tarado", "pendejo", "pendeja", "hijueputa",
+                        "chingaquedito", "zorra", "marrano", "cerdo", "chacal",
+                        "malnacido", "malparido", "perra", "sucia", "tont@hija",
+                        "mamón", "pto", "follón", "corto de mente", "paparulo",
+                        "idiota", "subnormal", "pito", "tont@bola", "chupapollas",
+                        "marica", "trapo", "tontorrona", "pendón", "cabronazo",
+                        "culero", "cul@o", "apestado", "mujerzuela", "hombrezuela",
+                        "enfermo", "putón", "cabrito", "nazi", "gay", "marimacho",
+                        "put@rama", "soplapollas", "sucka", "mordaz",
+                        "chanchullero", "nefasto", "feminazi", "machista",
+                        "sodomita", "depravado", "vulgar", "analfabeto", "pelmazo",
+                        "enviado", "loco", "follador", "sodomizador", "antipático",
+                        "putaculos", "coo", "negrero", "asqueroso", "resabiado",
+                        "guarro", "fracasado", "alcornoque", "peludo", "comemierda",
+                        "mujeriego", "piruja", "guarra", "chafalonja", "zocorro",
+                        "cabr@n", "naco", "mamerta", "loser", "cacas", "feo", "marica",
+                        "pobretón", "porquería", "nazi", "gordo", "sarnoso",
+                        "desgarrador", "frutero", "violadora", "solitario", "enfermo",
+                        "cacho", "vulgar", "patán", "perro",
+                        "petardo", "cochino", "imbécil", "peste", "drogadicto","put0",
+                        "pUt0", "pU7o", "pt0", "put@","pUt@", "v3rg@", "v3rga",
+                        "v3rg@a", "vergaa", "ch1nga", "ch1ng@","ch!nga", "ch!n6a",
+                        "p3ndejo", "p3nd3j0", "p3nd3j@", "p3nd3h0", "c4brón",
+                        "c4br0n", "c4br0n@", "c@br0n", "chup@p1ja", "chupap!ja",
+                        "chup4p1ja", "c0ño", "c0n@o", "coñ0", "c@ño", "c0n0",
+                        "put0madre", "put0madree", "put@madre", "putomadre",
+                        "pu7o", "f0ll@r", "f0ll@r", "foll@r", "f0ll@do", "mar1c0n",
+                        "m@r1c0n", "m4r1c0n", "maric@0", "mam0n", "mam0n@",
+                        "mam0n3", "m@mon", "g!lipollas", "g1lipollas",
+                        "gilip0llas", "g!l!p0llas", "imb3cil", "1mb3c!l",
+                        "1mb3c1l", "tar@d0", "t@r@d0", "t@r4d0", "put@r@m@3",
+                        "put@r@ma", "put@r@m@e", "pu7a", "pu7a", "p@ta",
+                        "s0rra", "s0rra@", "s0rr@", "marr@no", "m@rr@no",
+                        "cerd0", "c3rd0", "cerd@", "maln@c!d0", "maln@c!d@",
+                        "malparid0", "malp@r!d@", "f@ll4r", "f@l!4r", "f@ll@r", "p!to",
+                        "p!t0","t!to", "chup@p0llas", "chup@p0ll@s", "p$%o", "p%to",
+                        "ch@p@j@","p#t@", "put4", "put@0", "put0m@dre", "f0ll4r",
+                        "f0l!ar", "g!l!p0lla", "g!l!p0l@as", "t@r@d0", "t@r@do",
+                        "m@mn", "m4m0n", "m4r!c0n", "m@r!c0n", "m@r1c0n", "s0rr@r",
+                        "s0rr@d0", "m!r3nd@4", "c@br0n", "cabroN", "m@lac0n",
+                        "m@lac0n@", "ch!p0", "ch!p@", "p!l0r", "p1tr@n", "b@rri0n",
+                        "c0ñ0", "c@ñ0", "chup@p0ll@s", "chup@p0ll@as", "put#ra",
+                        "put@r@", "put@r0", "put0m@dre", "chup4c0n", "put@",
+                        "c@br0n@do", "t@r@d0", "g@rr@0n", "c0nch!n@d0", "p!!ja",
+                        "m!@ta", "m@r!c@d0", "m4r!c@0", "pu7@madre", "pu7o",
+                        "b0lud0", "c!n@gr@", "ch!ng@r", "f@ll@r", "foll@r",
+                        "p3nd3j@", "g1l!p0llas", "g!l!p0l@as", "g!!l!p0ll@s",
+                        "chup4m@dres", "g!l!p0", "mal0", "m4l0", "g!r@t0",
+                        "t!g@rr@", "p0rt@l", "f@ll4r", "c0j0n", "g!l!p0ll@r",
+                        "p@l3t0", "s@gr@d@", "f0ll@d@", "g3r0n", "m4l@c0n",
+                        "p@l!t0", "g@rr!on", "m@l@madre", "ch!nga", "m0r@l@c0n",
+                        "ch!p0", "c!p0", "t4r@", "t4r@do", "put#ra", "c@br@n",
+                        "c@br0", "p0l@r", "f!c@r@", "chup0", "f@ll3r", "t0r@",
+                        "put@r@nd@", "f@ll@", "ch!g@l0", "g0rr0n", "g@rr!o",
+                        "g!p@ll@", "m!r3n@3", "chup@p@r", "g@r0n", "g!l!p0",
+                        "g@l!b@r", "t@l@", "c0ñ0", "m@l0s", "put@", "ch!ngr@",
+                        "s@p@r0", "g1rr@", "g4rr0n","m4r1c0n", "f@ll3r", "b@l0c@d@",
+                        "g@ll0n", "f0l!d@"
+                );
                 // Obtén los datos de SharedPreferences, la actividad anterior y comentarios
                 SharedPreferences preferences = getSharedPreferences("DatosUsuario", MODE_PRIVATE);
                 String userId = preferences.getString("userId", null); // Debe ser el ObjectId del usuario
@@ -200,6 +300,19 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                 Log.d("DEBUG", "userId: " + userId);
                 Log.d("DEBUG", "comentarioTexto: " + comentarioTexto);
                 Log.d("DEBUG", "movimiento: " + movimiento);
+
+                // Verificar si el comentario supera los 40 caracteres
+                if (comentarioTexto.length() > 70) {
+                    Toast.makeText(getApplicationContext(), "El comentario no puede tener más de 40 caracteres", Toast.LENGTH_SHORT).show();
+                    return; // Detener el proceso
+                }
+
+                for (String malaPalabra : malasPalabras) {
+                    if (comentarioTexto.toLowerCase().contains(malaPalabra)) {
+                        Toast.makeText(getApplicationContext(), "El comentario contiene lenguaje inapropiado", Toast.LENGTH_SHORT).show();
+                        return; // Detener el proceso
+                    }
+                }
 
                 if (userId != null && !comentarioTexto.isEmpty() && movimiento != null) {
                     // Crea el comentario con el ID del usuario, el texto del comentario y el movimiento
@@ -290,7 +403,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
     }
 
     private void mostrarPopup() {
-
         Dialog dialogo = new Dialog(this);
         // Obtén el mensaje de ayuda usando la clave correcta
         String mensajeAyuda = getIntent().getStringExtra("informacion_ayuda");
@@ -314,25 +426,30 @@ public class Movimiento_Pantalla extends AppCompatActivity {
                 dialogo.dismiss();
             }
         });
-        // Obtén el link  usando la clave correcta
+
+        // Obtén el link usando la clave correcta
         String link_video = getIntent().getStringExtra("link");
-        TextView textViewLink = pantalla_emergente.findViewById(R.id.hipervinculo);
-        if (mensajeAyuda != null) {
-            textViewLink.setText(link_video);
+        if (link_video != null) {
+            link.setText(link_video);  // Muestra el link recibido en el TextView
         }
-        //Link de ayuda
+
+        // Link de ayuda
         link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.youtube.com/watch?v=OGfX_n_Hu0U&ab_channel=PROFE-WILSON"; // Reemplaza con la URL real
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
+                if (link_video != null) {
+                    // Si el enlace es válido, abre la URL
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link_video));
+                    startActivity(intent);
+                }
             }
         });
+
         // Crea el Dialog
         dialogo.setContentView(pantalla_emergente);
         dialogo.show();
     }
+
 
     public void mostrarComentarios(String movimientoId) {
         Call<List<ApiClient.Comentario>> call = ApiClient.getApiService().obtenerComentariosPorMovimiento(movimientoId);
@@ -414,14 +531,6 @@ public class Movimiento_Pantalla extends AppCompatActivity {
         Log.d("Comentario Details", "Respuestas: " + comentario.getRespuestas());
     }
     public class ObjectIdGenerator {
-        /**
-         * Genera un ObjectId personalizado siguiendo el formato estándar:
-         * 4 bytes: Marca de tiempo (segundos desde el epoch, 1 de enero de 1970).
-         * 5 bytes: ID único de máquina (basado en la dirección MAC).
-         * 3 bytes: Incremento aleatorio.
-         *
-         * @return Un ObjectId válido.
-         */
         public static String generateCustomObjectId() {
             try {
                 long timestamp = System.currentTimeMillis() / 1000; // Marca de tiempo en segundos desde 1970

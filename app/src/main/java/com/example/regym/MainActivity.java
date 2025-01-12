@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.regym.administrador.Pantalla_Inicio_Administrador;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, Pantalla_Inicio_Entrenador.class);
+                Intent intent = new Intent(MainActivity.this, Creditos.class);
                 startActivity(intent);
             }
         });

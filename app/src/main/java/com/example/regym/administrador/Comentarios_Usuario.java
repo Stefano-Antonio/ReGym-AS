@@ -107,8 +107,8 @@ public class Comentarios_Usuario extends AppCompatActivity {
                     List<ApiClient.Comentario> comentariosDelBackend = response.body();
 
                     if (comentariosDelBackend == null || comentariosDelBackend.isEmpty()) {
-                        Log.e("API_RESPONSE", "No hay comentarios disponibles.");
-                        Toast.makeText(getApplicationContext(), "No hay comentarios disponibles.", Toast.LENGTH_SHORT).show();
+                        Log.e("API_RESPONSE", "No hay comentarios todavia.");
+                        Toast.makeText(getApplicationContext(), "No hay comentarios todavia.", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     // Imprimir los IDs de los comentarios y respuestas

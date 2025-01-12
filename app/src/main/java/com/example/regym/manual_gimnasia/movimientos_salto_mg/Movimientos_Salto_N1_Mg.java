@@ -60,7 +60,7 @@ public class Movimientos_Salto_N1_Mg extends AppCompatActivity {
                         "Consejo: Practica la coordinación de brazos y piernas para mantener el equilibrio.");  // Texto de descripción
                 intent.putExtra("link","https://www.youtube.com/watch?v=yxCr0XsBFks&pp=ygUUcnV0aW5hIHNhbHRvIG5pdmVsIDE%3D");
                 intent.putExtra("mov","S_n1_m1");
-                intent.putExtra("titulo", "PARADA DE MANOS A DESCENSO A LA POSICIÓN DE EXTENSIÓN ACOSTADA");
+                intent.putExtra("titulo", "SALTO N1");
                 startActivity(intent);
             }
         });

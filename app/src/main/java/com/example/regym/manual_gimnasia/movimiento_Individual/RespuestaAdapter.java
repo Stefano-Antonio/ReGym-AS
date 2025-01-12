@@ -109,8 +109,6 @@ public class RespuestaAdapter extends RecyclerView.Adapter<RespuestaAdapter.Resp
                     .show();
         });
 
-
-
     }
 
     @Override

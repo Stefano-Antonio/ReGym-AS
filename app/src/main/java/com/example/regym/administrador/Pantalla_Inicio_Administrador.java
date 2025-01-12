@@ -72,7 +72,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
 
         // Lista inicial de matrículas disponibles
         Set<String> matriculasIniciales = new HashSet<>(Arrays.asList(
-                "A100", "A101", "A102", "A103", "A104", "A105", "A106", "A107", "A108"
+                "A010"
         ));
 
         // Acceder a SharedPreferences
@@ -512,7 +512,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                 } else {
                     Log.w("API_RESPONSE", "Respuesta no exitosa al agregar matrícula. Código de estado: " + response.code());
                     Log.w("API_RESPONSE", "Mensaje: " + response.message());
-                    Toast.makeText(Pantalla_Inicio_Administrador.this, "Error al agregar matrícula", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Pantalla_Inicio_Administrador.this, "La matricula ya esta en uso", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -597,7 +597,7 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                     Toast.makeText(Pantalla_Inicio_Administrador.this, "Usuario eliminado correctamente", Toast.LENGTH_SHORT).show();
                     cargarUsuarios(); // Recargar usuarios
                 } else {
-                    Toast.makeText(Pantalla_Inicio_Administrador.this, "Error al eliminar el usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Pantalla_Inicio_Administrador.this, "No se puede eliminar al administrador principal", Toast.LENGTH_SHORT).show();
                 }
             }
 

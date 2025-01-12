@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -33,6 +34,14 @@ public class Rutina_Generada_Guardar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rutina_generada_guardar);
 
+        Button regresar_btn = findViewById(R.id.Regresar_btn);
+
+        regresar_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();  // Cierra la actividad actual y regresa a la anterior
+            }
+        });
         // Obtener datos del Intent
         fortalecimiento = getIntent().getStringExtra("fortalecimiento");
         aparato = getIntent().getStringExtra("aparato");
@@ -55,10 +64,10 @@ public class Rutina_Generada_Guardar extends AppCompatActivity {
     }
 
     private void configurarBoton(int buttonId, int slot) {
-        Button button = findViewById(buttonId);
-        actualizarEstadoBoton(button, slot);
+        Button guardar = findViewById(buttonId);
+        actualizarEstadoBoton(guardar, slot);
 
-        button.setOnClickListener(v -> {
+        guardar.setOnClickListener(v -> {
             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             boolean rutinaGuardada = prefs.contains(SLOT_PREFIX + slot);
 
@@ -68,11 +77,11 @@ public class Rutina_Generada_Guardar extends AppCompatActivity {
             } else {
                 // Si no hay rutina, guardar una nueva
                 guardarRutina(slot);
-                actualizarEstadoBoton(button, slot);
+                actualizarEstadoBoton(guardar, slot);
             }
         });
 
-        button.setOnLongClickListener(v -> {
+        guardar.setOnLongClickListener(v -> {
             // Alternativa: Visualizar la rutina con una pulsación larga
             visualizarRutina(slot);
             return true; // Indica que el evento fue manejado
@@ -201,31 +210,6 @@ public class Rutina_Generada_Guardar extends AppCompatActivity {
         }
     }
 
-
-    private void eliminarRutina(int slot, int index) {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String rutinasJson = prefs.getString(SLOT_PREFIX + slot, "[]");
-
-        try {
-            JSONArray rutinasArray = new JSONArray(rutinasJson);
-
-            if (index >= 0 && index < rutinasArray.length()) {
-                rutinasArray.remove(index);
-
-                // Guardar la lista actualizada
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString(SLOT_PREFIX + slot, rutinasArray.toString());
-                editor.apply();
-
-                Toast.makeText(this, "Rutina eliminada del slot " + slot, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Índice inválido", Toast.LENGTH_SHORT).show();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Error al eliminar la rutina", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
 }

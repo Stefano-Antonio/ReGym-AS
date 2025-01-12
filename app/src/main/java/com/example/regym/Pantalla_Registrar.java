@@ -111,59 +111,66 @@ public class Pantalla_Registrar extends AppCompatActivity {
             }
         });
 //Boton registrarse
+        // Botón registrarse
         Registrarse_btn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                String password = passwordEditText.getText().toString();
+                String passwordConfirm = passwordEditText2.getText().toString();
+                String correo = correoEditText.getText().toString();
 
-                if (passwordEditText.getText().toString().equals(passwordEditText2.getText().toString())) {
-
-
-                    String nombre = nombreEditText.getText().toString();
-                    String correo = correoEditText.getText().toString();
-                    String matricula = matriculaEditText.getText().toString();//matricula
-                    SharedPreferences sharedPreferences = getSharedPreferences("matriculas", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
-
-                    // Recuperamos la lista de matrículas disponibles (si existe)
-                    Set<String> matriculas = sharedPreferences.getStringSet("matriculas_disponibles", new HashSet<>());
-
-                    // Guardamos la lista actualizada
-                    editor.putStringSet("matriculas_disponibles", matriculas);
-                    editor.apply();
-
-                    String password = passwordEditText.getText().toString();
-
-                    ApiClient.Usuario usuario1 = new ApiClient.Usuario(id, nombre, correo, matricula, password);
-
-                    int x;
-                    try {
-                        x = verificarMatricula(matricula);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                    if (x == 1) {
-                        if (matriculas.contains(matricula)) {
-                            registrarUsuario(usuario1);
-                        }else {
-                            // La matrícula no está disponible, muestra un mensaje al usuario
-                            Toast.makeText(getApplicationContext(), "La matrícula no está disponible.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), "La matricula tienen un formato incorrecto", Toast.LENGTH_LONG).show();
-                        }
-
-                }
-                else{
-
-                    Throwable e = new Throwable();
-                    Log.e("Error", "Error al leer la respuesta: " + e.getMessage());
+                // Validar que las contraseñas coincidan
+                if (!password.equals(passwordConfirm)) {
                     Toast.makeText(getApplicationContext(), "La confirmación de la contraseña no coincide", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // Validar que la contraseña tenga al menos 8 caracteres
+                if (password.length() < 8) {
+                    Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validar el formato del correo electrónico
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+                    Toast.makeText(getApplicationContext(), "El correo electrónico no tiene un formato válido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String nombre = nombreEditText.getText().toString();
+                String matricula = matriculaEditText.getText().toString(); // matrícula
+                SharedPreferences sharedPreferences = getSharedPreferences("matriculas", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                // Recuperamos la lista de matrículas disponibles (si existe)
+                Set<String> matriculas = sharedPreferences.getStringSet("matriculas_disponibles", new HashSet<>());
+
+                // Guardamos la lista actualizada
+                editor.putStringSet("matriculas_disponibles", matriculas);
+                editor.apply();
+
+                ApiClient.Usuario usuario1 = new ApiClient.Usuario(id, nombre, correo, matricula, password);
+
+                int x;
+                try {
+                    x = verificarMatricula(matricula);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+                if (x == 1) {
+                    if (matriculas.contains(matricula)) {
+                        registrarUsuario(usuario1);
+                    } else {
+                        // La matrícula no está disponible, muestra un mensaje al usuario
+                        Toast.makeText(getApplicationContext(), "La matrícula no está disponible.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "La matrícula tiene un formato incorrecto", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
     }
 
 //Funcion Registrar usuario
