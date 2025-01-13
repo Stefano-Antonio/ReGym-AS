@@ -146,8 +146,8 @@ public class Comentarios_Usuario extends AppCompatActivity {
 
                     Log.d("COMENTARIOS", "Comentarios cargados correctamente: " + comentariosDelBackend.size());
                 } else {
-                    Log.e("API_RESPONSE", "Error al obtener comentarios: " + response.message());
-                    Toast.makeText(getApplicationContext(), "No se pudieron cargar los comentarios.", Toast.LENGTH_SHORT).show();
+                    Log.e("API_RESPONSE", "No hay comentarios todavia: " + response.message());
+                    Toast.makeText(getApplicationContext(), "No hay comentarios todavia.", Toast.LENGTH_SHORT).show();
                 }
             }
 

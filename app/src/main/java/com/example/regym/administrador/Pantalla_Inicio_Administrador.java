@@ -404,6 +404,12 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
                     return;
                 }
 
+                // Validar que la matrícula tenga el formato de una letra mayúscula y tres números
+                if (!nuevaMatricula.matches("[A-Z]\\d{3}")) {
+                    Log.e("ERROR", "Formato de matrícula incorrecto. Debe ser una letra mayúscula seguida de tres números (por ejemplo, A123).");
+                    return;
+                }
+
                 if (x == 1) {
                     // Enviar matrícula al servidor y actualizar la lista
                     agregarMatriculaAlServidor(nuevaMatricula, sharedPreferences);
@@ -488,6 +494,11 @@ public class Pantalla_Inicio_Administrador extends AppCompatActivity {
             return;
         }
 
+        // Validar que la matrícula tenga el formato de una letra mayúscula y tres números
+        if (!nuevaMatricula.matches("[A-Z]\\d{3}")) {
+            Log.e("ERROR", "Formato de matrícula incorrecto. Debe ser una letra mayúscula seguida de tres números (por ejemplo, A123).");
+            return;
+        }
         ApiClient.ApiService apiService = ApiClient.getApiService();
         Log.d("API_CALL", "Iniciando llamada para agregar matrícula: " + nuevaMatricula);
         Call<ApiClient.RespuestaMatriculas> call = apiService.agregarMatricula(nuevaMatricula);

@@ -17,8 +17,9 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class ApiClient {
-    //private static final String BASE_URL = "https://respositorio-de-gimnasia-digital-regym.onrender.com"; // Cambiar a la URL del backend
-    private static final String BASE_URL = "http://10.0.2.2:4000/";
+    private static final String BASE_URL = "https://respositorio-de-gimnasia-digital-regym-hv6l.onrender.com"; // Cambiar a la URL del backend
+    //private static final String BASE_URL = "http://192.168.100.66:4000/";
+    //private static final String BASE_URL = "http://10.0.2.2:4000/";
     private static Retrofit retrofit;
     private static ApiService apiService;
     public interface ApiService {

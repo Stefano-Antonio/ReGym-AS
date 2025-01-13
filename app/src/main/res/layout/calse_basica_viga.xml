@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Clase_basica">
+    tools:context="clase_basica.Clase_Basica_Viga">
 
 
     <ImageView
@@ -81,59 +81,54 @@
             android:id="@+id/Calentamiento_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calentamiento (15 min)\n\n
--Trote suave, 10 vueltas al podio\n
--Rotacion de cuello 5 veces a la izquierda \n
--Rotacion de cuello 5 veces a la derecha\n
--Rotacion de canillas 10 segundos a cada lado\n
--Rotacion de brazos estirados, 10 veces a cada lado\n
--Rotacion de torzo a la izquierda y derecha 10 veces\n
--Circulos canillas y cadera, 5 veces a cada lado\n
--Toque de puntas a los pies sin doblar rodillas (10 veces)\n
--Mantener tocando punta de los pies sin doblar rodillas (10 segundos)\n
--Extencion de rodilla sin despegar manos del suelo (10 veces)\n
--Calentamiento pre squad(10 segundos a cada lado)
--Estiramiento, postura squad (20 segundos)
--Calemntamiento split, rodilla de enfrente a 90° (10 segundos a cada lado)\n
--Estiramiento, postura split (20 segundos a cada pierna)\n
--Postura sentada estirando pies, manos arriba, toque de puntas(10 veces)\n
--Mantener tocando puntas (10 segundos)
--Acostada boca arriba, marcando puntas, patada con extencion llegar a 90° cada pie de frente (10 veces)\n
--Acostada de lado, marcando puntas, patada con extencion llegar a 90° cada pie de lado (10 veces)\n
--Incada boca abajo, estirando pie derecho atras, marcando punta, patada extendida hacia arriba (10 veces cada pie)\n
--Postura de casita, estirando rodillas y brazos, patada atras estirando punta y pie extendido(10 veces cada pie)\n
--Boca abajo, pies juntos y estirados, estiro arco hacia atras empujando brazos (10 segundos, 3 veces)\n
--Boca abajo, Sujetamos tobillos, sin soltar estiramos pies a postura de cunita(10 veces)\n
--Mantener postura de cunita (10 segundos)\n
--Bica arriba, estirar pies y brazos a postura de arco, despegando la cabeza del suelo(10 segundos, 3 veces)\n
-\n
-Fortalecimiento (5/10 min)\n\n
--Postura de cuchara rodillas a 90°, estirando puntas, espalda alta elevada(30 segundos, 3 veces)\n
-&lt;Entre cada series de 5 a 10 abdomilaes agrupados&gt;\n
--Postura de cuchara, estirando puntas y rodillas, espalda alta elevada (30 segundo.3 veces)\n
-&lt;Entre cada series de 5 a 10 abdomilaes extendidos a tocar puntas de los pies&gt;\n
--Postura de plancha, hombros a la altura de los codos, espalda recta y pies juntos (30 segundos, 3 veces)
-&lt;Entre cada series de 5 a 10 patadas laterales en postura de plancha&gt;\n
--postura a parado de manos en pared o en superficie elevada a 90°, espalda recta, marcando puntas de los pies(35 segundos, 3 veces)\n\n
-Trabajo en aparato (20/25 min)\n\n
--Paso patada, Palanca de nivel 1(apollando manos en una superficie(10 veces a mantener 5 segundos la postura))\n
--Paso patada, Palanca de nivel 2(apollando manos en el suelo(10 veces a mantener 5 segundos la postura))\n
--Paso patada, Palanca nivel 3/ Escorpion, a elevar el pie de abajo(10 veces))\n
--salto vertical ida y vuelta en una linea de podio\n
--Rodada alfrente en una linea de podio\n
--Rodada atras en una linea de podio ida y vuelta en una linea de podio(si no sale el ejercicio se puede hacer en una superficie inclinada)\n
--Paso patada, Vuelta de carro a pies juntos ida y vuelta en una linea de podio\n
--Estiramiento de arco a bajar a postura y regresar apollado de una pared(10 veces)\n
--Postura de arco, pies en superficie elevada, estirar pierna dominante a hacer pasada atras pateando (10 veces)\n
-\n\nAcondicionamiento (10 min)\n\n
--30 sentadillas (rodillas a 90)\n
--30 abdominales simples a tocar puntas\n
--30 sentadillas, con salto a juntar pies\n
--30 abdominales agrupados\n
--30 saltos de rana\n
--30 abdominales a postura de velita(apollando las manos en alguna superficie)\n
--30 supermanes, postura boca abajo a subir pies y manos\n
--Estiramiento de espalda(30 segundos)"
+            android:text="-Calentamiento (15 min)\n\n
+- Trote Suave en el Podio (5 min)\n
+  - Correr suavemente alrededor del podio para calentar el cuerpo.\n\n
+- Rotaciones Articulares (5 min)\n
+  - Cuello: Rotaciones a izquierda y derecha (5 veces por lado).\n
+  - Brazos: Rotaciones hacia adelante y hacia atrás (10 veces por lado).\n
+  - Caderas: Círculos amplios con las caderas (5 veces por lado).\n
+  - Tobillos: Rotaciones de tobillos (10 segundos por pie).\n\n
+- Estiramientos Dinámicos (5 min)\n
+  - Toques de Punta: Toque de los pies sin doblar rodillas (10 veces).\n
+  - Estiramiento de Cuadriceps: De pie, llevar el talón hacia los glúteos (10 segundos por pierna).\n
+  - Estiramiento de Isquiotibiales: Mantener tocando las puntas de los pies sin doblar rodillas (10 segundos).\n\n
+-Fortalecimiento (5/10 min)\n\n
+- Postura de Plancha (3 series de 30 segundos)\n
+  - Mantener una plancha con la espalda recta y los pies juntos.\n\n
+- Sentadillas Explosivas (3 series de 10 repeticiones)\n
+  - Realizar sentadillas con un salto explosivo al final.\n\n
+- Abdominales Agrupados (3 series de 10 repeticiones)\n
+  - Agrupar el cuerpo tocando las rodillas con el pecho.\n\n
+-Trabajo en Aparato (20/25 min)\n\n
+- Saltos Verticales con Elevación de Rodillas (3 series de 10 repeticiones)\n
+  - Saltar elevando las rodillas al pecho.\n\n
+- Salto con Medio Giro (3 series de 8 repeticiones)\n
+  - Saltar y girar 180° en el aire antes de aterrizar.\n\n
+- Salto con Desplazamiento (3 series de 10 repeticiones)\n
+  - Saltar de un punto a otro (aproximadamente 1 metro de distancia).\n\n
+- Salto sobre Obstáculo Bajo (3 series de 8 repeticiones)\n
+  - Saltar sobre un pequeño obstáculo.\n\n
+- Salto en Plataforma Elevada (3 series de 10 repeticiones)\n
+  - Saltar desde el suelo a una plataforma elevada y regresar.\n\n
+-Acondicionamiento (10 min)\n\n
+- Sentadillas con Salto (30 repeticiones)\n
+  - Realizar sentadillas con un salto al final.\n\n
+- Abdominales a Tocarse las Puntas (30 repeticiones)\n
+  - Elevar el torso para tocar las puntas de los pies.\n\n
+- Saltos de Rana (30 repeticiones)\n
+  - Saltar desde una posición de squat profunda.\n\n
+- Supermanes (30 repeticiones)\n
+  - Boca abajo, levantar brazos y piernas simultáneamente.\n\n
+-Estiramiento Final (Tiempo Restante, 5/10 min)\n\n
+- Estiramiento de Isquiotibiales (15 segundos por pierna)\n
+  - Sentado, estirar una pierna hacia adelante y tocar las puntas de los pies.\n\n
+- Estiramiento de Cuádriceps (15 segundos por pierna)\n
+  - Llevar el talón hacia los glúteos.\n\n
+- Estiramiento de Espalda\n
+  - Estirarse hacia adelante con las manos estiradas en el suelo (30 segundos).\n\n
+- Estiramiento de Caderas\n
+  - Sentarse con las piernas cruzadas y empujar las rodillas hacia el suelo (30 segundos)."
 
             />
 

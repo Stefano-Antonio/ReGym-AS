@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, Creditos.class);
+                Intent intent = new Intent(MainActivity.this, Pantalla_Inicio_Administrador.class);
                 startActivity(intent);
             }
         });

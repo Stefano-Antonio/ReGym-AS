@@ -118,6 +118,7 @@ public class Pantalla_Registrar extends AppCompatActivity {
                 String password = passwordEditText.getText().toString();
                 String passwordConfirm = passwordEditText2.getText().toString();
                 String correo = correoEditText.getText().toString();
+                String nombre = nombreEditText.getText().toString();
 
                 // Validar que las contraseñas coincidan
                 if (!password.equals(passwordConfirm)) {
@@ -131,13 +132,18 @@ public class Pantalla_Registrar extends AppCompatActivity {
                     return;
                 }
 
+                // Validar que la contraseña tenga al menos 8 caracteres
+                if (nombre.length() > 8) {
+                    Toast.makeText(getApplicationContext(), "El nombre de usuario no debe ser de mas de 10 caracteres", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Validar el formato del correo electrónico
                 if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
                     Toast.makeText(getApplicationContext(), "El correo electrónico no tiene un formato válido", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                String nombre = nombreEditText.getText().toString();
                 String matricula = matriculaEditText.getText().toString(); // matrícula
                 SharedPreferences sharedPreferences = getSharedPreferences("matriculas", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
